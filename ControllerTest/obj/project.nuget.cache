@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7RuZurhKPJaVpSBzhNXylRGrhD5+a9pcq+HTeXwls9o8b54dzdzdQxJQbMhXA2OMnugKYb+jX+ULTcyumdToUA==",
+  "dgSpecHash": "TixKZA12jyG6fePIdszJoPye7aDgGSXilqGn8UUDtSQVsIWCgCbDDzadJbfTqBDay1YIMY/dER6Nd1p8OTOi5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+  "projectFilePath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacco\\.nuget\\packages\\microsoft.codecoverage\\16.4.0\\microsoft.codecoverage.16.4.0.nupkg.sha512",
     "C:\\Users\\jacco\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",

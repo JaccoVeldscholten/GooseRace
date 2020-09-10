@@ -7,3 +7,12 @@ C:\Users\jacco\GooseRace\GooseRace\Model\obj\Debug\netstandard2.0\Model.Assembly
 C:\Users\jacco\GooseRace\GooseRace\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
 C:\Users\jacco\GooseRace\GooseRace\Model\obj\Debug\netstandard2.0\Model.dll
 C:\Users\jacco\GooseRace\GooseRace\Model\obj\Debug\netstandard2.0\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netstandard2.0\Model.deps.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netstandard2.0\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netstandard2.0\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.csprojAssemblyReference.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.pdb

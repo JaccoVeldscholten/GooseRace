@@ -4649,11 +4649,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacco\\GooseRace\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+      "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
       "projectName": "ControllerTest",
-      "projectPath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+      "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
       "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\ControllerTest\\obj\\",
+      "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4669,8 +4669,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\Controller.csproj": {
-              "projectPath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\Controller.csproj"
+            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
+              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj"
             }
           }
         }

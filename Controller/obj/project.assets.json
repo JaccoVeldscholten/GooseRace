@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\Controller.csproj",
+      "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
       "projectName": "Controller",
-      "projectPath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\Controller.csproj",
+      "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
       "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\obj\\",
+      "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
