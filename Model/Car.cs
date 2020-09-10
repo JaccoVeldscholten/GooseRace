@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Model {
-    class Car {
+    public class Car {
         public Car() {
 
         }

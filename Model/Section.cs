@@ -11,7 +11,7 @@ namespace Model {
         Finish
     }
 
-    class Section {
+    public class Section {
 
         SectionTypes SectionType { get; set; }
 

@@ -26,7 +26,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

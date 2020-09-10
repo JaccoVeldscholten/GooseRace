@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Model {
-    class Competition {
+    public class Competition {
 
-        List<IParticipant> Participants = new List<IParticipant>();
+        public List<IParticipant> Participants = new List<IParticipant>();
         Queue<Track> Tracks = new Queue<Track>();
 
 
