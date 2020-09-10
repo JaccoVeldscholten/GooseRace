@@ -1,0 +1,8 @@
+C:\Users\jacco\GooseRace\GooseRace\Controller\bin\Debug\netstandard2.0\Controller.deps.json
+C:\Users\jacco\GooseRace\GooseRace\Controller\bin\Debug\netstandard2.0\Controller.dll
+C:\Users\jacco\GooseRace\GooseRace\Controller\bin\Debug\netstandard2.0\Controller.pdb
+C:\Users\jacco\GooseRace\GooseRace\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfoInputs.cache
+C:\Users\jacco\GooseRace\GooseRace\Controller\obj\Debug\netstandard2.0\Controller.AssemblyInfo.cs
+C:\Users\jacco\GooseRace\GooseRace\Controller\obj\Debug\netstandard2.0\Controller.csproj.CoreCompileInputs.cache
+C:\Users\jacco\GooseRace\GooseRace\Controller\obj\Debug\netstandard2.0\Controller.dll
+C:\Users\jacco\GooseRace\GooseRace\Controller\obj\Debug\netstandard2.0\Controller.pdb

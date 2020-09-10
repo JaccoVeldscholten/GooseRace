@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Mf+2qbKKpJVgaUJk15cuw/SPFkSuElY1W1Do1umpWkRJOT/9U4vpW9iGY/9URkugX0ZLfJvHcHuOiGJ26OPmwQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jacco\\GooseRace\\GooseRace\\Controller\\Controller.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jacco\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\jacco\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
