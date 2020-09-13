@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Model {
-    enum SectionTypes {
+    public enum SectionTypes {
         Straight,
         LeftCorner,
         RightCorner,
@@ -13,7 +13,7 @@ namespace Model {
 
     public class Section {
 
-        SectionTypes SectionType { get; set; }
+        public SectionTypes SectionType { get; set; }
 
         public Section() { }
     }

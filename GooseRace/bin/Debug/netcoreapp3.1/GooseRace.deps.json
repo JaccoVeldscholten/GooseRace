@@ -16,6 +16,9 @@
         }
       },
       "Controller/1.0.0": {
+        "dependencies": {
+          "Model": "1.0.0"
+        },
         "runtime": {
           "Controller.dll": {}
         }
