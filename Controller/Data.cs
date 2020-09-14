@@ -9,6 +9,8 @@ namespace Controller {
     public static class Data {
         public static Competition comp { get; set; }
 
+        public static Race CurrentRace { get; set; }
+
         public static void Initialize() {
             comp = new Competition();
             AddParticipants();
@@ -36,9 +38,9 @@ namespace Controller {
 
         static void addTracks() {
 
-            SectionTypes[] honkTrackSections = { 
-                SectionTypes.StartGrid, 
-                SectionTypes.Straight, 
+            SectionTypes[] honkTrackSections = {
+                SectionTypes.StartGrid,
+                SectionTypes.Straight,
                 SectionTypes.LeftCorner,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
@@ -54,6 +56,7 @@ namespace Controller {
                 SectionTypes.Straight,
                 SectionTypes.Finish
             };
+
 
             SectionTypes[] townTrackSections = {
                 SectionTypes.StartGrid,
@@ -71,6 +74,18 @@ namespace Controller {
             comp.Tracks.Enqueue(honkTrack);
             comp.Tracks.Enqueue(gardenTrack);
             comp.Tracks.Enqueue(townTrack);
+
         }
+
+        public static void NextRace() {
+            Race next = new Race(comp.NextTrack(), comp.Participants);
+            if (next != null){
+                CurrentRace = next;
+            }
+            else{
+                CurrentRace = null;
+            }
+        }
+
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.deps.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csprojAssemblyReference.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.AssemblyInfoInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.AssemblyInfo.cs
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csproj.CopyComplete
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.pdb

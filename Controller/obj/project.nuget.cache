@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VSIQJeHdQzJUvOy7+8150AtGKeVCjGoJGiPQIKtUBCt/lU4q7+El9+tRWnWV4u35Xg6O/r4SLqCjhCLjCm/a3g==",
+  "dgSpecHash": "Rwm6ikx8m7sSq9YT66w8W5NXv4qH2cGMJT9cpJFxz63bGEBU/GyNiF+hVtXYhq4yKR6RT9cw1Z+V90KRkCCkIw==",
   "success": true,
   "projectFilePath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\jacco\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\jacco\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

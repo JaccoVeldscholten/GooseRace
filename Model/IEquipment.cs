@@ -7,7 +7,7 @@ namespace Model {
         int Quality { get; set; }
         int Performance { get; set; }
         int Speed { get; set; }
-        bool isBroken { get; set; }
+        bool IsBroken { get; set; }
 
     }
 }

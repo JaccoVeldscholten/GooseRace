@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 
 namespace Model {
-    public class Track : Section{
-        string Name { get; set; }
+    public class Track : Section {
+        public string Name { get; set; }
 
-        LinkedList<Section> Sections = new LinkedList<Section>();
+        public LinkedList<SectionTypes> Sections = new LinkedList<SectionTypes>();
 
-        public Track(string trackName, SectionTypes[] sectionsRec) {
+
+        public Track(string trackName, SectionTypes[] sections) {
             Name = trackName;
 
-            foreach (Section.SectionType sec in sectionsRec) {
+            foreach (SectionTypes sec in sections){
+                //Console.WriteLine(sec);
                 Sections.AddLast(sec);
             }
 

@@ -8,10 +8,14 @@ namespace Model {
         public List<IParticipant> Participants = new List<IParticipant>();
         public Queue<Track> Tracks = new Queue<Track>();
 
-
         public Competition() {}
-        public void NextTrack() {
-
+        public Track NextTrack() {
+            if (Tracks.Count == 0){
+                return null;
+            }
+            else{
+                return Tracks.Dequeue();
+            }
         }
     }
 }
