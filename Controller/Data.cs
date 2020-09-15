@@ -18,18 +18,9 @@ namespace Controller {
         }
 
         static void AddParticipants() {
-            IParticipant goosePiet = new Goose();
-            IParticipant gooseSjaak = new Goose();
-            IParticipant gooseMarietje = new Goose();
-
-            goosePiet.Name = "Piet";
-            goosePiet.Teamcolor = TeamColors.Red;
-
-            gooseSjaak.Name = "Sjaak";
-            gooseSjaak.Teamcolor = TeamColors.Yellow;
-
-            gooseMarietje.Name = "Marietje";
-            gooseMarietje.Teamcolor = TeamColors.Blue;
+            IParticipant goosePiet      = new Goose("Piet", new Car(), TeamColors.Red);
+            IParticipant gooseSjaak     = new Goose("Sjaak", new Car(), TeamColors.Yellow);
+            IParticipant gooseMarietje  = new Goose("Marietje", new Car(), TeamColors.Blue);
 
             comp.Participants.Add(goosePiet);
             comp.Participants.Add(gooseSjaak);

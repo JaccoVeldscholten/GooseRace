@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {}
+    "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
+    "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
+        "projectUniqueName": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
         "projectName": "Controller",
-        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
+        "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
         "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\obj\\",
+        "outputPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
+              "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj"
               }
             }
           }
@@ -56,18 +56,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
+    "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj",
+        "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\obj\\",
+        "outputPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -111,7 +111,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

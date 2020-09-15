@@ -9,7 +9,7 @@ namespace GooseRace {
 
             for (; ; ){
                 Data.NextRace();
-                //Console.WriteLine(Data.CurrentRace.Track.Name);
+                Console.WriteLine(Data.CurrentRace.Track.Name);
                 Thread.Sleep(100);
             }
 
