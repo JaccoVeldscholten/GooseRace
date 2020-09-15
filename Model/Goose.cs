@@ -10,7 +10,7 @@ namespace Model {
         public IEquipment Equipment { get; set; }
         public TeamColors Teamcolor { get; set; }
 
-        public Goose(String naam, Car carRec, TeamColors teamColor) {
+        public Goose(String naam, Wings carRec, TeamColors teamColor) {
             Name = Name;
             Equipment = carRec;
             Teamcolor = teamColor;

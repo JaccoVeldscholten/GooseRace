@@ -14,7 +14,6 @@ namespace Model {
             Name = trackName;
 
             foreach (SectionTypes sec in sections){
-                //Console.WriteLine(sec);
                 Sections.AddLast(sec);
             }
 

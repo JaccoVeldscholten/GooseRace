@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Model {
-    public class Car : IEquipment{
+    public class Wings : IEquipment{
         public int quality;
         public int performance;
         public int speed;
         public bool isbroken;
 
-        public Car() {
+        public Wings() {
             quality = 10;
             performance = 10;
             speed = 10;
