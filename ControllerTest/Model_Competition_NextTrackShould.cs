@@ -36,6 +36,52 @@ namespace ControllerTest  {
             Assert.AreEqual(TestTrack, result);
         }
 
+        [Test]
+        public void NextTrack_OneInQueue_RemoveTrackFromQueue() {
+            Object result;
+            SectionTypes[] testTrackSecions = {
+                SectionTypes.StartGrid,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Finish
+            };
+            Track TestTrack = new Track("TrackTrack", testTrackSecions);
+            _competition.Tracks.Enqueue(TestTrack);
+            result = _competition.NextTrack();
+            result = _competition.NextTrack();
+            Assert.IsNull(result);
+        }
+
+        [Test]
+        public void NextTrack_TwoInQueue_ReturnNextTrack() {
+            Object resultOne, resultTwo;
+            SectionTypes[] testOneTrackSecions = {
+                SectionTypes.StartGrid,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Finish
+            };
+            SectionTypes[] testTwoTrackSecions = {
+                SectionTypes.StartGrid,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.Finish
+            };
+            Track TestOneTrack = new Track("TrackTrack One", testOneTrackSecions);
+            _competition.Tracks.Enqueue(TestOneTrack);
+            Track TestTwoTrack = new Track("TrackTrack Two", testTwoTrackSecions);
+            _competition.Tracks.Enqueue(TestTwoTrack);
+            resultOne = _competition.NextTrack();
+            resultTwo = _competition.NextTrack();
+            Assert.AreNotEqual(resultOne, resultTwo);
+
+        }
 
     }
 }
