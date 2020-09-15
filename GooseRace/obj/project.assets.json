@@ -51,11 +51,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\GooseRace\\GooseRace.csproj",
+      "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\GooseRace\\GooseRace.csproj",
       "projectName": "GooseRace",
-      "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\GooseRace\\GooseRace.csproj",
+      "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\GooseRace\\GooseRace.csproj",
       "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\GooseRace\\obj\\",
+      "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\GooseRace\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -71,11 +71,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
-              "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj"
+            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
+              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj"
             },
-            "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj"
+            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
             }
           }
         }
@@ -103,7 +103,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -80,7 +80,6 @@ namespace ControllerTest  {
             resultOne = _competition.NextTrack();
             resultTwo = _competition.NextTrack();
             Assert.AreNotEqual(resultOne, resultTwo);
-
         }
 
     }

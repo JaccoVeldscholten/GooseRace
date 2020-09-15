@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jd1CdLXpFxmL9edC4lhuJtUKPooPoeSyiWluyVN9TGrhhmb7a97sKE4gVusP9g5BbwgE1Epm7z4lndZUzxXZGg==",
+  "dgSpecHash": "WogVJW3R4jcLzlylU9xS54LCWuswNTswxSmWH/IR054IS2yxISX/eXwCtE2BEoXvhy9yXJhVEiSCzj+C+xOisA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
+  "projectFilePath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jacco\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\jacco\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
