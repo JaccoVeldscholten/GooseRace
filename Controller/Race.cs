@@ -15,9 +15,7 @@ namespace Controller {
 
         public Race(Track t, List<IParticipant> participant) {
             Track = t;
-            foreach (IParticipant p in participant){
-               Participants.Add(p);
-            }
+            Participants = participant;
             _random = new Random(DateTime.Now.Millisecond);
             RandomizeEquipment();
         }
@@ -37,20 +35,10 @@ namespace Controller {
 
         public void RandomizeEquipment() {
 
-            /*
-            foreach (IParticipant p in Participants) {
-                Console.Write(p.Name + ": ");
-                Console.Write(p.Points + " ");
-                Console.Write(p.Teamcolor);
-                Console.WriteLine(p.Equipment);
-            }
-            */
-
-
             foreach (Goose goose in Participants) {
                 //goose.Equipment.Quality = 10;
-                goose.Equipment.Quality = _random.Next(0, 100);
-                goose.Equipment.Performance = _random.Next(0, 100);
+                goose.Equipment.Quality = _random.Next(1, 100);
+                goose.Equipment.Performance = _random.Next(1, 100);
 
             }
         }
