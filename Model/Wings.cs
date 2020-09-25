@@ -9,16 +9,16 @@ namespace Model {
         public int speed;
         public bool isbroken;
 
-        public Wings() {
-            quality = 10;
-            performance = 10;
-            speed = 10;
-            IsBroken = false;
+        public Wings(int quality, int performance, int speed, bool isBroken) {
+            Quality = quality;
+            Performance = performance;
+            Speed = speed;
+            IsBroken = isBroken;
         }
 
-        public int Quality { get => quality; set => quality = value; }
-        public int Performance { get => performance; set => performance = value; }
-        public int Speed { get => speed; set => speed = value; }
-        public bool IsBroken { get => isbroken; set => isbroken = value; }
+        public int Quality { get; set; }
+        public int Performance { get; set; }
+        public int Speed { get; set; }
+        public bool IsBroken { get; set; }
     }
 }

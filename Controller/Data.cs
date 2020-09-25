@@ -18,44 +18,125 @@ namespace Controller {
         }
 
         static void AddParticipants() {
-            IParticipant goosePiet      = new Goose("Piet", new Wings(), TeamColors.Red);
-            IParticipant gooseSjaak     = new Goose("Sjaak", new Wings(), TeamColors.Yellow);
-            IParticipant gooseMarietje  = new Goose("Marietje", new Wings(), TeamColors.Blue);
 
-            comp.Participants.Add(goosePiet);
-            comp.Participants.Add(gooseSjaak);
-            comp.Participants.Add(gooseMarietje);
+            comp.Participants.Add(new Goose("Piet", 0, new Wings(10, 10, 10, false), TeamColors.Blue));
+            comp.Participants.Add(new Goose("Sjaak", 0, new Wings(10, 10, 10, false), TeamColors.Yellow));
+            comp.Participants.Add(new Goose("Marietje", 0, new Wings(10, 10, 10, false), TeamColors.Red));
+            comp.Participants.Add(new Goose("Richard", 0, new Wings(10, 10, 10, false), TeamColors.Green));
         }
 
         static void addTracks() {
 
             SectionTypes[] honkTrackSections = {
                 SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
                 SectionTypes.Straight,
                 SectionTypes.LeftCorner,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
-                SectionTypes.Finish
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight
             };
 
             SectionTypes[] gardenTrackSections = {
                 SectionTypes.StartGrid,
-                SectionTypes.LeftCorner,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
-                SectionTypes.Finish
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight
+            };
+
+            SectionTypes[] gardenTrackSections3 = {
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner
             };
 
 
             SectionTypes[] townTrackSections = {
                 SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
                 SectionTypes.LeftCorner,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
-                SectionTypes.Finish
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner
             };
 
             Track honkTrack = new Track("Honk Track", honkTrackSections);

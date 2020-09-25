@@ -4,20 +4,24 @@ using System.Linq;
 using System.Text;
 
 namespace Model {
-    public class Track : Section {
+    public class Track {
         public string Name { get; set; }
+        public LinkedList<Section> Sections { get; set; }
 
-        public LinkedList<SectionTypes> Sections = new LinkedList<SectionTypes>();
+        public LinkedList<Section> arrayToLinkedList(SectionTypes[] sectionTypes) {
 
+            LinkedList<Section> sections = new LinkedList<Section>();
 
-        public Track(string trackName, SectionTypes[] sections) {
-            Name = trackName;
-
-            foreach (SectionTypes sec in sections){
-                Sections.AddLast(sec);
+            foreach (SectionTypes sectionType in sectionTypes) {
+                sections.AddLast(new Section(sectionType));
             }
 
+            return sections;
         }
 
+        public Track(string name, SectionTypes[] sections) {
+            Name = name;
+            Sections = arrayToLinkedList(sections);
+        }
     }
 }

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Model {
-
-   public enum TeamColors {
+    public enum TeamColors {
         Red,
         Green,
         Yellow,
@@ -13,10 +12,9 @@ namespace Model {
     }
 
     public interface IParticipant {
-        string Name { get; set; }
-        int Points { get; set; }
-        IEquipment Equipment { get; set; }
-        TeamColors Teamcolor { get; set; }
-
+        public string Name { get; set; }
+        public int Points { get; set; }
+        public IEquipment Equipment { get; set; }
+        public TeamColors TeamColor { get; set; }
     }
 }

@@ -5,16 +5,16 @@ using System.Text;
 namespace Model {
     public class Goose : IParticipant {
 
+        public Goose(string name, int points, IEquipment equipment, TeamColors teamColor) {
+            Name = name;
+            Points = points;
+            Equipment = equipment;
+            TeamColor = teamColor;
+        }
+
         public string Name { get; set; }
         public int Points { get; set; }
         public IEquipment Equipment { get; set; }
-        public TeamColors Teamcolor { get; set; }
-
-        public Goose(String naam, Wings carRec, TeamColors teamColor) {
-            Name = Name;
-            Equipment = carRec;
-            Teamcolor = teamColor;
-        }
-
+        public TeamColors TeamColor { get; set; }
     }
 }

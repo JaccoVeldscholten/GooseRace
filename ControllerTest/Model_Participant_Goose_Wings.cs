@@ -18,16 +18,16 @@ namespace ControllerTest
 
         [Test]
         public void AddParticipant_And_Check_Wings_Values(){
-            IParticipant testGoose = new Goose("Test Goose", new Wings(), TeamColors.Red);
-            _competition.Participants.Add(testGoose);
-            testGoose.Equipment.IsBroken = true;
-            testGoose.Equipment.Performance = 2;
-            testGoose.Equipment.Quality = 3;
-            testGoose.Equipment.Speed = 4;
-            Assert.AreEqual(true, testGoose.Equipment.IsBroken);
-            Assert.AreEqual(2, testGoose.Equipment.Performance);
-            Assert.AreEqual(3, testGoose.Equipment.Quality);
-            Assert.AreEqual(4, testGoose.Equipment.Speed);
+            IParticipant GooseTest = new Goose("Test", 0, new Wings(10, 10, 10, false), TeamColors.Blue);
+            _competition.Participants.Add(GooseTest);
+            GooseTest.Equipment.IsBroken = true;
+            GooseTest.Equipment.Performance = 2;
+            GooseTest.Equipment.Quality = 3;
+            GooseTest.Equipment.Speed = 4;
+            Assert.AreEqual(true, GooseTest.Equipment.IsBroken);
+            Assert.AreEqual(2, GooseTest.Equipment.Performance);
+            Assert.AreEqual(3, GooseTest.Equipment.Quality);
+            Assert.AreEqual(4, GooseTest.Equipment.Speed);
         }
     }
 }

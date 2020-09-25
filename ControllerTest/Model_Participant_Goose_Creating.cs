@@ -18,27 +18,27 @@ namespace ControllerTest
 
         [Test]
         public void AddParticipant_And_Check_Count(){
-            IParticipant testGoose = new Goose("Test Goose", new Wings(), TeamColors.Red);
-            _competition.Participants.Add(testGoose);
+            IParticipant GooseTest = new Goose("Test", 0, new Wings(10, 10, 10, false), TeamColors.Blue);
+            _competition.Participants.Add(GooseTest);
             Assert.NotZero(_competition.Participants.Count);
         }
 
         [Test]
         public void AddParticipant_And_Check_Values() {
-            IParticipant testGoose = new Goose("Test Goose", new Wings(), TeamColors.Red);
-            _competition.Participants.Add(testGoose);
-            Assert.IsNotEmpty(testGoose.Name);
-            Assert.Zero(testGoose.Points);
-            Assert.NotNull(testGoose.Equipment);
-            Assert.NotNull(testGoose.Teamcolor);
+            IParticipant GooseTest = new Goose("Test", 0, new Wings(10, 10, 10, false), TeamColors.Blue);
+            _competition.Participants.Add(GooseTest);
+            Assert.IsNotEmpty(GooseTest.Name);
+            Assert.Zero(GooseTest.Points);
+            Assert.NotNull(GooseTest.Equipment);
+            Assert.NotNull(GooseTest.TeamColor);
         }
 
         [Test]
         public void AddParticipant_And_Check_Points(){
-            IParticipant testGoose = new Goose("Test Goose", new Wings(), TeamColors.Red);
-            _competition.Participants.Add(testGoose);
-            testGoose.Points = 10;
-            Assert.AreEqual(10, testGoose.Points);
+            IParticipant GooseTest = new Goose("Test", 0, new Wings(10, 10, 10, false), TeamColors.Blue);
+            _competition.Participants.Add(GooseTest);
+            GooseTest.Points = 10;
+            Assert.AreEqual(10, GooseTest.Points);
         }
     }
 }
