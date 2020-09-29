@@ -19,41 +19,71 @@ namespace GooseRace {
 
         // Graphics
         #region graphics
-        private static string[] _finishHorizontal = { "----", " 1# ", "2 # ", "----" };
-        private static string[] _startGridHorizontal = { "----", " 1] ", "2]  ", "----" };
+        private static string[] _finishHorizontal =
+        {
+            "════",
+            " 1▓ ", 
+            "2 ▓ ",
+            "════"
+        };
+        private static string[] _startGridHorizontal = 
+        {
+            "════",
+            " 1] ",
+            "2]  ",
+            "════"
+        };
 
-        private static string[] _straightHorizontal = { "----", "  1 ", " 2  ", "----" };
-        private static string[] _straightVertical = { "|  |", "|2 |", "| 1|", "|  |" };
+        private static string[] _straightHorizontal = 
+        {
+            "════",
+            "  1 ",
+            " 2  ",
+            "════"
+        };
+        private static string[] _straightVertical = 
+        {
+            "║  ║",
+            "║2 ║",
+            "║ 1║",
+            "║  ║"
+        };
 
-        private static string[] _cornerNorthEast = { " /--", "/1  ", "| 2 ", "|  /" };
+        private static string[] _cornerNorthEast = 
+        {
+            "╔═══",
+            "║1  ",
+            "║ 2 ",
+            "║  ╔"
+        };
         private static string[] _cornerEastSouth =
         {
-            @"|  \",
-            @"| 1 ",
-            @"\2  ",
-            @" \--"
+            "║  ╚",
+            "║ 1 ",
+            "║2  ",
+            "╚═══"
         };
         private static string[] _cornerSouthWest =
         {
-            "/  |",
-            " 1 |",
-            "  2/",
-            "--/ "
+            "╝  ║",
+            " 1 ║",
+            "  2║",
+            "═══╝"
         };
         private static string[] _cornerWestNorth =
 {
-            @"--\ ",
-            @"  1\",
-            @" 2 |",
-            @"\  |"
+            "═══╗ ",
+            "  1║",
+            " 2 ║",
+            "╗  ║"
         };
         #endregion
 
         private const int _cursorStartPosX = 30;
         private const int _cursorStartPosY = 10;
 
-        private static int _cPosX = _cursorStartPosX;
-        private static int _cPosY = _cursorStartPosY;
+        private static int _cursorPosX = _cursorStartPosX;
+        private static int _cursorPosY = _cursorStartPosY;
 
         private static Race _currentRace;
 
@@ -61,19 +91,19 @@ namespace GooseRace {
         private static Direction _currentDirection = Direction.East;
 
         public static void Initialize(Race race) {
-            // Setup
             _currentRace = race;
         }
 
 
-        public static string[] SectionTypeToGraphic(SectionTypes sectionType, Direction direction) {
+        public static string[] DetermineDirSection(SectionTypes sectionType, Direction direction) {
+
             return sectionType switch
             {
                 SectionTypes.Straight => ((int)direction % 2) switch
                 {
                     0 => _straightVertical,
                     1 => _straightHorizontal,
-                    _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+                    _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
                 },
                 SectionTypes.LeftCorner => (int)direction switch
                 {
@@ -81,7 +111,7 @@ namespace GooseRace {
                     1 => _cornerSouthWest,
                     2 => _cornerEastSouth,
                     3 => _cornerNorthEast,
-                    _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+                    _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
                 },
                 SectionTypes.RightCorner => (int)direction switch
                 {
@@ -89,72 +119,68 @@ namespace GooseRace {
                     1 => _cornerWestNorth,
                     2 => _cornerSouthWest,
                     3 => _cornerEastSouth,
-                    _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+                    _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
                 },
                 SectionTypes.StartGrid => _startGridHorizontal,
                 SectionTypes.Finish => _finishHorizontal,
-                _ => throw new ArgumentOutOfRangeException(nameof(sectionType), sectionType, null)
+                _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
             };
         }
+
+
         public static Direction ChangeDirectionLeft(Direction direction) {
 
-
-            return direction switch
-            {
+            return direction switch {
                 Direction.North => Direction.West,
                 Direction.East => Direction.North,
                 Direction.South => Direction.East,
                 Direction.West => Direction.South,
-                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
+                _ => throw new ArgumentException(String.Format("{0} is unable to change", direction),"direction"),
             };
-
-
-
-
         }
 
-        public static Direction ChangeDirectionRight(Direction d) {
-            return d switch
-            {
+        public static Direction ChangeDirectionRight(Direction direction) {
+
+            return direction switch {
                 Direction.North => Direction.East,
                 Direction.East => Direction.South,
                 Direction.South => Direction.West,
                 Direction.West => Direction.North,
-                _ => throw new ArgumentOutOfRangeException(nameof(d), d, null)
+                _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
             };
         }
 
-
-
-        public static void ChangeCursorToNextPosition() {
+        public static void cursorToNextPosition() {
             switch (_currentDirection) {
                 case Direction.North:
-                    _cPosY -= 4;
+                    _cursorPosY -= 4;
                     break;
                 case Direction.East:
-                    _cPosX += 4;
+                    _cursorPosX += 4;
                     break;
                 case Direction.South:
-                    _cPosY += 4;
+                    _cursorPosY += 4;
                     break;
                 case Direction.West:
-                    _cPosX -= 4;
+                    _cursorPosX -= 4;
                     break;
             }
         }
 
 
-        public static void DrawSingleSection(Section section) {
-            // first determine section string
-            string[] sectionStrings = ReplacePlaceHolders(
-                SectionTypeToGraphic(section.SectionType, _currentDirection),
-                _currentRace.GetSectionData(section).Left, _currentRace.GetSectionData(section).Right
+        public static void DetermineSection(Section section) {
+            // Determine what section to print & Replace chars
+            string[] sectionStrings = 
+                ReplacePlaceHolders(
+                    DetermineDirSection(section.SectionType, _currentDirection),       // Determine section to print
+                    _currentRace.GetSectionData(section).Left,                         // Left  Grid Particpant
+                    _currentRace.GetSectionData(section).Right                         // Right Grid Participant
             );
 
             // print section
-            int tempY = _cPosY;
+            int tempY = _cursorPosY;
             foreach (string s in sectionStrings) {
-                Console.SetCursorPosition(_cPosX, tempY);
+                Console.SetCursorPosition(_cursorPosX, tempY);
                 Console.Write(s);
                 tempY++;
             }
@@ -169,33 +195,39 @@ namespace GooseRace {
             }
 
             // change cursor position based on current.
-            ChangeCursorToNextPosition();
+            cursorToNextPosition();
 
         }
+
+        public static string[] ReplacePlaceHolders(string[] DeterminedSections, IParticipant leftParticipant, IParticipant rightParticipant) {
+            string[] replacedSections = new string[DeterminedSections.Length];
+            string leftParticipantString;
+            string rightParticipantString;
+
+            // Get First left letter of Participant Left
+            if (leftParticipant == null) { leftParticipantString = " "; }
+            else { leftParticipantString = leftParticipant.Name.Substring(0, 1).ToUpper(); }
+
+            // Get First letter of Participant Right
+            if (rightParticipant == null) { rightParticipantString = " "; }
+            else { rightParticipantString = rightParticipant.Name.Substring(0, 1).ToUpper(); }
+
+            for (int i = 0; i < DeterminedSections.Length; i++) {
+                // For each section in the string array
+                DeterminedSections[i] = DeterminedSections[i].Replace("1", leftParticipantString).Replace("2", rightParticipantString);
+            }
+
+            return replacedSections;
+        }
+
 
         public static void DrawTrack(Track track) {
-            // to test, first draw string.
+            // Print every Section
             foreach (Section trackSection in track.Sections) {
-                DrawSingleSection(trackSection);
+                DetermineSection(trackSection);
             }
         }
 
-
-        public static string[] ReplacePlaceHolders(string[] inputStrings, IParticipant leftParticipant, IParticipant rightParticipant) {
-            // create returnStrings array
-            string[] returnStrings = new string[inputStrings.Length];
-
-            // gather letters from Participants, letter will be a whitespace when participant is null;
-            string lP = leftParticipant == null ? " " : leftParticipant.Name.Substring(0, 1).ToUpper();
-            string rP = rightParticipant == null ? " " : rightParticipant.Name.Substring(0, 1).ToUpper();
-
-            // replace string 1 and 2 with participants
-            for (int i = 0; i < returnStrings.Length; i++) {
-                returnStrings[i] = inputStrings[i].Replace("1", lP).Replace("2", rP);
-            }
-
-            return returnStrings;
-        }
 
 
 

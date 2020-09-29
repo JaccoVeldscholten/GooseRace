@@ -8,6 +8,7 @@ namespace GooseRace {
             Data.Initialize();
             Data.NextRace();
             Data.NextRace();
+            Data.NextRace();
             Console.SetWindowSize(180, 60);
 
             Console.WriteLine($"Track: {Data.CurrentRace.Track.Name}");

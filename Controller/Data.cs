@@ -14,7 +14,7 @@ namespace Controller {
         public static void Initialize() {
             comp = new Competition();
             AddParticipants();
-            addTracks();
+            AddTracks();
         }
 
         static void AddParticipants() {
@@ -25,74 +25,9 @@ namespace Controller {
             comp.Participants.Add(new Goose("Richard", 0, new Wings(10, 10, 10, false), TeamColors.Green));
         }
 
-        static void addTracks() {
+        static void AddTracks() {
 
             SectionTypes[] honkTrackSections = {
-                SectionTypes.StartGrid,
-                SectionTypes.StartGrid,
-                SectionTypes.StartGrid,
-                SectionTypes.Finish,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.LeftCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.LeftCorner,
-                SectionTypes.Straight,
-                SectionTypes.LeftCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight
-            };
-
-            SectionTypes[] gardenTrackSections = {
-                SectionTypes.StartGrid,
-                SectionTypes.StartGrid,
-                SectionTypes.StartGrid,
-                SectionTypes.Finish,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.LeftCorner,
-                SectionTypes.LeftCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.LeftCorner,
-                SectionTypes.LeftCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.LeftCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.LeftCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight
-            };
-
-            SectionTypes[] gardenTrackSections3 = {
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
@@ -109,6 +44,9 @@ namespace Controller {
                 SectionTypes.RightCorner
             };
 
+            SectionTypes[] gardenTrackSections = {
+                // ToDo
+            };
 
             SectionTypes[] townTrackSections = {
                 SectionTypes.StartGrid,
