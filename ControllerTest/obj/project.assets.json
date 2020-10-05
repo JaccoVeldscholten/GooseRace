@@ -4668,11 +4668,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+      "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj",
       "projectName": "ControllerTest",
-      "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+      "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj",
       "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\obj\\",
+      "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4688,11 +4688,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
-              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj"
+            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj": {
+              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj"
             },
-            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
+            "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj"
             }
           }
         }

@@ -23,9 +23,39 @@ namespace Controller {
             comp.Participants.Add(new Goose("Sjaak", 0, new Wings(10, 10, 10, false), TeamColors.Yellow));
             comp.Participants.Add(new Goose("Marietje", 0, new Wings(10, 10, 10, false), TeamColors.Red));
             comp.Participants.Add(new Goose("Richard", 0, new Wings(10, 10, 10, false), TeamColors.Green));
+            comp.Participants.Add(new Goose("Dennis", 0, new Wings(10, 10, 10, false), TeamColors.Grey));
         }
 
         static void AddTracks() {
+
+            SectionTypes[] gardenTrackSections = {
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner
+            };
 
             SectionTypes[] honkTrackSections = {
                 SectionTypes.StartGrid,
@@ -42,10 +72,6 @@ namespace Controller {
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner
-            };
-
-            SectionTypes[] gardenTrackSections = {
-                // ToDo
             };
 
             SectionTypes[] townTrackSections = {
@@ -77,8 +103,9 @@ namespace Controller {
                 SectionTypes.RightCorner
             };
 
-            Track honkTrack = new Track("Honk Track", honkTrackSections);
+
             Track gardenTrack = new Track("Garden Track", gardenTrackSections);
+            Track honkTrack = new Track("Honk Track", honkTrackSections);               // Simple Track
             Track townTrack = new Track("Town Track", townTrackSections);
 
             comp.Tracks.Enqueue(honkTrack);

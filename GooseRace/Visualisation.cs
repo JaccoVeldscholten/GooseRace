@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Text;
 using Controller;
 using System.Linq;
+using static Controller.Race;
 
 namespace GooseRace {
 
@@ -91,6 +92,8 @@ namespace GooseRace {
         private static Direction _currentDirection = Direction.East;
 
         public static void Initialize(Race race) {
+            Data.CurrentRace.DriversChanged += OnDriversChanged;
+            Data.CurrentRace.NextRace += NextRace;
             _currentRace = race;
         }
 
@@ -171,7 +174,7 @@ namespace GooseRace {
         public static void DetermineSection(Section section) {
             // Determine what section to print & Replace chars
             string[] sectionStrings = 
-                ReplacePlaceHolders(
+                ReplaceOneAndTwo(
                     DetermineDirSection(section.SectionType, _currentDirection),       // Determine section to print
                     _currentRace.GetSectionData(section).Left,                         // Left  Grid Particpant
                     _currentRace.GetSectionData(section).Right                         // Right Grid Participant
@@ -199,25 +202,22 @@ namespace GooseRace {
 
         }
 
-        public static string[] ReplacePlaceHolders(string[] DeterminedSections, IParticipant leftParticipant, IParticipant rightParticipant) {
-            string[] replacedSections = new string[DeterminedSections.Length];
-            string leftParticipantString;
-            string rightParticipantString;
+        public static string[] ReplaceOneAndTwo(string[] inputStrings, IParticipant leftParticipant, IParticipant rightParticipant) {
+            string[] returnStrings = new string[inputStrings.Length];
+            string leftPlayer;
+            string rightPlayer;
 
-            // Get First left letter of Participant Left
-            if (leftParticipant == null) { leftParticipantString = " "; }
-            else { leftParticipantString = leftParticipant.Name.Substring(0, 1).ToUpper(); }
+            if (leftParticipant == null) { leftPlayer = " ";  }
+            else {  leftPlayer = leftParticipant.Name.Substring(0, 1).ToUpper(); }
 
-            // Get First letter of Participant Right
-            if (rightParticipant == null) { rightParticipantString = " "; }
-            else { rightParticipantString = rightParticipant.Name.Substring(0, 1).ToUpper(); }
+            if (rightParticipant == null) { rightPlayer = " "; }
+            else { rightPlayer = rightParticipant.Name.Substring(0, 1).ToUpper(); }
 
-            for (int i = 0; i < DeterminedSections.Length; i++) {
-                // For each section in the string array
-                DeterminedSections[i] = DeterminedSections[i].Replace("1", leftParticipantString).Replace("2", rightParticipantString);
+            for (int i = 0; i < returnStrings.Length; i++) {
+                returnStrings[i] = inputStrings[i].Replace("1", leftPlayer).Replace("2", rightPlayer);
             }
 
-            return replacedSections;
+            return returnStrings;
         }
 
 
@@ -229,6 +229,13 @@ namespace GooseRace {
         }
 
 
+        public static void OnDriversChanged(Object source, DriversChangedEventArgs e) {
+            Console.Clear();
+            DrawTrack(e.Track);
+        }
+
+        public static void NextRace(Object source, EventArgs e) {
+        }
 
 
     }

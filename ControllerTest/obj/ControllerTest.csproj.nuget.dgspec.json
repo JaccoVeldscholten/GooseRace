@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj": {}
+    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj": {
+    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj",
         "projectName": "ControllerTest",
-        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\ControllerTest.csproj",
         "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\ControllerTest\\obj\\",
+        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\ControllerTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,11 +27,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
-                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj"
+              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj": {
+                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj"
               },
-              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
+              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj": {
+    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
+        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj",
         "projectName": "Controller",
-        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
+        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\Controller.csproj",
         "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\obj\\",
+        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Controller\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,8 +100,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
-                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj"
+              "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj"
               }
             }
           }
@@ -133,14 +133,14 @@
         }
       }
     },
-    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj": {
+    "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\Model.csproj",
+        "projectPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Model\\obj\\",
+        "outputPath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace-master\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -52,3 +52,39 @@ C:\Users\jacco\Documents\GitHub\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\Goos
 C:\Users\jacco\Documents\GitHub\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.dll
 C:\Users\jacco\Documents\GitHub\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.pdb
 C:\Users\jacco\Documents\GitHub\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.genruntimeconfig.cache
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.exe
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.deps.json
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.runtimeconfig.json
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.runtimeconfig.dev.json
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.dll
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.pdb
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Controller.dll
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Controller.pdb
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csprojAssemblyReference.cache
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfoInputs.cache
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfo.cs
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CopyComplete
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.dll
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.pdb
+C:\Users\jacco\Desktop\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.genruntimeconfig.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.exe
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.deps.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.runtimeconfig.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.runtimeconfig.dev.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\GooseRace.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Controller.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Controller.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csprojAssemblyReference.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfoInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfo.cs
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CopyComplete
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.genruntimeconfig.cache
