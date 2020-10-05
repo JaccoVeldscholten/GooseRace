@@ -34,6 +34,7 @@ namespace Controller {
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
             RandomizeEquipment();
+            fillDriverDictionaray();
             PlaceParticipantsOnStartGrid();
 
 
@@ -166,9 +167,8 @@ namespace Controller {
 
                 //Check if left driver is crossing finish
                 if (section.Value.SectionType == SectionTypes.Finish) {
-                    /*
+                    
                      DrivenRounds[sectionValue.Left] += 1;
-
                      if (DrivenRounds[sectionValue.Left] == amountOfLaps + 1) {
                          sectionValue.Left = null;
                          sectionValue.DistanceLeft = 100;
@@ -176,13 +176,11 @@ namespace Controller {
 
                          return true;
                      }
-                     */
                 }
             }
             else {
                 //Check if left driver is crossing finish
                 if (section.Value.SectionType == SectionTypes.Finish) {
-                /*
                     DrivenRounds[sectionValue.Right] += 1;
 
                     if (DrivenRounds[sectionValue.Right] == amountOfLaps + 1) {
@@ -192,7 +190,6 @@ namespace Controller {
 
                         return true;
                     }
-                */
                 }
             }
 
@@ -316,6 +313,13 @@ namespace Controller {
             timer.Enabled = false;
             Console.WriteLine("Stopped");
         }
+
+        public void fillDriverDictionaray() {
+            foreach (IParticipant p in Participants) {
+                DrivenRounds.Add(p, 0);
+            }
+        }
+
 
     }
 }
