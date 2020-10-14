@@ -86,15 +86,13 @@ namespace GooseRace {
         private static int _cursorPosX = _cursorStartPosX;
         private static int _cursorPosY = _cursorStartPosY;
 
-        private static Race _currentRace;
-
         // Race start altijd richting het Oosten
         private static Direction _currentDirection = Direction.East;
 
-        public static void Initialize(Race race) {
+        public static void Initialize() {
             Data.CurrentRace.DriversChanged += OnDriversChanged;
             Data.CurrentRace.NextRace += NextRace;
-            _currentRace = race;
+            
         }
 
 
@@ -176,11 +174,11 @@ namespace GooseRace {
             string[] sectionStrings = 
                 ReplaceOneAndTwo(
                     DetermineDirSection(section.SectionType, _currentDirection),       // Determine section to print
-                    _currentRace.GetSectionData(section).Left,                         // Left  Grid Particpant
-                    _currentRace.GetSectionData(section).Right                         // Right Grid Participant
+                    Data.CurrentRace.GetSectionData(section).Left,                         // Left  Grid Particpant
+                    Data.CurrentRace.GetSectionData(section).Right                         // Right Grid Participant
             );
 
-            // print section
+            // print section__
             int tempY = _cursorPosY;
             foreach (string s in sectionStrings) {
                 Console.SetCursorPosition(_cursorPosX, tempY);
@@ -235,8 +233,8 @@ namespace GooseRace {
         }
 
         public static void NextRace(Object source, EventArgs e) {
+            Initialize();
         }
-
 
     }
 }

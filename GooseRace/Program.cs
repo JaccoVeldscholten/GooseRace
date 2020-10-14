@@ -9,7 +9,7 @@ namespace GooseRace {
             Data.NextRace();
 
             Console.WriteLine($"Track: {Data.CurrentRace.Track.Name}");
-            Visualisation.Initialize(Data.CurrentRace);
+            Visualisation.Initialize();
             Visualisation.DrawTrack(Data.CurrentRace.Track);
             //Console.SetWindowSize(10, 60);
 

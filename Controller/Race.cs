@@ -17,7 +17,7 @@ namespace Controller {
 
         private Timer timer;
 
-        public delegate void onDriversChanged(object Sender, DriversChangedEventArgs dirversChangedEventArgs);
+        public delegate void onDriversChanged(object Sender, DriversChangedEventArgs driversChangedEventArgs);
         public delegate void onNextRace(object Sender, EventArgs nextRaceEventArgs);
 
         public event onDriversChanged DriversChanged;
@@ -34,8 +34,13 @@ namespace Controller {
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
             RandomizeEquipment();
-            fillDriverDictionaray();
-            PlaceParticipantsOnStartGrid();
+
+            // Fill Dictornary with Gooses
+            foreach (IParticipant p in Participants) {
+                DrivenRounds.Add(p, 0);
+            }
+
+            PlaceGoosesOnGrid();
 
 
             timer = new Timer(500);
@@ -45,9 +50,9 @@ namespace Controller {
         }
 
         public SectionData GetSectionData(Section section) {
-            // look for key section in dictionary, if exists, return sectiondata for key section.
-            // otherwise, create SectionData for section and return that object.
-            if (!_positions.ContainsKey(section)) _positions.Add(section, new SectionData());
+            if (!_positions.ContainsKey(section)) {
+                _positions.Add(section, new SectionData());
+            }
             return _positions[section];
         }
 
@@ -61,7 +66,7 @@ namespace Controller {
             }
         }
 
-        public void PlaceParticipantsOnStartGrid() {
+        public void PlaceGoosesOnGrid() {
             // create List of startgrids, from front to back
             List<Section> startGrids = GetStartGrids();
 
@@ -118,12 +123,13 @@ namespace Controller {
         }
 
 
-        private bool brokenToggler(IParticipant participant) {
+        private bool letTheWingsFallOff(IParticipant participant) {
             //if not broken
             if (!participant.Equipment.IsBroken) {
                 //create chance to be broke
                 if (_random.Next(1, 100) == 1) {
                     participant.Equipment.IsBroken = true;
+                    Console.WriteLine("Broken!");
                     return true;
                 }
                 //Car stays healthy
@@ -132,7 +138,7 @@ namespace Controller {
 
                 }
             }
-            //Create change to be repaired
+            //Create change to b  e repaired
             else {
                 //Create chance to be repaired
                 if (_random.Next(1, 10) == 1) {
@@ -149,7 +155,7 @@ namespace Controller {
             }
         }
 
-        public bool DriverMovedToNextSection(LinkedListNode<Section> section, LinkedListNode<Section> nextSection, int LeftRight) {
+        public bool DriverToNextSection(LinkedListNode<Section> section, LinkedListNode<Section> nextSection, int LeftRight) {
 
             SectionData sectionValue = GetSectionData(section.Value);
             SectionData nextSectionValue;
@@ -258,11 +264,11 @@ namespace Controller {
 
                     if (sectionValue.Left != null) {
 
-                        if (!brokenToggler(sectionValue.Left)) {
+                        if (!letTheWingsFallOff(sectionValue.Left)) {
                             sectionValue.DistanceLeft -= calculateDistanceForCar(sectionValue.Left);
                         }
                         if (sectionValue.DistanceLeft < 0) {
-                            if (!DriverMovedToNextSection(section, section.Next, 0)) {
+                            if (!DriverToNextSection(section, section.Next, 0)) {
                                 sectionValue.DistanceLeft = 0;
                             }
                         }
@@ -270,11 +276,11 @@ namespace Controller {
 
                     }
                     if (sectionValue.Right != null) {
-                        if (!brokenToggler(sectionValue.Right)) {
+                        if (!letTheWingsFallOff(sectionValue.Right)) {
                             sectionValue.DistanceRight -= calculateDistanceForCar(sectionValue.Right);
                         }
                         if (sectionValue.DistanceRight < 0) {
-                            if (!DriverMovedToNextSection(section, section.Next, 1)) {
+                            if (!DriverToNextSection(section, section.Next, 1)) {
                                 sectionValue.DistanceRight = 0;
                             }
                         }
@@ -307,17 +313,21 @@ namespace Controller {
         }
         public void Start() {
             timer.Enabled = true;
-            Console.WriteLine("Started");
+            Console.WriteLine("Race Started");
         }
         public void Stop() {
             timer.Enabled = false;
-            Console.WriteLine("Stopped");
+            cleanReferences();          // Clean up
+            Console.WriteLine("Race Stopped");
+
+            Data.NextRace();
+            NextRace.Invoke(this, new EventArgs());
+
         }
 
-        public void fillDriverDictionaray() {
-            foreach (IParticipant p in Participants) {
-                DrivenRounds.Add(p, 0);
-            }
+        public void cleanReferences() {
+            // Clean References
+            DriversChanged = null;
         }
 
 
