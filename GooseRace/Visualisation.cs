@@ -90,7 +90,7 @@ namespace GooseRace {
         private static Direction _currentDirection = Direction.East;
 
         public static void Initialize() {
-            Data.CurrentRace.DriversChanged += OnDriversChanged;
+            Data.CurrentRace.GoosesChanged += OnGooseChanged;
             Data.CurrentRace.NextRace += NextRace;
             
         }
@@ -98,24 +98,20 @@ namespace GooseRace {
 
         public static string[] DetermineDirSection(SectionTypes sectionType, Direction direction) {
 
-            return sectionType switch
-            {
-                SectionTypes.Straight => ((int)direction % 2) switch
-                {
+            return sectionType switch  {
+                SectionTypes.Straight => ((int)direction % 2) switch {
                     0 => _straightVertical,
                     1 => _straightHorizontal,
                     _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
                 },
-                SectionTypes.LeftCorner => (int)direction switch
-                {
+                SectionTypes.LeftCorner => (int)direction switch {
                     0 => _cornerWestNorth,
                     1 => _cornerSouthWest,
                     2 => _cornerEastSouth,
                     3 => _cornerNorthEast,
                     _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
                 },
-                SectionTypes.RightCorner => (int)direction switch
-                {
+                SectionTypes.RightCorner => (int)direction switch {
                     0 => _cornerNorthEast,
                     1 => _cornerWestNorth,
                     2 => _cornerSouthWest,
@@ -151,7 +147,7 @@ namespace GooseRace {
             };
         }
 
-        public static void cursorToNextPosition() {
+        public static void CursorToNextPosition() {
             switch (_currentDirection) {
                 case Direction.North:
                     _cursorPosY -= 4;
@@ -196,23 +192,25 @@ namespace GooseRace {
             }
 
             // change cursor position based on current.
-            cursorToNextPosition();
+
+            CursorToNextPosition();
+
 
         }
 
         public static string[] ReplaceOneAndTwo(string[] inputStrings, IParticipant leftParticipant, IParticipant rightParticipant) {
             string[] returnStrings = new string[inputStrings.Length];
-            string leftPlayer;
-            string rightPlayer;
+            string leftGoose;
+            string rightGoose;
 
-            if (leftParticipant == null) { leftPlayer = " ";  }
-            else {  leftPlayer = leftParticipant.Name.Substring(0, 1).ToUpper(); }
+            if (leftParticipant == null) { leftGoose = " ";  }
+            else {  leftGoose = leftParticipant.Name.Substring(0, 1).ToUpper(); }
 
-            if (rightParticipant == null) { rightPlayer = " "; }
-            else { rightPlayer = rightParticipant.Name.Substring(0, 1).ToUpper(); }
+            if (rightParticipant == null) { rightGoose = " "; }
+            else { rightGoose = rightParticipant.Name.Substring(0, 1).ToUpper(); }
 
             for (int i = 0; i < returnStrings.Length; i++) {
-                returnStrings[i] = inputStrings[i].Replace("1", leftPlayer).Replace("2", rightPlayer);
+                returnStrings[i] = inputStrings[i].Replace("1", leftGoose).Replace("2", rightGoose);
             }
 
             return returnStrings;
@@ -220,6 +218,7 @@ namespace GooseRace {
 
 
         public static void DrawTrack(Track track) {
+            Console.WriteLine($"Current best goose: {Data.comp.GoosePoints.GetHighest()}");
             // Print every Section
             foreach (Section trackSection in track.Sections) {
                 DetermineSection(trackSection);
@@ -227,7 +226,7 @@ namespace GooseRace {
         }
 
 
-        public static void OnDriversChanged(Object source, DriversChangedEventArgs e) {
+        public static void OnGooseChanged(Object source, GoosesChangedEventArgs e) {
             Console.Clear();
             DrawTrack(e.Track);
         }

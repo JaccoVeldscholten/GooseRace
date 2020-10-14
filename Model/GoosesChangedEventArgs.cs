@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Model {
-    public class DriversChangedEventArgs : EventArgs {
+    public class GoosesChangedEventArgs : EventArgs {
         public Track Track { get; set; }
 
-        public DriversChangedEventArgs(Track track) {
+        public GoosesChangedEventArgs(Track track) {
             this.Track = track;
         }
     }

@@ -17,15 +17,28 @@ namespace Controller {
 
         private Timer timer;
 
-        public delegate void onDriversChanged(object Sender, DriversChangedEventArgs driversChangedEventArgs);
+        public delegate void onGoosesChanged(object Sender, GoosesChangedEventArgs GoosesChangedEventArgs);
         public delegate void onNextRace(object Sender, EventArgs nextRaceEventArgs);
 
-        public event onDriversChanged DriversChanged;
+        public event onGoosesChanged GoosesChanged;
         public event onNextRace NextRace;
 
         private int amountOfLaps = 2;
         private Dictionary<IParticipant, int> DrivenRounds = new Dictionary<IParticipant, int>();
-        private int driversRemoved;
+        private int goosesRemoved;
+
+        // Dictonary to keep track of the Finished Gooses
+        public Dictionary<int, string> FinishPosition = new Dictionary<int, string>();
+
+
+        //Generic list to keep track of section times of the goose
+        public RaceInformation<GooseLapTimes> lapTimes = new RaceInformation<GooseLapTimes>();
+
+        //Generic list to keep track how many the goose flown
+        public RaceInformation<GooseFlownTime> gooseFlownTime = new RaceInformation<GooseFlownTime>();
+
+        //Generic list to storage how many times the Goose lost his wings
+        public RaceInformation<GooseLostWingAmount> lostWingsAmount = new RaceInformation<GooseLostWingAmount>();
 
 
         public Race(Track track, List<IParticipant> participants) {
@@ -36,8 +49,8 @@ namespace Controller {
             RandomizeEquipment();
 
             // Fill Dictornary with Gooses
-            foreach (IParticipant p in Participants) {
-                DrivenRounds.Add(p, 0);
+            foreach (IParticipant gooses in Participants) {
+                DrivenRounds.Add(gooses, 0);
             }
 
             PlaceGoosesOnGrid();
@@ -58,11 +71,9 @@ namespace Controller {
 
         public void RandomizeEquipment() {
 
-            foreach (Goose goose in Participants) {
-                //goose.Equipment.Quality = 10;
-                goose.Equipment.Quality = _random.Next(1, 100);
-                goose.Equipment.Performance = _random.Next(1, 100);
-
+            foreach (Goose goose in Participants) { 
+                goose.Equipment.Quality     = _random.Next(1, 100);             // Random Quality per goose
+                goose.Equipment.Performance = _random.Next(1, 100);         // Random Performance per goose
             }
         }
 
@@ -123,135 +134,146 @@ namespace Controller {
         }
 
 
-        private bool letTheWingsFallOff(IParticipant participant) {
-            //if not broken
+        private bool LetTheWingsFallOff(IParticipant participant) {
+
             if (!participant.Equipment.IsBroken) {
-                //create chance to be broke
-                if (_random.Next(1, 100) == 1) {
-                    participant.Equipment.IsBroken = true;
-                    Console.WriteLine("Broken!");
+                if (_random.Next(1, 20) == 10) {            // Change to let the wings fall off. Change 1 on 20
+                    participant.Equipment.IsBroken = true;  // Goose lost wing
+                    lostWingsAmount.AddItemToList(new GooseLostWingAmount(participant.Name, 1));
+                    Console.WriteLine("Shit i my Lost wings! HONK!");       
                     return true;
                 }
-                //Car stays healthy
-                else {
-                    return false;
-
-                }
+                else { return false; }  // Not this time
             }
-            //Create change to b  e repaired
             else {
-                //Create chance to be repaired
                 if (_random.Next(1, 10) == 1) {
                     participant.Equipment.IsBroken = false;
                     //Quality will be lowered if possible
-                    if (participant.Equipment.Quality > 1) participant.Equipment.Quality -= 1;
+                    if (participant.Equipment.Quality > 1) {
+                        participant.Equipment.Quality -= 1;
+                    }
                     return false;
                 }
-                //Car will still be broken
-                else {
-                    return true;
-
-                }
+                else { return true; }
             }
         }
 
-        public bool DriverToNextSection(LinkedListNode<Section> section, LinkedListNode<Section> nextSection, int LeftRight) {
+        public bool MoveGooseToNextSection(LinkedListNode<Section> section, LinkedListNode<Section> nextSection, int LeftRight, DateTime CurrentTime) { 
 
-            SectionData sectionValue = GetSectionData(section.Value);
-            SectionData nextSectionValue;
+                SectionData sectionValue = GetSectionData(section.Value);
+                SectionData nextSectionValue;
 
-            //Check if last section
-            if (Track.Sections.Last == section) {
-                nextSectionValue = GetSectionData(Track.Sections.First.Value);
-            }
-            else {
-                nextSectionValue = GetSectionData(nextSection.Value);
-            }
-
-            //Check if left or right driver
-            if (LeftRight == 0) {
-
-                //Check if left driver is crossing finish
-                if (section.Value.SectionType == SectionTypes.Finish) {
-                    
-                     DrivenRounds[sectionValue.Left] += 1;
-                     if (DrivenRounds[sectionValue.Left] == amountOfLaps + 1) {
-                         sectionValue.Left = null;
-                         sectionValue.DistanceLeft = 100;
-                         driversRemoved++;
-
-                         return true;
-                     }
+                //Check if last section
+                if (Track.Sections.Last == section) {
+                    nextSectionValue = GetSectionData(Track.Sections.First.Value);
                 }
-            }
-            else {
-                //Check if left driver is crossing finish
-                if (section.Value.SectionType == SectionTypes.Finish) {
-                    DrivenRounds[sectionValue.Right] += 1;
+                else {
+                    nextSectionValue = GetSectionData(nextSection.Value);
+                }
 
-                    if (DrivenRounds[sectionValue.Right] == amountOfLaps + 1) {
-                        sectionValue.Right = null;
-                        sectionValue.DistanceRight = 100;
-                        driversRemoved++;
+                //Check if left or right driver crosses finish
+                if (LeftRight == 0) {
 
-                        return true;
+                    //Check if left driver is crossing finish
+                    if (section.Value.SectionType == SectionTypes.Finish) {
+                        DrivenRounds[sectionValue.Left] += 1;
+
+                        if (DrivenRounds[sectionValue.Left] == amountOfLaps + 1) {
+                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+                            FinishPosition.Add(FinishPosition.Count + 1, sectionValue.Left.Name);
+                            sectionValue.Left = null;
+                            sectionValue.DistanceLeft = 100;
+                            goosesRemoved++;
+                            return true;
+                        }
                     }
                 }
-            }
+                else {
+                    //Check if left driver is crossing finish
+                    if (section.Value.SectionType == SectionTypes.Finish) {
+                        DrivenRounds[sectionValue.Right] += 1;
+
+                        if (DrivenRounds[sectionValue.Right] == amountOfLaps + 1) {
+                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+                            FinishPosition.Add(FinishPosition.Count + 1, sectionValue.Right.Name);
+                            sectionValue.Right = null;
+                            sectionValue.DistanceRight = 100;
+                            goosesRemoved++;
+
+                            return true;
+                        }
+                    }
+                }
 
 
-            //Move right driver
-            if (nextSectionValue.Left == null) {
                 //Move to left section
-                if (LeftRight == 0) {
-                    nextSectionValue.Left = sectionValue.Left;
-                    nextSectionValue.DistanceLeft += sectionValue.DistanceLeft;
-                    //Reset values on current tile
-                    sectionValue.Left = null;
-                    sectionValue.DistanceLeft = 100;
+                if (nextSectionValue.Left == null) {
+                    //Move the left driver
+                    if (LeftRight == 0) {
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+                        nextSectionValue.Left = sectionValue.Left;
+                        nextSectionValue.DistanceLeft += sectionValue.DistanceLeft;
+                        nextSectionValue.startTimeLeft = CurrentTime;
+                        //Reset values on current tile
+                        sectionValue.Left = null;
+                        sectionValue.DistanceLeft = 100;
+                    }
+                    // Move the right driver
+                    else {
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+
+                        nextSectionValue.Left = sectionValue.Right;
+                        nextSectionValue.DistanceLeft += sectionValue.DistanceRight;
+                        nextSectionValue.startTimeLeft = CurrentTime;
+                        //Reset values on current tile
+                        sectionValue.Right = null;
+                        sectionValue.DistanceRight = 100;
+                    }
+                    return true;
                 }
                 //Move to right section
+                else if (nextSectionValue.Right == null) {
+                    //Move the left driver
+                    if (LeftRight == 0) {
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+                        nextSectionValue.Right = sectionValue.Left;
+                        nextSectionValue.DistanceRight += sectionValue.DistanceLeft;
+                        nextSectionValue.startTimeRight = CurrentTime;
+                        sectionValue.Left = null;
+                        sectionValue.DistanceLeft = 100;
+                    }
+                    //Move the right driver
+                    else {
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+
+                        nextSectionValue.Right = sectionValue.Right;
+                        nextSectionValue.DistanceRight += sectionValue.DistanceRight;
+                        nextSectionValue.startTimeRight = CurrentTime;
+                        //Reset values on current tile
+                        sectionValue.Right = null;
+                        sectionValue.DistanceRight = 100;
+                    }
+
+
+                    return true;
+                }
+
                 else {
-                    nextSectionValue.Left = sectionValue.Right;
-                    nextSectionValue.DistanceLeft += sectionValue.DistanceRight;
-                    //Reset values on current tile
-                    sectionValue.Right = null;
-                    sectionValue.DistanceRight = 100;
+                    return false;
                 }
-                return true;
-            }
-            //Move left driver
-            else if (nextSectionValue.Right == null) {
-                //Move to left section
-                if (LeftRight == 0) {
-                    nextSectionValue.Right = sectionValue.Left;
-                    nextSectionValue.DistanceRight += sectionValue.DistanceLeft;
-                    sectionValue.Left = null;
-                    sectionValue.DistanceLeft = 100;
-                }
-                //Move to right section
-                else {
-                    nextSectionValue.Right = sectionValue.Right;
-                    nextSectionValue.DistanceRight += sectionValue.DistanceRight;
-                    //Reset values on current tile
-                    sectionValue.Right = null;
-                    sectionValue.DistanceRight = 100;
-                }
-
-
-                return true;
             }
 
-            else {
-                return false;
-            }
-        }
-
-        public int calculateDistanceForCar(IParticipant driver) {
-            return driver.Equipment.Performance * driver.Equipment.Quality * driver.Equipment.Speed;
+        public int CalcWings(IParticipant goose) {
+            return goose.Equipment.Performance * goose.Equipment.Quality * goose.Equipment.Speed;
         }
 
         private void OnTimedEvent(Object source, ElapsedEventArgs e) {
+
             //Loop through sections
             LinkedListNode<Section> section = Track.Sections.Last;
             SectionData sectionValue = GetSectionData(section.Value);
@@ -264,11 +286,14 @@ namespace Controller {
 
                     if (sectionValue.Left != null) {
 
-                        if (!letTheWingsFallOff(sectionValue.Left)) {
-                            sectionValue.DistanceLeft -= calculateDistanceForCar(sectionValue.Left);
+                        if (!LetTheWingsFallOff(sectionValue.Left)) {
+                            sectionValue.DistanceLeft -= CalcWings(sectionValue.Left);
+
+                            //Add driven distance to list
+                            gooseFlownTime.AddItemToList(new GooseFlownTime(sectionValue.Left.Name, CalcWings(sectionValue.Left)));
                         }
                         if (sectionValue.DistanceLeft < 0) {
-                            if (!DriverToNextSection(section, section.Next, 0)) {
+                            if (!MoveGooseToNextSection(section, section.Next, 0, e.SignalTime)) {
                                 sectionValue.DistanceLeft = 0;
                             }
                         }
@@ -276,11 +301,14 @@ namespace Controller {
 
                     }
                     if (sectionValue.Right != null) {
-                        if (!letTheWingsFallOff(sectionValue.Right)) {
-                            sectionValue.DistanceRight -= calculateDistanceForCar(sectionValue.Right);
+                        if (!LetTheWingsFallOff(sectionValue.Right)) {
+                            sectionValue.DistanceRight -= CalcWings(sectionValue.Right);
+
+                            //Add driven distance to list
+                            gooseFlownTime.AddItemToList(new GooseFlownTime(sectionValue.Right.Name, CalcWings(sectionValue.Right)));
                         }
                         if (sectionValue.DistanceRight < 0) {
-                            if (!DriverToNextSection(section, section.Next, 1)) {
+                            if (!MoveGooseToNextSection(section, section.Next, 1, e.SignalTime)) {
                                 sectionValue.DistanceRight = 0;
                             }
                         }
@@ -302,14 +330,14 @@ namespace Controller {
 
                 }
 
-
             }
 
-            DriversChanged.Invoke(this, new DriversChangedEventArgs(Track));
+            GoosesChanged.Invoke(this, new GoosesChangedEventArgs(Track));
 
-            if (driversRemoved == Participants.Count) {
+            if (goosesRemoved == Participants.Count) {
                 Stop();
             }
+
         }
         public void Start() {
             timer.Enabled = true;
@@ -317,7 +345,7 @@ namespace Controller {
         }
         public void Stop() {
             timer.Enabled = false;
-            cleanReferences();          // Clean up
+            CleanReferences();          // Clean up
             Console.WriteLine("Race Stopped");
 
             Data.NextRace();
@@ -325,9 +353,9 @@ namespace Controller {
 
         }
 
-        public void cleanReferences() {
+        public void CleanReferences() {
             // Clean References
-            DriversChanged = null;
+            GoosesChanged = null;
         }
 
 

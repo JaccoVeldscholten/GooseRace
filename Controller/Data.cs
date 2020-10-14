@@ -106,15 +106,20 @@ namespace Controller {
 
             Track gardenTrack = new Track("Garden Track", gardenTrackSections);
             Track honkTrack = new Track("Honk Track", honkTrackSections);               // Simple Track
-            Track townTrack = new Track("Town Track", townTrackSections);
+            Track townTrack = new Track("Town Track", townTrackSections);               
 
-            comp.Tracks.Enqueue(honkTrack);
             comp.Tracks.Enqueue(gardenTrack);
+            comp.Tracks.Enqueue(honkTrack);
             comp.Tracks.Enqueue(townTrack);
 
         }
 
         public static void NextRace() {
+
+            if (CurrentRace != null) {
+                comp.GivePointsToDriver(CurrentRace.FinishPosition);        // Give points
+            }
+
             Race next = new Race(comp.NextTrack(), comp.Participants);
             if (next != null){
                 CurrentRace = next;
@@ -123,6 +128,5 @@ namespace Controller {
                 CurrentRace = null;
             }
         }
-
     }
 }

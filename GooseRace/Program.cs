@@ -8,7 +8,6 @@ namespace GooseRace {
             Data.Initialize();
             Data.NextRace();
 
-            Console.WriteLine($"Track: {Data.CurrentRace.Track.Name}");
             Visualisation.Initialize();
             Visualisation.DrawTrack(Data.CurrentRace.Track);
             //Console.SetWindowSize(10, 60);
@@ -16,7 +15,7 @@ namespace GooseRace {
             // game loop
             for (; ; )
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(15000);
             }
         }
     }
