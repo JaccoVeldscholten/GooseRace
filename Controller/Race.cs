@@ -56,7 +56,7 @@ namespace Controller {
             PlaceGoosesOnGrid();
 
 
-            timer = new Timer(500);
+            timer = new Timer(250);
             timer.Elapsed += OnTimedEvent;
             Start();
 

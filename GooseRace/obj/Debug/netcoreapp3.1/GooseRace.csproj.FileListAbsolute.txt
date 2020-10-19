@@ -29,7 +29,6 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcore
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csprojAssemblyReference.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfoInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.AssemblyInfo.cs
-C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CoreCompileInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CopyComplete
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.pdb
@@ -88,3 +87,9 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.pdb
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.genruntimeconfig.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRace\obj\Debug\netcoreapp3.1\GooseRace.csproj.CoreCompileInputs.cache

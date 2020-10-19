@@ -13,7 +13,6 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netstandard
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.csprojAssemblyReference.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
-C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.pdb
 C:\Users\jacco\Documents\GitHub\GooseRace\Model\bin\Debug\netstandard2.0\Model.deps.json
@@ -43,3 +42,4 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace-master\Model\obj\Debug\nets
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\Model\obj\Debug\netstandard2.0\Model.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace-master\Model\obj\Debug\netstandard2.0\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
