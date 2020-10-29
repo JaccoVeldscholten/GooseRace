@@ -21,6 +21,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/goose_red.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/goose_yellow.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/grass_tile.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/start.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/trackhorizontal.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/trackvertical.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/water.png")]

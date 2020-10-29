@@ -39,3 +39,4 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRaceGUI\bin\Debug\netc
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRaceGUI\bin\Debug\netcoreapp3.1\Assets\TrackVertical.png
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRaceGUI\bin\Debug\netcoreapp3.1\Assets\Water.png
 C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRaceGUI\bin\Debug\netcoreapp3.1\Assets\Fire.png
+C:\Users\jacco\Documents\School Goose Race\GooseRace\GooseRaceGUI\bin\Debug\netcoreapp3.1\Assets\Start.png

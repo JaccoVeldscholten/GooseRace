@@ -49,6 +49,7 @@ namespace GooseRaceGUI {
 
         public void NextRace(Object source, EventArgs e) {
             Initialize();
+            //VisualisationGUI.Init(e.Race);
         }
 
     }

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GooseRaceGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1000" Width="1400">
+        Title="Untitled Goose Race" Height="900" Width="1400">
     <Grid Background="CadetBlue" Margin="0,0,-212,-122">
-        <Image Name="RaceIMG" Margin="10,10,10,10"/>
+        <Image x:Name="RaceIMG" Margin="50,50,400,200"/>
 
     </Grid>
 </Window>

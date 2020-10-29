@@ -17,23 +17,30 @@ namespace RaceGUI {
             West
         }
 
-        public enum GooseSide {
+        public struct TrackSize {
+            public int width;
+            public int height;
+        }
+
+        public struct StartPos {
+            public int coordX;
+            public int coordY;
+        }
+
+        internal enum GoosePos {
             Left,
             Right
         }
 
-        public struct TrackSize {
-           public int width;
-           public int height;
-        }
+        public static TrackSize _trackSize;
+        public static StartPos _startPos;
 
-        public struct StartPostion {
-            public int posX;
-            public int posY;
-        }
+        private static Race _race;
 
         #region IMGconstants
-        const int sectionIMGSize = 200;
+        const int marginTopBottom = 10;
+        const int marginRightLeft = 10;
+        const int sectionIMGSize = 300;
         const int GooseIMGSize = 64;
         #endregion
 
@@ -43,6 +50,7 @@ namespace RaceGUI {
         const string CornerRightHorizontal = ".\\Assets\\CornerRightHorizontal.png";
         const string CornerRightVertical = ".\\Assets\\CornerRightVertical.png";
         const string Finish = ".\\Assets\\Finish.png";
+        const string Start = ".\\Assets\\Start.png";
         const string TrackHorizontal = ".\\Assets\\TrackHorizontal.png";
         const string TrackVertical = ".\\Assets\\TrackVertical.png";
         const string GrassTile = ".\\Assets\\Grass_Tile.png";
@@ -57,170 +65,165 @@ namespace RaceGUI {
         const string Fire = ".\\Assets\\Fire.png";
         #endregion
 
+        
+        public static void Init(Race race) {
+            // Pass over the Race Object
+            _race = race;
+        }
 
-        // Typedefs
-        public static TrackSize _trackSize;
-        public static StartPostion _startPostion;
+        private static Direction CalcDirLeftTurn(Direction d) => (Direction)(((uint)d - 1) % 4);
+        private static Direction CalcDirRightTurn(Direction d) => (Direction)(((uint)d + 1) % 4);
 
-        public static Direction DirectionChangeLeft(Direction dir) => (Direction)(((uint)dir - 1) % 4); // One Direction Down
-        public static Direction DirectionChangeRight(Direction dir) =>(Direction)(((uint)dir + 1) % 4); // One Direction Up
-
-        private static Direction DirectionCheckLeftOrRight(Direction dir, SectionTypes sec) => sec switch
-        {
-            SectionTypes.LeftCorner => DirectionChangeLeft(dir),
-            SectionTypes.RightCorner => DirectionChangeRight(dir),
-            _ => dir
-        };
-
-        private static string GetSectionFile(SectionTypes sec, Direction dir) {
-           return sec switch
-            {
-                SectionTypes.Straight => ((int)dir % 2) switch
-                {
-                    0 => TrackVertical,
-                    1 => TrackHorizontal,
-                    _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
-                },
-           
-                SectionTypes.LeftCorner => (int)dir switch
-                {
-                    0 => CornerLeftVertical, // NW
-                    1 => CornerLeftHorizontal, // SW
-                    2 => CornerRightVertical, // SE
-                    3 => CornerRightHorizontal, // NE
-                    _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
-                },
-                SectionTypes.RightCorner => (int)dir switch
-                {
-                    0 => CornerRightHorizontal, //NE
-                    1 => CornerLeftVertical, // NW
-                    2 => CornerLeftHorizontal, // SW
-                    3 => CornerRightVertical, // SE
-                    _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
-                },
-                SectionTypes.StartGrid => Finish,
-                SectionTypes.Finish => Finish,
-                _ => throw new ArgumentOutOfRangeException(nameof(sec), sec, null)
+        private static Direction DirectionLeftOrRightTurn
+            (Direction d, SectionTypes st) {
+            return st switch{
+                SectionTypes.LeftCorner =>  CalcDirLeftTurn(d),
+                SectionTypes.RightCorner => CalcDirRightTurn(d),
+                _ => d
             };
         }
 
-        private static void DrawSection(int xPos, int yPos, Direction direction, Graphics graphics, Section section) {
-            Bitmap sectionBitmap = ImageCache.GetBitmap(GetSectionFile(section.SectionType, direction));
-            graphics.DrawImage(sectionBitmap, xPos, yPos, sectionIMGSize, sectionIMGSize);
-        }
-
-        private static void MovePosition(ref int xPos, ref int yPos, Direction direction) {
+        private static void NextPosition(ref int curX, ref int curY, Direction direction) {
             switch (direction) {
-                case Direction.North:
-                    yPos -= sectionIMGSize;
-                    break;
-
-                case Direction.East:
-                    xPos += sectionIMGSize;
-                    break;
-
-                case Direction.South:
-                    yPos += sectionIMGSize;
-                    break;
-
-                case Direction.West:
-                    xPos -= sectionIMGSize;
-                    break;
+                case Direction.North: curY--; break;
+                case Direction.East:  curX++; break;
+                case Direction.South: curY++; break;
+                case Direction.West:  curX--; break;
             }
         }
 
-        // Draw the track every Tick
-        public static BitmapSource DrawTrack(Track track) {
-            (int width, int heigth) size;
-            (int x, int y) startPosition;
-            (size.width, size.heigth, startPosition) = GetTrackSize(track);
-            Bitmap Canvas = ImageCache.CreateEmptyBitmap(size.width, size.heigth);
-            Graphics g = Graphics.FromImage(Canvas);
+        private static void SetTrackSize(Track track, Direction curDir) {
+           
+            int curX = marginTopBottom;
+            int curY = marginTopBottom;
 
-            int xPos = _startPostion.posX;          // Recieve start pos X
-            int yPos = _startPostion.posY;         // Receive start pos Y
-
-            Direction curDir = Direction.East;            // Start always east
+            List<int> positionsX = new List<int>();
+            List<int> positionsY = new List<int>();
 
             foreach (Section sec in track.Sections) {
-                DrawSection(xPos, yPos, curDir, g, sec);
-                curDir = DirectionCheckLeftOrRight(curDir, sec.SectionType);
 
-                MovePosition(ref xPos, ref yPos, curDir);
+                positionsX.Add(curX);
+                positionsY.Add(curY);
 
+                if (sec.SectionType == SectionTypes.LeftCorner) {
+                    curDir = CalcDirLeftTurn(curDir);
+                }
+                else if (sec.SectionType == SectionTypes.RightCorner) {
+                    curDir = CalcDirRightTurn(curDir);
+                }
+
+                NextPosition(ref curX, ref curY, curDir);
+            }
+
+            _trackSize.width  = ((positionsX.Max() + 1) - positionsX.Min()) * sectionIMGSize;
+            _trackSize.height = ((positionsY.Max() + 1) - positionsY.Min()) * sectionIMGSize;
+
+            _startPos.coordX = (marginTopBottom - positionsX.Min()) * sectionIMGSize;
+            _startPos.coordY = (marginTopBottom - positionsY.Min()) * sectionIMGSize;
+
+        }
+
+        private static string GetSectionFile(SectionTypes sec, Direction dir) {
+            return sec switch {
+                SectionTypes.Straight => ((int)dir % 2) switch {
+                    0 => TrackVertical,
+                    1 => TrackHorizontal,
+                    _ => throw new ArgumentException(String.Format("{0} is unable calculcate Direction", dir)),
+                },
+                SectionTypes.LeftCorner => (int)dir switch {
+                    0 => CornerLeftVertical, 
+                    1 => CornerLeftHorizontal, 
+                    2 => CornerRightHorizontal, 
+                    3 => CornerRightVertical,
+                    _ => throw new ArgumentException(String.Format("{0} This section does not exist: ", dir)),
+                },
+                SectionTypes.RightCorner => (int)dir switch {
+                    0 => CornerRightVertical, 
+                    1 => CornerLeftVertical,
+                    2 => CornerLeftHorizontal, 
+                    3 => CornerRightHorizontal,
+                    _ => throw new ArgumentException(String.Format("{0} This section does not exist: ", dir)),
+                },
+                SectionTypes.StartGrid => Start,
+                SectionTypes.Finish => Finish,
+                _ => throw new ArgumentException(String.Format("{0} This section does not exist: ", dir)),
+            };
+        }
+
+        private static void CursorToNextPosition(ref int xPos, ref int yPos, Direction direction) {
+            switch (direction) {
+                case Direction.North: yPos -= sectionIMGSize; break;
+                case Direction.East: xPos += sectionIMGSize; break;
+                case Direction.South: yPos += sectionIMGSize; break;
+                case Direction.West: xPos -= sectionIMGSize; break;
+            }
+        }
+
+
+        //########## Particpants #############//
+
+
+        private static (int x, int y) GetParticipantOffset(GoosePos goosePos, Direction currentDirection) => goosePos switch
+        {
+            GoosePos.Left when currentDirection == Direction.North => (60, 80), // side to side: 60, 96
+            GoosePos.Left when currentDirection == Direction.East => (112, 60), // side to side: 96, 60
+            GoosePos.Left when currentDirection == Direction.South => (132, 112), // side to side: 132, 96
+            GoosePos.Left when currentDirection == Direction.West => (80, 132), // side to side: 96, 132
+            GoosePos.Right when currentDirection == Direction.North => (132, 112), // side to side: 132, 96
+            GoosePos.Right when currentDirection == Direction.East => (80, 132), // side to side: 96, 132
+            GoosePos.Right when currentDirection == Direction.South => (60, 80), // side to side: 60, 96
+            GoosePos.Right when currentDirection == Direction.West => (112, 60), // side to side: 96, 60
+            _ => (0, 0) // default
+        };
+
+        private static void DrawGoosesOnGUI(int Posx, int posY, Direction curDir, Graphics graphics, Section sec) {
+            // look for participants
+            IParticipant leftParticipant = _race.GetSectionData(section).Left;
+            IParticipant rightParticipant = _race.GetSectionData(section).Right;
+
+            if (leftParticipant != null) {
+                (int x, int y) = GetParticipantOffset(Side.Left, currentDirection); // get x&y offset for participant
+                DrawParticipantOnCoord(leftParticipant, g, currentDirection, xPos + x, yPos + y); // draw participant
+                if (leftParticipant.Equipment.IsBroken)
+                    DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
+            }
+
+            if (rightParticipant != null) {
+                (int x, int y) = GetParticipantOffset(Side.Right, currentDirection); // get x&y offset for participant
+                DrawParticipantOnCoord(rightParticipant, g, currentDirection, xPos + x, yPos + y); // draw participant
+                if (rightParticipant.Equipment.IsBroken)
+                    DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
+            }
+        }
+
+
+
+
+        private static void DrawSingleSection(int xPos, int yPos, ref Direction direction, Graphics g, Section section) {
+            var sectionBitmap = ImageCache.GetBitmap(GetSectionFile(section.SectionType, direction));
+            g.DrawImage(sectionBitmap, xPos, yPos, sectionIMGSize, sectionIMGSize);
+        }
+
+        public static BitmapSource DrawTrack(Track track) {
+            Direction curDir = Direction.East;              // Always start from east
+
+            SetTrackSize(track, curDir);
+            Bitmap Canvas = ImageCache.CreateEmptyBitmap(_trackSize.width, _trackSize.height);
+            Graphics graphics = Graphics.FromImage(Canvas);
+
+            int posX = _startPos.coordX;
+            int posY = _startPos.coordY;
+  
+            foreach (Section sec in track.Sections) {
+                DrawSingleSection(posX, posY, ref curDir, graphics, sec);
+                curDir = DirectionLeftOrRightTurn(curDir, sec.SectionType);
+                DrawGoosesOnGUI(posX, posY, curDir, graphics, sec);
+                CursorToNextPosition(ref posX, ref posY, curDir);
             }
 
             return ImageCache.CreateBitmapSourceFromGdiBitmap(Canvas);
         }
 
-
-
-        // JUNK
-
-
-        private static (int width, int height, (int x, int y)) GetTrackSize(Track track) {
-            const int sectionSize = 256; // size of image.
-            int startX = 10, startY = 10; // start at 10, 10. This way we can determine min and max positions
-            int curX = startX, curY = startY;
-            List<int> positionsX = new List<int>();
-            List<int> positionsY = new List<int>();
-            Direction direction = Direction.East; // start east
-
-            // fill lists
-            foreach (Section section in track.Sections) {
-                // determine direction, set x and y accordingly, add to list.
-
-                // add position to lists
-                positionsX.Add(curX);
-                positionsY.Add(curY);
-
-                // change direction if needed
-                if (section.SectionType == SectionTypes.LeftCorner) {
-                    direction = DirectionChangeLeft(direction);
-                }
-                else if (section.SectionType == SectionTypes.RightCorner) {
-                    direction = DirectionChangeRight(direction);
-                }
-
-                switch (direction) {
-                    case Direction.North:
-                        curY--;
-                        break;
-
-                    case Direction.East:
-                        curX++;
-                        break;
-
-                    case Direction.South:
-                        curY++;
-                        break;
-
-                    case Direction.West:
-                        curX--;
-                        break;
-                }
-            }
-
-            // determine min and max positions
-            int minX = positionsX.Min();
-            int maxX = positionsX.Max() + 1; // give enough room for drawing method
-            int minY = positionsY.Min();
-            int maxY = positionsY.Max() + 1; // give enough room for drawing method
-
-            // determine size
-            int width = (maxX - minX) * sectionSize;
-            int height = (maxY - minY) * sectionSize;
-
-            // determine startposition
-            int x = (startX - minX) * sectionSize;
-            int y = (startY - minY) * sectionSize;
-
-            return (width, height, (x, y));
-        }
-
     }
 
-
-
-  
 }
