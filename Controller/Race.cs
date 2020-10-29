@@ -56,7 +56,7 @@ namespace Controller {
             PlaceGoosesOnGrid();
 
 
-            timer = new Timer(250);
+            timer = new Timer(500);
             timer.Elapsed += OnTimedEvent;
             Start();
 
@@ -332,7 +332,7 @@ namespace Controller {
 
             }
 
-            GoosesChanged.Invoke(this, new GoosesChangedEventArgs(Track));
+            GoosesChanged?.Invoke(this, new GoosesChangedEventArgs() { Track = this.Track });
 
             if (goosesRemoved == Participants.Count) {
                 Stop();

@@ -10,6 +10,7 @@ namespace RaceGui {
         //Dictionary to keep track of the bitmaps from the img url
         private static Dictionary<string, Bitmap> _cache = new Dictionary<string, Bitmap>();
 
+
         //Get a specific bitmap from dictionary based on URL
         public static Bitmap GetBitmap(string imageURL) {
             if (_cache.ContainsKey(imageURL)) {

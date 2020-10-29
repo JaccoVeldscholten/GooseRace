@@ -65,7 +65,7 @@ namespace RaceGUI {
         const string Fire = ".\\Assets\\Fire.png";
         #endregion
 
-        
+
         public static void Init(Race race) {
             // Pass over the Race Object
             _race = race;
@@ -76,8 +76,9 @@ namespace RaceGUI {
 
         private static Direction DirectionLeftOrRightTurn
             (Direction d, SectionTypes st) {
-            return st switch{
-                SectionTypes.LeftCorner =>  CalcDirLeftTurn(d),
+            return st switch
+            {
+                SectionTypes.LeftCorner => CalcDirLeftTurn(d),
                 SectionTypes.RightCorner => CalcDirRightTurn(d),
                 _ => d
             };
@@ -86,14 +87,14 @@ namespace RaceGUI {
         private static void NextPosition(ref int curX, ref int curY, Direction direction) {
             switch (direction) {
                 case Direction.North: curY--; break;
-                case Direction.East:  curX++; break;
+                case Direction.East: curX++; break;
                 case Direction.South: curY++; break;
-                case Direction.West:  curX--; break;
+                case Direction.West: curX--; break;
             }
         }
 
         private static void SetTrackSize(Track track, Direction curDir) {
-           
+
             int curX = marginTopBottom;
             int curY = marginTopBottom;
 
@@ -115,7 +116,7 @@ namespace RaceGUI {
                 NextPosition(ref curX, ref curY, curDir);
             }
 
-            _trackSize.width  = ((positionsX.Max() + 1) - positionsX.Min()) * sectionIMGSize;
+            _trackSize.width = ((positionsX.Max() + 1) - positionsX.Min()) * sectionIMGSize;
             _trackSize.height = ((positionsY.Max() + 1) - positionsY.Min()) * sectionIMGSize;
 
             _startPos.coordX = (marginTopBottom - positionsX.Min()) * sectionIMGSize;
@@ -124,23 +125,27 @@ namespace RaceGUI {
         }
 
         private static string GetSectionFile(SectionTypes sec, Direction dir) {
-            return sec switch {
-                SectionTypes.Straight => ((int)dir % 2) switch {
+            return sec switch
+            {
+                SectionTypes.Straight => ((int)dir % 2) switch
+                {
                     0 => TrackVertical,
                     1 => TrackHorizontal,
                     _ => throw new ArgumentException(String.Format("{0} is unable calculcate Direction", dir)),
                 },
-                SectionTypes.LeftCorner => (int)dir switch {
-                    0 => CornerLeftVertical, 
-                    1 => CornerLeftHorizontal, 
-                    2 => CornerRightHorizontal, 
+                SectionTypes.LeftCorner => (int)dir switch
+                {
+                    0 => CornerLeftVertical,
+                    1 => CornerLeftHorizontal,
+                    2 => CornerRightHorizontal,
                     3 => CornerRightVertical,
                     _ => throw new ArgumentException(String.Format("{0} This section does not exist: ", dir)),
                 },
-                SectionTypes.RightCorner => (int)dir switch {
-                    0 => CornerRightVertical, 
+                SectionTypes.RightCorner => (int)dir switch
+                {
+                    0 => CornerRightVertical,
                     1 => CornerLeftVertical,
-                    2 => CornerLeftHorizontal, 
+                    2 => CornerLeftHorizontal,
                     3 => CornerRightHorizontal,
                     _ => throw new ArgumentException(String.Format("{0} This section does not exist: ", dir)),
                 },
@@ -159,12 +164,48 @@ namespace RaceGUI {
             }
         }
 
-
-        //########## Particpants #############//
-
-
-        private static (int x, int y) GetParticipantOffset(GoosePos goosePos, Direction currentDirection) => goosePos switch
+        private static string TeamColorToFilename(TeamColors color, Direction d) => d switch
         {
+            Direction.North => color switch
+            {
+                TeamColors.Blue => Blue,
+                TeamColors.Grey => Grey,
+                TeamColors.Red => Red,
+                TeamColors.Yellow => Yellow,
+                TeamColors.Green => Green,
+                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            },
+            Direction.East => color switch
+            {
+                TeamColors.Blue => Blue,
+                TeamColors.Grey => Grey,
+                TeamColors.Red => Red,
+                TeamColors.Yellow => Yellow,
+                TeamColors.Green => Green,
+                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            },
+            Direction.South => color switch
+            {
+                TeamColors.Blue => Blue,
+                TeamColors.Grey => Grey,
+                TeamColors.Red => Red,
+                TeamColors.Yellow => Yellow,
+                TeamColors.Green => Green,
+                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            },
+            Direction.West => color switch
+            {
+                TeamColors.Blue => Blue,
+                TeamColors.Grey => Grey,
+                TeamColors.Red => Red,
+                TeamColors.Yellow => Yellow,
+                TeamColors.Green => Green,
+                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            },
+            _ => throw new ArgumentOutOfRangeException(nameof(d), d, "Invalid value for direction.")
+        };
+
+        private static (int x, int y) GetParticipantOffset(GoosePos goosePos, Direction currentDirection) => goosePos switch  {
             GoosePos.Left when currentDirection == Direction.North => (60, 80), // side to side: 60, 96
             GoosePos.Left when currentDirection == Direction.East => (112, 60), // side to side: 96, 60
             GoosePos.Left when currentDirection == Direction.South => (132, 112), // side to side: 132, 96
@@ -176,28 +217,36 @@ namespace RaceGUI {
             _ => (0, 0) // default
         };
 
-        private static void DrawGoosesOnGUI(int Posx, int posY, Direction curDir, Graphics graphics, Section sec) {
+        private static void DrawGoosesOnSection(int posX, int posY, Direction curDir, Graphics graphics, Section sec) {
             // look for participants
-            IParticipant leftParticipant = _race.GetSectionData(section).Left;
-            IParticipant rightParticipant = _race.GetSectionData(section).Right;
+
+            IParticipant leftParticipant = Data.CurrentRace.GetSectionData(sec).Left;
+            IParticipant rightParticipant = Data.CurrentRace.GetSectionData(sec).Right;
 
             if (leftParticipant != null) {
-                (int x, int y) = GetParticipantOffset(Side.Left, currentDirection); // get x&y offset for participant
-                DrawParticipantOnCoord(leftParticipant, g, currentDirection, xPos + x, yPos + y); // draw participant
+                (int x, int y) = GetParticipantOffset(GoosePos.Left, curDir); // get x&y offset for participant
+                DrawSingleGoose(leftParticipant, graphics, curDir, posX + x, posY + y); // draw participant
+
+                /*
                 if (leftParticipant.Equipment.IsBroken)
                     DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
+                */
             }
 
             if (rightParticipant != null) {
-                (int x, int y) = GetParticipantOffset(Side.Right, currentDirection); // get x&y offset for participant
-                DrawParticipantOnCoord(rightParticipant, g, currentDirection, xPos + x, yPos + y); // draw participant
-                if (rightParticipant.Equipment.IsBroken)
+                (int x, int y) = GetParticipantOffset(GoosePos.Right, curDir); // get x&y offset for participant
+                DrawSingleGoose(rightParticipant, graphics, curDir, posX + x, posY + y); // draw participant
+
+                /*if (rightParticipant.Equipment.IsBroken)
                     DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
+                */
             }
         }
 
-
-
+        private static void DrawSingleGoose(IParticipant participant, Graphics g, Direction d, int posX, int posY) {
+            Bitmap participantBitmap = ImageCache.GetBitmap(TeamColorToFilename(participant.TeamColor, d));
+            g.DrawImage(participantBitmap, posX, posY, GooseIMGSize, GooseIMGSize);
+        }
 
         private static void DrawSingleSection(int xPos, int yPos, ref Direction direction, Graphics g, Section section) {
             var sectionBitmap = ImageCache.GetBitmap(GetSectionFile(section.SectionType, direction));
@@ -213,11 +262,11 @@ namespace RaceGUI {
 
             int posX = _startPos.coordX;
             int posY = _startPos.coordY;
-  
+
             foreach (Section sec in track.Sections) {
                 DrawSingleSection(posX, posY, ref curDir, graphics, sec);
                 curDir = DirectionLeftOrRightTurn(curDir, sec.SectionType);
-                DrawGoosesOnGUI(posX, posY, curDir, graphics, sec);
+                DrawGoosesOnSection(posX, posY, curDir, graphics, sec);
                 CursorToNextPosition(ref posX, ref posY, curDir);
             }
 

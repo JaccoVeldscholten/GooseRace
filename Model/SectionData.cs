@@ -16,10 +16,5 @@ namespace Model {
         public int DistanceRight { get; set; }
         public DateTime startTimeRight { get; set; }
 
-
-        public SectionData() {
-
-        }
-
     }
 }

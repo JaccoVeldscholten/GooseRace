@@ -8,8 +8,9 @@ using Model;
 namespace Controller {
     public static class Data {
         public static Competition comp { get; set; }
-
         public static Race CurrentRace { get; set; }
+
+        public static event EventHandler<RaceStartEventArgs> NextRaceEventHandler;
 
         public static void Initialize() {
             comp = new Competition();
@@ -117,6 +118,7 @@ namespace Controller {
 
             if (CurrentRace != null) {
                 comp.GivePointsToDriver(CurrentRace.FinishPosition);        // Give points
+                NextRaceEventHandler?.Invoke(null, new RaceStartEventArgs() { Race = CurrentRace });
             }
 
             Race next = new Race(comp.NextTrack(), comp.Participants);
