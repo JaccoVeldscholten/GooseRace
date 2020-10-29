@@ -109,18 +109,18 @@ namespace GooseRace {
                     1 => _cornerSouthWest,
                     2 => _cornerEastSouth,
                     3 => _cornerNorthEast,
-                    _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
+                    _ => throw new ArgumentException(String.Format("{0} is unable to return", direction), "direction"),
                 },
                 SectionTypes.RightCorner => (int)direction switch {
                     0 => _cornerNorthEast,
                     1 => _cornerWestNorth,
                     2 => _cornerSouthWest,
                     3 => _cornerEastSouth,
-                    _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
+                    _ => throw new ArgumentException(String.Format("{0} is unable to return", direction), "direction"),
                 },
                 SectionTypes.StartGrid => _startGridHorizontal,
                 SectionTypes.Finish => _finishHorizontal,
-                _ => throw new ArgumentException(String.Format("{0} is unable to change", direction), "direction"),
+                _ => throw new ArgumentException(String.Format("{0} is unable to return", direction), "direction"),
             };
         }
 

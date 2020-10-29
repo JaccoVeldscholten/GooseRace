@@ -11,7 +11,7 @@ namespace RaceGui {
         private static Dictionary<string, Bitmap> _cache = new Dictionary<string, Bitmap>();
 
         //Get a specific bitmap from dictionary based on URL
-        public static Bitmap GetImage(string imageURL) {
+        public static Bitmap GetBitmap(string imageURL) {
             if (_cache.ContainsKey(imageURL)) {
                 return _cache[imageURL];
             }
@@ -22,18 +22,14 @@ namespace RaceGui {
             }
         }
 
-        public static Bitmap CreateBitmap(int width, int height) {
-
+        public static Bitmap CreateEmptyBitmap(int width, int height) {
             if (!_cache.ContainsKey("empty")) {
                 _cache.Add("empty", new Bitmap(width, height));
+                Graphics g = Graphics.FromImage(_cache["empty"]);
+                g.Clear(System.Drawing.Color.Red); 
             }
-
-            Graphics g = Graphics.FromImage(_cache["empty"]);
-            g.Clear(System.Drawing.Color.FromArgb(0, 100, 0));
-
             return (Bitmap)_cache["empty"].Clone();
         }
-
         public static BitmapSource CreateBitmapSourceFromGdiBitmap(Bitmap bitmap) {
             if (bitmap == null)
                 throw new ArgumentNullException("bitmap");

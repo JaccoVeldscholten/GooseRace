@@ -27,7 +27,7 @@ namespace Controller {
         }
 
         static void AddTracks() {
-
+            /*
             SectionTypes[] gardenTrackSections = {
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
@@ -56,7 +56,24 @@ namespace Controller {
                 SectionTypes.Straight,
                 SectionTypes.RightCorner
             };
+            */
 
+             SectionTypes[] gardenTrackSections = {
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.StartGrid,
+                SectionTypes.Finish,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner
+            };
             SectionTypes[] honkTrackSections = {
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
