@@ -38,11 +38,11 @@ namespace GooseRaceGUI {
 
 
         public void OnGooseChange(Object sender, GoosesChangedEventArgs e) {
-            TrackImage.Dispatcher.BeginInvoke(
+            this.RaceIMG.Dispatcher.BeginInvoke(
             DispatcherPriority.Render,
             new Action(() => {
-                TrackImage.Source = null;
-                TrackImage.Source = VisualisationGUI.DrawTrack(Data.CurrentRace.Track);
+                this.RaceIMG.Source = null;
+                this.RaceIMG.Source = VisualisationGUI.DrawTrack(Data.CurrentRace.Track);
             }));
 
         }

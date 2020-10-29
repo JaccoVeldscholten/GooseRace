@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="1000" Width="1400">
     <Grid Background="CadetBlue" Margin="0,0,-212,-122">
-        <Image Name="TrackImage" Margin="10,10,10,10"/>
+        <Image Name="RaceIMG" Margin="10,10,10,10"/>
 
     </Grid>
 </Window>
