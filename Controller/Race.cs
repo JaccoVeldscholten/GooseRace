@@ -47,6 +47,8 @@ namespace Controller {
             Participants = participants;
             _random = new Random(DateTime.Now.Millisecond);
             _positions = new Dictionary<Section, SectionData>();
+
+            // Randommize Equipment
             RandomizeEquipment();
 
             // Fill Dictornary with Gooses
@@ -63,11 +65,11 @@ namespace Controller {
 
         }
 
-        public SectionData GetSectionData(Section section) {
-            if (!_positions.ContainsKey(section)) {
-                _positions.Add(section, new SectionData());
+        public SectionData GetSectionData(Section sec) {
+            if (!_positions.ContainsKey(sec)) {
+                _positions.Add(sec, new SectionData());
             }
-            return _positions[section];
+            return _positions[sec];
         }
 
         public void RandomizeEquipment() {
@@ -174,12 +176,12 @@ namespace Controller {
                 //Check if left or right driver crosses finish
                 if (LeftRight == 0) {
 
-                    //Check if left driver is crossing finish
+                    //Check if left goose is crossing finish
                     if (section.Value.SectionType == SectionTypes.Finish) {
                         DrivenRounds[sectionValue.Left] += 1;
 
                         if (DrivenRounds[sectionValue.Left] == amountOfLaps + 1) {
-                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
                             FinishPosition.Add(FinishPosition.Count + 1, sectionValue.Left.Name);
                             sectionValue.Left = null;
@@ -190,12 +192,12 @@ namespace Controller {
                     }
                 }
                 else {
-                    //Check if left driver is crossing finish
+                    //Check if left goose is crossing finish
                     if (section.Value.SectionType == SectionTypes.Finish) {
                         DrivenRounds[sectionValue.Right] += 1;
 
                         if (DrivenRounds[sectionValue.Right] == amountOfLaps + 1) {
-                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                            lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
                             FinishPosition.Add(FinishPosition.Count + 1, sectionValue.Right.Name);
                             sectionValue.Right = null;
@@ -212,23 +214,24 @@ namespace Controller {
                 if (nextSectionValue.Left == null) {
                     //Move the left driver
                     if (LeftRight == 0) {
-                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                        
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
                         nextSectionValue.Left = sectionValue.Left;
                         nextSectionValue.DistanceLeft += sectionValue.DistanceLeft;
-                        nextSectionValue.startTimeLeft = CurrentTime;
+                        nextSectionValue.StartTimeLeft = CurrentTime;
                         //Reset values on current tile
                         sectionValue.Left = null;
                         sectionValue.DistanceLeft = 100;
                     }
                     // Move the right driver
                     else {
-                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
 
                         nextSectionValue.Left = sectionValue.Right;
                         nextSectionValue.DistanceLeft += sectionValue.DistanceRight;
-                        nextSectionValue.startTimeLeft = CurrentTime;
+                        nextSectionValue.StartTimeLeft = CurrentTime;
                         //Reset values on current tile
                         sectionValue.Right = null;
                         sectionValue.DistanceRight = 100;
@@ -239,21 +242,21 @@ namespace Controller {
                 else if (nextSectionValue.Right == null) {
                     //Move the left driver
                     if (LeftRight == 0) {
-                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Left.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
                         nextSectionValue.Right = sectionValue.Left;
                         nextSectionValue.DistanceRight += sectionValue.DistanceLeft;
-                        nextSectionValue.startTimeRight = CurrentTime;
+                        nextSectionValue.StartTimeRight = CurrentTime;
                         sectionValue.Left = null;
                         sectionValue.DistanceLeft = 100;
                     }
                     //Move the right driver
                     else {
-                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.startTimeLeft, section.Value));
+                        lapTimes.AddItemToList(new GooseLapTimes(sectionValue.Right.Name, CurrentTime - sectionValue.StartTimeLeft, section.Value));
 
                         nextSectionValue.Right = sectionValue.Right;
                         nextSectionValue.DistanceRight += sectionValue.DistanceRight;
-                        nextSectionValue.startTimeRight = CurrentTime;
+                        nextSectionValue.StartTimeRight = CurrentTime;
                         //Reset values on current tile
                         sectionValue.Right = null;
                         sectionValue.DistanceRight = 100;
@@ -356,6 +359,7 @@ namespace Controller {
         public void CleanReferences() {
             // Clean References
             GoosesChanged = null;
+            timer.Stop();
         }
 
 
