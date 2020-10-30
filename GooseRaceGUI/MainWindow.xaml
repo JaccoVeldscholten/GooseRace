@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:GooseRaceGUI"
         mc:Ignorable="d"
         Title="Untitled Goose Race" Height="900" Width="1400">
-    <Grid Background="CadetBlue" Margin="0,0,-212,-122">
-        <Image x:Name="RaceIMG" Margin="50,50,400,200"/>
+    <Grid Background="CadetBlue" Margin="0,0,-903,-543">
+        <Image x:Name="RaceIMG" Margin="0,0,0,0"/>
 
     </Grid>
 </Window>

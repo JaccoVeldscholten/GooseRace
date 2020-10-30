@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Timers;
 using Model;
@@ -135,18 +136,17 @@ namespace Controller {
 
 
         private bool LetTheWingsFallOff(IParticipant participant) {
-
             if (!participant.Equipment.IsBroken) {
-                if (_random.Next(1, 20) == 10) {            // Change to let the wings fall off. Change 1 on 20
+                if (_random.Next(4, 10) == 5) {            // Change to let the wings fall off. Change 1 on 20
+                    Debug.WriteLine($"Wing fell off! by:  {participant.Name}");
                     participant.Equipment.IsBroken = true;  // Goose lost wing
-                    lostWingsAmount.AddItemToList(new GooseLostWingAmount(participant.Name, 1));
-                    Console.WriteLine("Shit i my Lost wings! HONK!");       
+                    lostWingsAmount.AddItemToList(new GooseLostWingAmount(participant.Name, 1));      
                     return true;
                 }
                 else { return false; }  // Not this time
             }
             else {
-                if (_random.Next(1, 10) == 1) {
+                if (_random.Next(1, 10) == 10) {
                     participant.Equipment.IsBroken = false;
                     //Quality will be lowered if possible
                     if (participant.Equipment.Quality > 1) {
@@ -154,7 +154,7 @@ namespace Controller {
                     }
                     return false;
                 }
-                else { return true; }
+                else { return false; }
             }
         }
 

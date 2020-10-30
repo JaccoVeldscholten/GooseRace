@@ -22,15 +22,16 @@ namespace RaceGUI {
             public int height;
         }
 
+        public enum GoosePos {
+            Left,
+            Right
+        }
+
         public struct StartPos {
             public int coordX;
             public int coordY;
         }
 
-        internal enum GoosePos {
-            Left,
-            Right
-        }
 
         public static TrackSize _trackSize;
         public static StartPos _startPos;
@@ -38,31 +39,54 @@ namespace RaceGUI {
         private static Race _race;
 
         #region IMGconstants
-        const int marginTopBottom = 10;
-        const int marginRightLeft = 10;
-        const int sectionIMGSize = 300;
-        const int GooseIMGSize = 64;
+        const int marginTopBottom = 0;      // Margin (to start drawing)
+        const int marginRightLeft = 0;      // Margin (to start drawing)
+        const int sectionIMGSize = 600;     // Offset to make track bigger
+        const int GooseIMGSize = 300;       // Offset to make goose bigger
+        const int trackOffset = 6;          // Offset to scale to diffrent Windows
         #endregion
 
         #region graphics
-        const string CornerLeftHorizontal = ".\\Assets\\CornerLeftHorizontal.png";
-        const string CornerLeftVertical = ".\\Assets\\CornerLeftVertical.png";
-        const string CornerRightHorizontal = ".\\Assets\\CornerRightHorizontal.png";
-        const string CornerRightVertical = ".\\Assets\\CornerRightVertical.png";
-        const string Finish = ".\\Assets\\Finish.png";
-        const string Start = ".\\Assets\\Start.png";
-        const string TrackHorizontal = ".\\Assets\\TrackHorizontal.png";
-        const string TrackVertical = ".\\Assets\\TrackVertical.png";
-        const string GrassTile = ".\\Assets\\Grass_Tile.png";
-        const string WaterTile = ".\\Assets\\Water.png";
+        const string CornerLeftHorizontal = ".\\Assets\\Track\\CornerLeftHorizontal.png";
+        const string CornerLeftVertical = ".\\Assets\\Track\\CornerLeftVertical.png";
+        const string CornerRightHorizontal = ".\\Assets\\Track\\CornerRightHorizontal.png";
+        const string CornerRightVertical = ".\\Assets\\Track\\CornerRightVertical.png";
+        const string Finish = ".\\Assets\\Track\\Finish.png";
+        const string Start = ".\\Assets\\Track\\Start.png";
+        const string TrackHorizontal = ".\\Assets\\Track\\TrackHorizontal.png";
+        const string TrackVertical = ".\\Assets\\Track\\TrackVertical.png";
+        const string GrassTile = ".\\Assets\\Track\\Grass_Tile.png";
+        const string WaterTile = ".\\Assets\\Track\\Water.png";
 
-        const string Blue = ".\\Assets\\Goose_Blue.png";
-        const string Grey = ".\\Assets\\Goose_Grey.png";
-        const string Red = ".\\Assets\\Goose_Red.png";
-        const string Yellow = ".\\Assets\\Goose_Yellow.png";
-        const string Green = ".\\Assets\\Goose_Orange.png";
+        // North Facing Gooses
+        const string Blue_North = ".\\Assets\\Gooses\\North\\Goose_Blue.png";
+        const string Grey_North = ".\\Assets\\Gooses\\North\\Goose_Grey.png";
+        const string Red_North = ".\\Assets\\Gooses\\North\\Goose_Red.png";
+        const string Yellow_North = ".\\Assets\\Gooses\\North\\Goose_Yellow.png";
+        const string Green_North = ".\\Assets\\Gooses\\North\\Goose_Orange.png";
 
-        const string Fire = ".\\Assets\\Fire.png";
+        // East Facing Gooses
+        const string Blue_East = ".\\Assets\\Gooses\\East\\Goose_Blue.png";
+        const string Grey_East = ".\\Assets\\Gooses\\East\\Goose_Grey.png";
+        const string Red_East = ".\\Assets\\Gooses\\East\\Goose_Red.png";
+        const string Yellow_East = ".\\Assets\\Gooses\\East\\Goose_Yellow.png";
+        const string Green_East = ".\\Assets\\Gooses\\East\\Goose_Orange.png";
+
+        // South Facing Gooses
+        const string Blue_South = ".\\Assets\\Gooses\\South\\Goose_Blue.png";
+        const string Grey_South = ".\\Assets\\Gooses\\South\\Goose_Grey.png";
+        const string Red_South = ".\\Assets\\Gooses\\South\\Goose_Red.png";
+        const string Yellow_South = ".\\Assets\\Gooses\\South\\Goose_Yellow.png";
+        const string Green_South = ".\\Assets\\Gooses\\South\\Goose_Orange.png";
+
+        // West Facing Gooses
+        const string Blue_West = ".\\Assets\\Gooses\\West\\Goose_Blue.png";
+        const string Grey_West = ".\\Assets\\Gooses\\West\\Goose_Grey.png";
+        const string Red_West = ".\\Assets\\Gooses\\West\\Goose_Red.png";
+        const string Yellow_West = ".\\Assets\\Gooses\\West\\Goose_Yellow.png";
+        const string Green_West = ".\\Assets\\Gooses\\West\\Goose_Orange.png";
+
+        const string BrokenGoose = ".\\Assets\\Gooses\\BrokenGoose.png";
         #endregion
 
 
@@ -96,7 +120,7 @@ namespace RaceGUI {
         private static void SetTrackSize(Track track, Direction curDir) {
 
             int curX = marginTopBottom;
-            int curY = marginTopBottom;
+            int curY = marginRightLeft;
 
             List<int> positionsX = new List<int>();
             List<int> positionsY = new List<int>();
@@ -116,11 +140,11 @@ namespace RaceGUI {
                 NextPosition(ref curX, ref curY, curDir);
             }
 
-            _trackSize.width = ((positionsX.Max() + 1) - positionsX.Min()) * sectionIMGSize;
-            _trackSize.height = ((positionsY.Max() + 1) - positionsY.Min()) * sectionIMGSize;
+            _trackSize.width = ((positionsX.Max() +  trackOffset) - positionsX.Min()) * sectionIMGSize;
+            _trackSize.height = ((positionsY.Max() + trackOffset) - positionsY.Min()) * sectionIMGSize;
 
             _startPos.coordX = (marginTopBottom - positionsX.Min()) * sectionIMGSize;
-            _startPos.coordY = (marginTopBottom - positionsY.Min()) * sectionIMGSize;
+            _startPos.coordY = (marginRightLeft - positionsY.Min()) * sectionIMGSize;
 
         }
 
@@ -164,82 +188,86 @@ namespace RaceGUI {
             }
         }
 
-        private static string TeamColorToFilename(TeamColors color, Direction d) => d switch
+        private static string TeamColorToFilename(TeamColors color, Direction dir) => dir switch
         {
-            Direction.North => color switch
-            {
-                TeamColors.Blue => Blue,
-                TeamColors.Grey => Grey,
-                TeamColors.Red => Red,
-                TeamColors.Yellow => Yellow,
-                TeamColors.Green => Green,
-                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            Direction.North => color switch {
+                TeamColors.Blue => Blue_North,
+                TeamColors.Grey => Grey_North,
+                TeamColors.Red => Red_North,
+                TeamColors.Yellow => Yellow_North,
+                TeamColors.Green => Green_North,
+                _ => throw new ArgumentException(String.Format("{0} This color does not exist: ", color))
             },
-            Direction.East => color switch
-            {
-                TeamColors.Blue => Blue,
-                TeamColors.Grey => Grey,
-                TeamColors.Red => Red,
-                TeamColors.Yellow => Yellow,
-                TeamColors.Green => Green,
-                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            Direction.East => color switch {
+                TeamColors.Blue => Blue_East,
+                TeamColors.Grey => Grey_East,
+                TeamColors.Red => Red_East,
+                TeamColors.Yellow => Yellow_East,
+                TeamColors.Green => Green_East,
+                _ => throw new ArgumentException(String.Format("{0} This color does not exist: ", color))
             },
-            Direction.South => color switch
-            {
-                TeamColors.Blue => Blue,
-                TeamColors.Grey => Grey,
-                TeamColors.Red => Red,
-                TeamColors.Yellow => Yellow,
-                TeamColors.Green => Green,
-                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            Direction.South => color switch {
+                TeamColors.Blue => Blue_South,
+                TeamColors.Grey => Grey_South,
+                TeamColors.Red => Red_South,
+                TeamColors.Yellow => Yellow_South,
+                TeamColors.Green => Green_South,
+                _ => throw new ArgumentException(String.Format("{0} This color does not exist: ", color))
             },
-            Direction.West => color switch
-            {
-                TeamColors.Blue => Blue,
-                TeamColors.Grey => Grey,
-                TeamColors.Red => Red,
-                TeamColors.Yellow => Yellow,
-                TeamColors.Green => Green,
-                _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Invalid value for team color.")
+            Direction.West => color switch {
+                TeamColors.Blue => Blue_West,
+                TeamColors.Grey => Grey_West,
+                TeamColors.Red => Red_West,
+                TeamColors.Yellow => Yellow_West,
+                TeamColors.Green => Green_West,
+                _ => throw new ArgumentException(String.Format("{0} This color does not exist: ", color))
             },
-            _ => throw new ArgumentOutOfRangeException(nameof(d), d, "Invalid value for direction.")
+            _ => throw new ArgumentException(String.Format("{0} Direction does not exist: ", dir))
         };
 
-        private static (int x, int y) GetParticipantOffset(GoosePos goosePos, Direction currentDirection) => goosePos switch  {
-            GoosePos.Left when currentDirection == Direction.North => (60, 80), // side to side: 60, 96
-            GoosePos.Left when currentDirection == Direction.East => (112, 60), // side to side: 96, 60
-            GoosePos.Left when currentDirection == Direction.South => (132, 112), // side to side: 132, 96
-            GoosePos.Left when currentDirection == Direction.West => (80, 132), // side to side: 96, 132
-            GoosePos.Right when currentDirection == Direction.North => (132, 112), // side to side: 132, 96
-            GoosePos.Right when currentDirection == Direction.East => (80, 132), // side to side: 96, 132
-            GoosePos.Right when currentDirection == Direction.South => (60, 80), // side to side: 60, 96
-            GoosePos.Right when currentDirection == Direction.West => (112, 60), // side to side: 96, 60
-            _ => (0, 0) // default
+        private static (int posX, int posY) SetGooseOffset(GoosePos goosePos, Direction curDir) => goosePos switch
+        {
+            // Some Offsets to print out the gooses (and let Left stand first onto Right)
+            GoosePos.Left when curDir == Direction.North => (-100, 100),    // Coords X & Y
+            GoosePos.Left when curDir == Direction.East => (100, -100), 
+            GoosePos.Left when curDir == Direction.South => (340, 100), 
+            GoosePos.Left when curDir == Direction.West => (-100, 340), 
+            GoosePos.Right when curDir == Direction.North => (180, -100), 
+            GoosePos.Right when curDir == Direction.East => (-100, 180),
+            GoosePos.Right when curDir == Direction.South => (100, -100),
+            GoosePos.Right when curDir == Direction.West => (100, 100)  
         };
+
+        private static void DrawBrokenGooseOnSection(Graphics g, int x, int y) {
+            g.DrawImage(ImageCache.GetBitmap(BrokenGoose), x, y, GooseIMGSize, GooseIMGSize);
+        }
 
         private static void DrawGoosesOnSection(int posX, int posY, Direction curDir, Graphics graphics, Section sec) {
-            // look for participants
-
+           
             IParticipant leftParticipant = Data.CurrentRace.GetSectionData(sec).Left;
             IParticipant rightParticipant = Data.CurrentRace.GetSectionData(sec).Right;
 
             if (leftParticipant != null) {
-                (int x, int y) = GetParticipantOffset(GoosePos.Left, curDir); // get x&y offset for participant
-                DrawSingleGoose(leftParticipant, graphics, curDir, posX + x, posY + y); // draw participant
-
-                /*
-                if (leftParticipant.Equipment.IsBroken)
-                    DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
-                */
+                (int x, int y) = SetGooseOffset(GoosePos.Left, curDir); 
+              
+                if (!leftParticipant.Equipment.IsBroken) {
+                    DrawSingleGoose(leftParticipant, graphics, curDir, posX + x, posY + y); 
+                }
+                else {
+                    DrawBrokenGooseOnSection(graphics, posX + x, posY + y); 
+                }
+                    
             }
 
             if (rightParticipant != null) {
-                (int x, int y) = GetParticipantOffset(GoosePos.Right, curDir); // get x&y offset for participant
-                DrawSingleGoose(rightParticipant, graphics, curDir, posX + x, posY + y); // draw participant
-
-                /*if (rightParticipant.Equipment.IsBroken)
-                    DrawBrokenImageOnCoord(g, xPos + x, yPos + y); // draw broken image on top of participant if participant is broken.
-                */
+                (int x, int y) = SetGooseOffset(GoosePos.Right, curDir); 
+               
+                if (!rightParticipant.Equipment.IsBroken) {
+                    DrawSingleGoose(rightParticipant, graphics, curDir, posX + x, posY + y); 
+                }
+                else {
+                    DrawBrokenGooseOnSection(graphics, posX + x, posY + y); 
+                }
             }
         }
 

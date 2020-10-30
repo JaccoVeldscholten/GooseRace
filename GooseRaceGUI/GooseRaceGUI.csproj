@@ -16,6 +16,33 @@
     <None Remove="Assets\CornerRightVertical.png" />
     <None Remove="Assets\Finish.png" />
     <None Remove="Assets\Fire.png" />
+    <None Remove="Assets\Gooses\BrokenGoose.png" />
+    <None Remove="Assets\Gooses\East\Goose_Blue.png" />
+    <None Remove="Assets\Gooses\East\Goose_Grey.png" />
+    <None Remove="Assets\Gooses\East\Goose_Orange.png" />
+    <None Remove="Assets\Gooses\East\Goose_Purple.png" />
+    <None Remove="Assets\Gooses\East\Goose_Red.png" />
+    <None Remove="Assets\Gooses\East\Goose_Yellow.png" />
+    <None Remove="Assets\Gooses\Fire.png" />
+    <None Remove="Assets\Gooses\North\Goose_Blue.png" />
+    <None Remove="Assets\Gooses\North\Goose_Grey.png" />
+    <None Remove="Assets\Gooses\North\Goose_Orange.png" />
+    <None Remove="Assets\Gooses\North\Goose_Purple.png" />
+    <None Remove="Assets\Gooses\North\Goose_Red.png" />
+    <None Remove="Assets\Gooses\North\Goose_Yellow.png" />
+    <None Remove="Assets\Gooses\South\Goose_Blue.png" />
+    <None Remove="Assets\Gooses\South\Goose_Grey.png" />
+    <None Remove="Assets\Gooses\South\Goose_Orange.png" />
+    <None Remove="Assets\Gooses\South\Goose_Purple.png" />
+    <None Remove="Assets\Gooses\South\Goose_Red.png" />
+    <None Remove="Assets\Gooses\South\Goose_Yellow.png" />
+    <None Remove="Assets\Gooses\West\Goose_Blue.png" />
+    <None Remove="Assets\Gooses\West\Goose_Grey.png" />
+    <None Remove="Assets\Gooses\West\Goose_Orange.png" />
+    <None Remove="Assets\Gooses\West\Goose_Purple.png" />
+    <None Remove="Assets\Gooses\West\Goose_Red.png" />
+    <None Remove="Assets\Gooses\West\Goose_Yellow.png" />
+    <None Remove="Assets\Gooses\X.png" />
     <None Remove="Assets\Goose_Blue.png" />
     <None Remove="Assets\Goose_Grey.png" />
     <None Remove="Assets\Goose_Orange.png" />
@@ -26,59 +53,123 @@
     <None Remove="Assets\Start.png" />
     <None Remove="Assets\TrackHorizontal.png" />
     <None Remove="Assets\TrackVertical.png" />
+    <None Remove="Assets\Track\CornerLeftHorizontal.png" />
+    <None Remove="Assets\Track\CornerLeftVertical.png" />
+    <None Remove="Assets\Track\CornerRightHorizontal.png" />
+    <None Remove="Assets\Track\CornerRightVertical.png" />
+    <None Remove="Assets\Track\Finish.png" />
+    <None Remove="Assets\Track\Grass_Tile.png" />
+    <None Remove="Assets\Track\Start.png" />
+    <None Remove="Assets\Track\TrackHorizontal.png" />
+    <None Remove="Assets\Track\TrackVertical.png" />
+    <None Remove="Assets\Track\Water.png" />
     <None Remove="Assets\Water.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\CornerLeftHorizontal.png">
+    <Content Include="Assets\Gooses\BrokenGoose.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CornerLeftVertical.png">
+    <Content Include="Assets\Gooses\East\Goose_Blue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CornerRightHorizontal.png">
+    <Content Include="Assets\Gooses\East\Goose_Grey.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CornerRightVertical.png">
+    <Content Include="Assets\Gooses\East\Goose_Orange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Finish.png">
+    <Content Include="Assets\Gooses\East\Goose_Purple.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Fire.png">
+    <Content Include="Assets\Gooses\East\Goose_Red.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Blue.png">
+    <Content Include="Assets\Gooses\East\Goose_Yellow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Grey.png">
+    <Content Include="Assets\Gooses\North\Goose_Blue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Orange.png">
+    <Content Include="Assets\Gooses\North\Goose_Grey.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Purple.png">
+    <Content Include="Assets\Gooses\North\Goose_Orange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Red.png">
+    <Content Include="Assets\Gooses\North\Goose_Purple.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Goose_Yellow.png">
+    <Content Include="Assets\Gooses\North\Goose_Red.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Grass_Tile.png">
+    <Content Include="Assets\Gooses\North\Goose_Yellow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Start.png">
+    <Content Include="Assets\Gooses\South\Goose_Blue.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\TrackHorizontal.png">
+    <Content Include="Assets\Gooses\South\Goose_Grey.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\TrackVertical.png">
+    <Content Include="Assets\Gooses\South\Goose_Orange.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Water.png">
+    <Content Include="Assets\Gooses\South\Goose_Purple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\South\Goose_Red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\South\Goose_Yellow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Blue.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Grey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Orange.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Purple.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Red.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gooses\West\Goose_Yellow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\CornerLeftHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\CornerLeftVertical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\CornerRightHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\CornerRightVertical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Finish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Grass_Tile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Start.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\TrackHorizontal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\TrackVertical.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Track\Water.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
