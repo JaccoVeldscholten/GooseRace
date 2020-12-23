@@ -7,14 +7,19 @@ namespace Model {
         Red,
         Green,
         Yellow,
+        Orange,
+        Blue,
         Grey,
-        Blue
     }
 
     public interface IParticipant {
-        public string Name { get; set; }
-        public int Points { get; set; }
-        public IEquipment Equipment { get; set; }
-        public TeamColors TeamColor { get; set; }
+
+        string Name { get; set; }
+        int Points { get; set; }
+        IEquipment Equipment { get; set; }
+        TeamColors TeamColor { get; set; }
+
+
     }
+
 }

@@ -10,7 +10,6 @@
         "dependencies": {
           "Controller": "1.0.0",
           "Microsoft.NET.Test.Sdk": "16.4.0",
-          "Model": "1.0.0",
           "NUnit3TestAdapter": "3.15.1",
           "NUnit": "3.12.0"
         },

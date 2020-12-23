@@ -1,33 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
 using System.Text;
 using Model;
 
 namespace Controller {
     public static class Data {
         public static Competition comp { get; set; }
-        public static Race CurrentRace { get; set; }
+        public static Race currentRace { get; set; }
 
-        public static event EventHandler<RaceStartEventArgs> NextRaceEventHandler;
+        public delegate void NextRaceEventHandler(object source, NextRaceEventArgs args);
+        static public event NextRaceEventHandler NextRaceEvent;
 
-        public static void Initialize() {
+        public static void Init() {           // init Data
             comp = new Competition();
-            AddParticipants();
-            AddTracks();
+            AddTrack();
+            AddParticipant();
         }
 
-        static void AddParticipants() {
+        public static void AddParticipant() {
+            IParticipant GoosePiet = new Goose(
+                "Piet",                      // name
+                0,                          // points
+                new Wings() {              // equipment
+                    Quality = 10,          
+                    IsBroken = false,
+                    Performance = 100,
+                    Speed = 100
+                },               
+                TeamColors.Blue             // color
+            );
+            IParticipant GooseBob = new Goose(
+                "Bob",                      // name
+                0,                          // points
+                new Wings() {              // equipment
+                                Quality = 10,
+                    IsBroken = false,
+                    Performance = 100,
+                    Speed = 100
+                },
+                TeamColors.Grey             // color
+            );
 
-            comp.Participants.Add(new Goose("Piet", 0, new Wings(10, 10, 10, false), TeamColors.Blue));
-            comp.Participants.Add(new Goose("Sjaak", 0, new Wings(10, 10, 10, false), TeamColors.Yellow));
-            comp.Participants.Add(new Goose("Marietje", 0, new Wings(10, 10, 10, false), TeamColors.Red));
-            comp.Participants.Add(new Goose("Richard", 0, new Wings(10, 10, 10, false), TeamColors.Green));
-            comp.Participants.Add(new Goose("Dennis", 0, new Wings(10, 10, 10, false), TeamColors.Grey));
+            IParticipant GooseSjaak = new Goose(
+                "Sjaak",                     // name
+                0,                          // points
+                new Wings() {              // equipment
+                    Quality = 10,          
+                    IsBroken = false,
+                    Performance = 100,
+                    Speed = 10
+                },
+                TeamColors.Red              // color
+            );
+
+            IParticipant GooseMarietje = new Goose(
+                "Marietje",                    // name
+                0,                          // points
+                new Wings() {              // equipment
+                    Quality = 10,          
+                    IsBroken = false,
+                    Performance = 100,
+                    Speed = 0
+                },
+                TeamColors.Green            // color
+            );
+
+            // Add those gooses to the race
+            comp.Participants.Add(GoosePiet);
+            comp.Participants.Add(GooseBob);     
+            comp.Participants.Add(GooseSjaak);
+            comp.Participants.Add(GooseMarietje);
+
         }
 
-        static void AddTracks() {
+        public static void AddTrack() {
             SectionTypes[] gardenTrackSections = {
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
@@ -103,31 +149,39 @@ namespace Controller {
                 SectionTypes.RightCorner
             };
 
-
+            Track honkTrack = new Track("Honk Track", honkTrackSections);           // Most simple track      
             Track gardenTrack = new Track("Garden Track", gardenTrackSections);
-            Track honkTrack = new Track("Honk Track", honkTrackSections);               // Simple Track
-            Track townTrack = new Track("Town Track", townTrackSections);               
+            Track townTrack = new Track("Town Track", townTrackSections);
 
-            comp.Tracks.Enqueue(gardenTrack);
             comp.Tracks.Enqueue(honkTrack);
+            comp.Tracks.Enqueue(gardenTrack);
             comp.Tracks.Enqueue(townTrack);
+        }   
 
+        public static void NextRace() {            
+            if (currentRace != null) {
+                currentRace.CleanUp();
+            }
+
+            Track nextTrack = comp.NextTrack();
+            if (nextTrack != null) {
+                currentRace = new Race(nextTrack, comp.Participants);
+                currentRace.RaceIsFinished += OnRaceIsFinished;
+                NextRaceEvent?.Invoke(null, new NextRaceEventArgs() { Race = currentRace });
+                currentRace.StartRace();
+            }
+            else {
+                currentRace = null;
+            }
         }
 
-        public static void NextRace() {
-
-            if (CurrentRace != null) {
-                comp.GivePointsToDriver(CurrentRace.FinishPosition);        // Give points
-                NextRaceEventHandler?.Invoke(null, new RaceStartEventArgs() { Race = CurrentRace });
-            }
-
-            Race next = new Race(comp.NextTrack(), comp.Participants);
-            if (next != null){
-                CurrentRace = next;
-            }
-            else{
-                CurrentRace = null;
-            }
+        public static void OnRaceIsFinished(object sender, EventArgs e) {       // fill competition information
+            comp.GivePoints(currentRace.getEndResult());
+            comp.GiveSectionTime(currentRace.getRaceStatRoundTime());
+            comp.GiveSectionSpeed(currentRace.getRaceSectionSpeed());
+            comp.GiveTimesBroken(currentRace.getBrokenCounter());
         }
     }
+
+
 }

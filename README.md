@@ -1,2 +1,0 @@
-# GooseRace
-C# Game

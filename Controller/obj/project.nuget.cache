@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xj0W7V3iHpem1yRnYZ1d9YyiB8BVvm6XSZLbRsEe+OYkOr+zgDtUaZJJnTbT+YsYPG9235Plwxs2JeXStTWx1Q==",
+  "dgSpecHash": "ORPBEt8MBR+fY4QSvKsUwHz+PSbai1QqSrt4/vAB3Ug8em5jAc+hIWZ3vVfYzSSD6iTKbz8jppC/u+xwAnwr/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\jacco\\Documents\\School Goose Race\\GooseRace\\Controller\\Controller.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\jacco\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "C:\\Users\\jacco\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\jacco\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,0 +1,52 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GooseGUI"
+        xmlns:Model="clr-namespace:Model;assembly=Model" x:Class="GooseGUI.PartCompStatistics"
+        mc:Ignorable="d"
+        Title="PartCompStatistics" Height="450" Width="1046">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="506*"/>
+            <ColumnDefinition Width="17*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="brokenCounter" Margin="57,48,685,27">
+            <ListView.DataContext>
+                <local:RaceStatisticsDataContext/>
+            </ListView.DataContext>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding timesBroken}" Header="timesBroken"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="sectionSpeed" Margin="343,48,257,27">
+            <ListView.DataContext>
+                <local:RaceStatisticsDataContext/>
+            </ListView.DataContext>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding speed}" Header="Speed"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding section.SectionType}" Header="Section"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="partPoints" Margin="770,48,0,27">
+            <ListView.DataContext>
+                <local:RaceStatisticsDataContext/>
+            </ListView.DataContext>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Path.Key}" Header="Place"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

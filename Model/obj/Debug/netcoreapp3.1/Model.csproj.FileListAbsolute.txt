@@ -1,0 +1,36 @@
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\bin\Debug\netcoreapp3.1\Model.deps.json
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.dll
+C:\Users\Richard\Documents\school\SE OOP\C#\RaceSimulator\RaceSimulatorProject\Model\obj\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\bin\Debug\netcoreapp3.1\Model.deps.json
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Desktop\Goose Race total package\RaceSimulatorProject-RIchard\Model\obj\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\bin\Debug\netcoreapp3.1\Model.deps.json
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Desktop\Goose Race total package\NewNewGoose\Model\obj\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.deps.json
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.pdb
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.dll
+C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.pdb
