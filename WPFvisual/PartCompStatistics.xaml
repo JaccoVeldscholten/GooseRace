@@ -20,7 +20,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding timesBroken}" Header="timesBroken"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding timesBroken}" Header="Wings lost"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -37,16 +37,15 @@
             </ListView.View>
         </ListView>
         <ListView x:Name="partPoints" Margin="770,48,0,27">
-            <ListView.DataContext>
-                <local:RaceStatisticsDataContext/>
-            </ListView.DataContext>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Path.Key}" Header="Place"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Label Content="Winner" HorizontalAlignment="Left" Margin="770,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="Goose Stats" HorizontalAlignment="Left" Margin="343,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="Goose Wing lost" HorizontalAlignment="Left" Margin="57,12,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

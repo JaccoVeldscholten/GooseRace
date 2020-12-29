@@ -12,44 +12,40 @@ namespace GooseGUI
 {
     class RaceStatisticsDataContext : INotifyPropertyChanged
     {
-        // race
+      
         public event PropertyChangedEventHandler PropertyChanged;
         public Race CurrentRace { get; set; }
         private RaceStats<SectionRoundtime> sectionTimeStorage;
         public List<SectionRoundtime> SectionTimes { get; set; }
 
-        // competition
-        public List<IParticipant> Participants { get; set; }
+        public List<IParticipant> Gooses { get; set; }
         public string BestSectionTime { get; set; }
-        public List<BrokenCounter> brokenCounter;
+        public List<LostWings> brokenCounter;
         public List<SectionSpeed> sectionSpeed;
-        public Dictionary<IParticipant, int> lapsPerParticipant;
-        public List<IParticipant> participantsFinishOrder;
+        public Dictionary<IParticipant, int> lapsGooses;
+        public List<IParticipant> WinnerStats;
 
-        public RaceStatisticsDataContext()
-        {
+        public RaceStatisticsDataContext() {
             SectionTimes = new List<SectionRoundtime>();
         }
 
-        public void OnNextRace(object sender, NextRaceEventArgs e)
-        {
+        public void OnNextRace(object sender, NextRaceEventArgs e) {
             CurrentRace = e.Race;
             sectionTimeStorage = CurrentRace.RaceStatRoundtime;
             
             e.Race.GoosesChanged += OnGoosesChanged;
         }
 
-        public void OnGoosesChanged(object sender, GoosesChangedEventArgs e)      // every change of drivers: update the lists with new data
-        {
+        public void OnGoosesChanged(object sender, GoosesChangedEventArgs e) {
+            // On every Change the data of the Goose will be fetched and updated
             SectionTimes = sectionTimeStorage.getRaceStatList();
-            Participants = CurrentRace.Participants;
+            Gooses = CurrentRace.Gooses;
 
-            //BestSectionTime = sectionTimeStorage.GetHighest();
-            brokenCounter = CurrentRace.brokenCounter.getRaceStatList();
-            sectionSpeed = CurrentRace.sectionSpeed.getRaceStatList();
-            lapsPerParticipant = CurrentRace.lapsPerParticipant;
-            participantsFinishOrder = CurrentRace.participantsFinishOrder;
+            lapsGooses = CurrentRace.Laps;                                  // Receiveing all laps 
+            brokenCounter = CurrentRace.wingsLostCounter.getRaceStatList();    // Receiving Stats broken
+            sectionSpeed = CurrentRace.sectionSpeed.getRaceStatList();      // Receiving section speeds
 
+            WinnerStats = CurrentRace.WinnerList;               // Winners
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
 

@@ -13,35 +13,45 @@ namespace Controller {
     }
 
     public class Race {
+        
+        // Used Objects
         public Track Track { get; set; }
-        public List<IParticipant> Participants { get; set; }
         public DateTime StartTime { get; set; }
         private readonly Random _random;
-        private Dictionary<Section, SectionData> _positions;
         private readonly Timer timer;
-        private readonly int amountOfLaps = 2;
-        public List<IParticipant> participantsFinishOrder;
-        private int removedPartcipants = 0;
-        public Dictionary<IParticipant, int> lapsPerParticipant;
+
+        // Used integers
+        private readonly int maxLaps = 2;
+        private int removedGooses = 0;
+
+        // Lists
+        public List<IParticipant> Gooses { get; set; }
+        private Dictionary<Section, SectionData> Positions;
+        public List<IParticipant> WinnerList;
+        public Dictionary<IParticipant, int> Laps;
+
+        // Used stats
         public RaceStats<SectionRoundtime> RaceStatRoundtime;
         public RaceStats<SectionSpeed> sectionSpeed;
-        public RaceStats<BrokenCounter> brokenCounter;
+        public RaceStats<LostWings> wingsLostCounter;
 
-        public delegate void GoosesChangedEventHandler(object source, GoosesChangedEventArgs args);   // event handler to see if drivers have changed
-        public event GoosesChangedEventHandler GoosesChanged;                                         // event to let drivers change
+        // Events
+        public delegate void GoosesChangedEventHandler(object source, GoosesChangedEventArgs args);  
+        public event GoosesChangedEventHandler GoosesChanged;                                         
 
-        public delegate void RaceIsFinishedEventHandler(object source, EventArgs args);                 // event handler to see if race is finished
-        public event RaceIsFinishedEventHandler RaceIsFinished;                                         // event to let race finish
+        public delegate void RaceIsFinishedEventHandler(object source, EventArgs args);                 
+        public event RaceIsFinishedEventHandler RaceIsFinished;                                         
 
-        public Race(Track track, List<IParticipant> participants) {                                     // constructor making standard race
+        public Race(Track track, List<IParticipant> gooses) {                                     
             Track = track;
-            Participants = participants;
+            Gooses = gooses;
             _random = new Random(DateTime.Now.Millisecond);
-            _positions = new Dictionary<Section, SectionData>();
-            participantsFinishOrder = new List<IParticipant>();
+            Positions = new Dictionary<Section, SectionData>();
+            WinnerList = new List<IParticipant>();
             RaceStatRoundtime = new RaceStats<SectionRoundtime>();
             sectionSpeed = new RaceStats<SectionSpeed>();
-            brokenCounter = new RaceStats<BrokenCounter>();
+            wingsLostCounter = new RaceStats<LostWings>();
+            Laps = new Dictionary<IParticipant, int>();
             timer = new Timer(300);
             timer.Elapsed += OnTimedEvent;
             SetStartPos();
@@ -50,9 +60,9 @@ namespace Controller {
         }
 
         public SectionData GetSectionData(Section section) {                // get section data, if it doesnt exist: create new
-            if (!_positions.TryGetValue(section, out SectionData returnSectionData)) {
+            if (!Positions.TryGetValue(section, out SectionData returnSectionData)) {
                 SectionData newSectionData = new SectionData();
-                _positions.Add(section, newSectionData);
+                Positions.Add(section, newSectionData);
                 returnSectionData = newSectionData;
             }
             return returnSectionData;
@@ -62,8 +72,8 @@ namespace Controller {
             int tempArray = 0;
             List<Section> startGrids = DetermineStartGrids();               // make grid positions
             bool placeRight = false;
-            for (int i = 0; Participants.Count > i; i++) {                // check that each participant is taken care of
-                PlaceParticipant(Participants[i], placeRight, startGrids[tempArray]);      // place participants
+            for (int i = 0; Gooses.Count > i; i++) {                // check that each participant is taken care of
+                PlaceParticipant(Gooses[i], placeRight, startGrids[tempArray]);      // place participants
                 placeRight = !placeRight;
                 if (i % 2 == 1) {
                     tempArray++;
@@ -72,65 +82,71 @@ namespace Controller {
         }
 
         public void SetParticipantLaps() {                                  // set lap of participant to -1 due to passing finish on start
-            lapsPerParticipant = new Dictionary<IParticipant, int>();
-            foreach (IParticipant part in Participants) {
-                lapsPerParticipant.Add(part, -1);
+            foreach (IParticipant part in Gooses) {
+                Laps.Add(part, -1);
             }
         }
 
-        public bool ParticipantIsFinished(IParticipant part) {              // participant is done when amount of laps is enough
-            return lapsPerParticipant[part] >= amountOfLaps;
+        public bool ParticipantIsFinished(IParticipant goose) {              // participant is done when amount of laps is enough
+            return Laps[goose] >= maxLaps;
         }
 
-        public void UpdateLap(IParticipant part, DateTime elapsedDateTime) {    // participant amount of laps +1 
-            lapsPerParticipant[part]++;
+        public void UpdateLap(IParticipant goose, DateTime elapsedDateTime) {    // participant amount of laps +1 
+            Laps[goose]++;
         }
 
         private void UpdateLapOfParticipant(Section section, SectionData sectionData, Side side, DateTime elapsedDateTime) {        // update laptime of participant
             if (side == Side.Right) {
                 UpdateLap(sectionData.Right, elapsedDateTime);
                 if (ParticipantIsFinished(sectionData.Right)) {
-                    participantsFinishOrder.Add(sectionData.Right);
+                    WinnerList.Add(sectionData.Right);
                     sectionData.Right = null;
-                    removedPartcipants++;
+                    removedGooses++;
                 }
             } else if (side == Side.Left) {
                 UpdateLap(sectionData.Left, elapsedDateTime);
                 if (ParticipantIsFinished(sectionData.Left)) {
-                    participantsFinishOrder.Add(sectionData.Left);
+                    WinnerList.Add(sectionData.Left);
                     sectionData.Left = null;
-                    removedPartcipants++;
+                    removedGooses++;
                 }
             }
         }
 
-        public List<IParticipant> getEndResult() {                      // make finish order of participants
-            return participantsFinishOrder;
+        public List<IParticipant> GetEndResult() {
+            // Return Finish order
+            return WinnerList;
         }
 
-        public RaceStats<SectionRoundtime> getRaceStatRoundTime() {     // get race section times
-            return RaceStatRoundtime;
-        }
 
-        public RaceStats<SectionSpeed> getRaceSectionSpeed() {          // get race sections speeds
+
+        public RaceStats<SectionSpeed> GetRaceSectionSpeed() {       
+            // Reciever for getting Section speeds for stats
             return sectionSpeed;
         }
 
-        public RaceStats<BrokenCounter> getBrokenCounter() {            // get race amount of broken of participants
-            return brokenCounter;
+        public RaceStats<LostWings> GetwingsLostCounter() {        
+            // Receiver for getting the Broken count for stats
+            return wingsLostCounter;
+        }
+        public RaceStats<SectionRoundtime> GetRaceStatRoundTime() {
+            // Receiver for getting the Round Times for stats
+            return RaceStatRoundtime;
         }
 
-        public List<Section> DetermineStartGrids() {                    // see where to put startgrids
-            List<Section> startGridSections = new List<Section>();
 
-            foreach (Section trackPart in Track.Sections) {
-                if (trackPart.SectionType == SectionTypes.StartGrid) {
-                    startGridSections.Add(trackPart);
+        public List<Section> DetermineStartGrids() {                
+            // Add the StartGrids to the list.
+            List<Section> startList = new List<Section>();
+
+            foreach (Section tp in Track.Sections) {
+                if (tp.SectionType == SectionTypes.StartGrid) {
+                    startList.Add(tp);
                 }
             }
-            startGridSections.Reverse();
+            startList.Reverse();
 
-            return startGridSections;
+            return startList;
         }
 
         public void PlaceParticipant(IParticipant part, bool placeRight, Section section) {     // place participants on the grid
@@ -143,14 +159,14 @@ namespace Controller {
 
         public void RandomizeEquipment() {    
             // Generating Random Equipment per goose
-            foreach (Goose goose in Participants) {
-                goose.Equipment.Quality = _random.Next(5, 10);      // Quality cant never a 0 so 5 is good
-                goose.Equipment.Performance = _random.Next(5, 10);  // Performance min 5. Otherwise its slow
-                goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;
+            foreach (Goose goose in Gooses) {
+                goose.Equipment.Quality = _random.Next(0, 11);      // Quality cant never a 0 so 5 is good
+                goose.Equipment.Performance = _random.Next(4, 11);  // Performance min 5. Otherwise its slow
+                goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;  // Speed is based on the Performance & Quality
             }
         }
 
-        public void StartRace() {                                   // start timer of the race (and race itself)
+        public void StartRace() {                               
             timer.Start();
         }
 
@@ -165,26 +181,26 @@ namespace Controller {
         }
 
         public void LetTheWingsBreakOrFix() {              
-            foreach (IParticipant p in Participants) {
-                if (!p.Equipment.IsBroken) {
+            foreach (IParticipant goose in Gooses) {
+                if (!goose.Equipment.IsBroken) {
                     // Wings not broken
-                    if (_random.Next(1, (25 + p.Equipment.Quality)) == 1) {
-                        p.Equipment.IsBroken = true;
-                        BrokenCounter bc = new BrokenCounter() { name = p.Name, timesBroken = 1};
-                        brokenCounter.addRaceStatToList(bc);
+                    if (_random.Next(0, 21) == 10) {         // Change of 5% to get busted
+                        goose.Equipment.IsBroken = true;
+                        LostWings bc = new LostWings() { name = goose.Name, TimesWingLost = 1};   // Save to generic
+                        wingsLostCounter.addRaceStatToList(bc);
 
                     }
                 } else {
-                    // Wings is broken
-                    if (_random.Next(0, 2) == 1) {
-                         p.Equipment.Quality--;
-                         p.Equipment.Speed = p.Equipment.Performance * p.Equipment.Quality;
-                         p.Equipment.IsBroken = false;
-                        if (p.Equipment.Quality < 10) {
-                            p.Equipment.Quality = 10;
+                    // Wing is broken
+                    if (_random.Next(0, 5) == 1) {              // Change of 25% to get fixed 
+                        goose.Equipment.Quality--;              // Lower the quality every time it brokes
+                        goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;  // Decrease speed when wing failed
+                        goose.Equipment.IsBroken = false;
+                        if (goose.Equipment.Quality < 10) {
+                            goose.Equipment.Quality = 10;       // Fix so the goose will not stop
                         }
-                        if (p.Equipment.Speed < 10) {
-                            p.Equipment.Speed = 10;
+                        if (goose.Equipment.Speed < 10) {
+                            goose.Equipment.Speed = 10;         // Fix so the goose will not stop
                         }
                     }
 
@@ -387,7 +403,7 @@ namespace Controller {
 
         private bool CheckIfRaceIsFinished() {                  // checks if race is finished
             bool returnBool = false;
-            if (removedPartcipants == Participants.Count) {
+            if (removedGooses == Gooses.Count) {
                 returnBool = true;
             }
             return returnBool;
@@ -395,7 +411,7 @@ namespace Controller {
 
 
         protected virtual void OnGoosesChanged(Track track) {
-            GoosesChanged?.Invoke(this, new GoosesChangedEventArgs() { track = track });
+            GoosesChanged?.Invoke(this, new GoosesChangedEventArgs() { Track = track });
         }
 
         protected virtual void OnRaceIsFinished() {

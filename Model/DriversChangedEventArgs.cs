@@ -4,6 +4,6 @@ using System.Text;
 
 namespace Model {
     public class GoosesChangedEventArgs : EventArgs {
-        public Track track { get; set; }
+        public Track Track { get; set; }
     }
 }

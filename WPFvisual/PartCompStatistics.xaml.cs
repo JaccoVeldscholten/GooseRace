@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace GooseGUI
 {
-    /// <summary>
-    /// Interaction logic for PartCompStatistics.xaml
-    /// </summary>
     public partial class PartCompStatistics : Window
     {
         public PartCompStatistics()

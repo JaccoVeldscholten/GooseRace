@@ -14,7 +14,7 @@ namespace Model
 
         public void OnGoosesChanged(object source, GoosesChangedEventArgs e)
         {
-            TrackName = e.track.Name;
+            TrackName = e.Track.Name;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
         }
     }

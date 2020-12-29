@@ -18,33 +18,31 @@ using Model;
 
 
 namespace GooseGUI {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window {
 
-        private CurrentRaceStatistics curRaceStats;
-        private PartCompStatistics partCompStats;
-        private RaceStatisticsDataContext raceStats;
+        private CurrentRaceStatistics CurRaceStats;
+        private PartCompStatistics GooseStats;
+        private RaceStatisticsDataContext RaceStats;
 
         public MainWindow() {
             InitializeComponent();
     
-            Images.Init();
+            Images.Init();          // Init images Lib
             Data.Init();
 
-            raceStats = new RaceStatisticsDataContext();            // make all screens in advance to add data
-            curRaceStats = new CurrentRaceStatistics();
-            partCompStats = new PartCompStatistics();
+            RaceStats = new RaceStatisticsDataContext();
+            GooseStats = new PartCompStatistics();
+            CurRaceStats = new CurrentRaceStatistics();
 
-            Data.NextRaceEvent += raceStats.OnNextRace;
+            Data.NextRaceEvent += RaceStats.OnNextRace;
 
             Data.NextRaceEvent += OnNextRaceEvent;
             Data.NextRace();
             
         }
 
-        private void OnNextRaceEvent(object sender, NextRaceEventArgs e) {              // connect events when next race is called
+        private void OnNextRaceEvent(object sender, NextRaceEventArgs e) {           
             Images.ClearCache();
             Visualisation.Initialize(e.Race);
 
@@ -53,52 +51,58 @@ namespace GooseGUI {
             
             this.Dispatcher.Invoke(() =>
             {
-                e.Race.GoosesChanged += ((DataContext)this.DataContext).OnGoosesChanged;          // add event
+                e.Race.GoosesChanged += ((DataContext)this.DataContext).OnGoosesChanged;        
             });
             
         }
 
-        protected virtual void OnGoosesChanged(object source, GoosesChangedEventArgs e) {         // change track images when drives change position
+        protected virtual void OnGoosesChanged(object source, GoosesChangedEventArgs e) {       
+            // Receive new Image every race
             this.RaceCanvas.Dispatcher.BeginInvoke(
                 DispatcherPriority.Render,
                 new Action(() => {
                     this.RaceCanvas.Source = null;
-                    this.RaceCanvas.Source = Visualisation.DrawTrack(e.track);
+                    this.RaceCanvas.Source = Visualisation.DrawTrack(e.Track);
                 }));
-            this.Dispatcher.Invoke(() =>                        // refresh all lists to show new data
+            this.Dispatcher.Invoke(() =>                    
+            // Refresh the data for stats
             {
-                curRaceStats.participant.Items.Refresh();
-                curRaceStats.sectionTimeData.Items.Refresh();
-                curRaceStats.lapsPerParticipant.Items.Refresh();
+                CurRaceStats.participant.Items.Refresh();
+                CurRaceStats.sectionTimeData.Items.Refresh();
+                CurRaceStats.lapsPerParticipant.Items.Refresh();
 
-                partCompStats.brokenCounter.Items.Refresh();
-                partCompStats.sectionSpeed.Items.Refresh();
-                partCompStats.partPoints.Items.Refresh();
+                GooseStats.brokenCounter.Items.Refresh();
+                GooseStats.sectionSpeed.Items.Refresh();
+                GooseStats.partPoints.Items.Refresh();
             });
         }
 
-        public static void OnRaceIsFinished(object soure, EventArgs e) {        // when race is finished, call next track
+        public static void OnRaceIsFinished(object soure, EventArgs e) {        
+            // Call Next Race when is Finsihed
             Data.NextRace();
         }
 
-        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e) {    // exit app when pressed exit
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e) {    
+            // Close the application on button press
             Application.Current.Shutdown();
         }
 
-        private void MenuItem_OpenPartAndCompStatistics_Click(object sender, RoutedEventArgs e) {       // open competition screen
-            partCompStats.sectionSpeed.ItemsSource = raceStats.sectionSpeed;
-            partCompStats.brokenCounter.ItemsSource = raceStats.brokenCounter;
-            partCompStats.partPoints.ItemsSource = raceStats.participantsFinishOrder;
+        private void MenuItem_OpenPartAndCompStatistics_Click(object sender, RoutedEventArgs e) {     
+            // Open competion screen and receive the information to display
+            GooseStats.sectionSpeed.ItemsSource = RaceStats.sectionSpeed;
+            GooseStats.brokenCounter.ItemsSource = RaceStats.brokenCounter;
+            GooseStats.partPoints.ItemsSource = RaceStats.WinnerStats;
 
-            partCompStats.Show();
+            GooseStats.Show();
         }
 
-        private void MenuItem_CurrentRaceStatistics_Click(object sender, RoutedEventArgs e) {           // open race statistics
-            curRaceStats.sectionTimeData.ItemsSource = raceStats.SectionTimes;
-            curRaceStats.participant.ItemsSource = raceStats.Participants;
-            curRaceStats.lapsPerParticipant.ItemsSource = raceStats.lapsPerParticipant;
+        private void MenuItem_CurrentRaceStatistics_Click(object sender, RoutedEventArgs e) {         
+            // Open stats screen and receive the infromation display
+            CurRaceStats.sectionTimeData.ItemsSource = RaceStats.SectionTimes;
+            CurRaceStats.participant.ItemsSource = RaceStats.Gooses;
+            CurRaceStats.lapsPerParticipant.ItemsSource = RaceStats.lapsGooses;
 
-            curRaceStats.Show();
+            CurRaceStats.Show();
         }
     }
 }

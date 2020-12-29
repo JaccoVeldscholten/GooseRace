@@ -6,7 +6,7 @@ using Model;
 namespace Controller {
     public static class Data {
         public static Competition comp { get; set; }
-        public static Race currentRace { get; set; }
+        public static Race CurrentRace { get; set; }
 
         public delegate void NextRaceEventHandler(object source, NextRaceEventArgs args);
         static public event NextRaceEventHandler NextRaceEvent;
@@ -159,27 +159,27 @@ namespace Controller {
         }   
 
         public static void NextRace() {            
-            if (currentRace != null) {
-                currentRace.CleanUp();
+            if (CurrentRace != null) {
+                CurrentRace.CleanUp();
             }
 
             Track nextTrack = comp.NextTrack();
             if (nextTrack != null) {
-                currentRace = new Race(nextTrack, comp.Participants);
-                currentRace.RaceIsFinished += OnRaceIsFinished;
-                NextRaceEvent?.Invoke(null, new NextRaceEventArgs() { Race = currentRace });
-                currentRace.StartRace();
+                CurrentRace = new Race(nextTrack, comp.Participants);
+                CurrentRace.RaceIsFinished += OnRaceIsFinished;
+                NextRaceEvent?.Invoke(null, new NextRaceEventArgs() { Race = CurrentRace });
+                CurrentRace.StartRace();
             }
             else {
-                currentRace = null;
+                CurrentRace = null;
             }
         }
 
         public static void OnRaceIsFinished(object sender, EventArgs e) {       // fill competition information
-            comp.GivePoints(currentRace.getEndResult());
-            comp.GiveSectionTime(currentRace.getRaceStatRoundTime());
-            comp.GiveSectionSpeed(currentRace.getRaceSectionSpeed());
-            comp.GiveTimesBroken(currentRace.getBrokenCounter());
+            comp.GivePoints(CurrentRace.GetEndResult());
+            comp.GiveSectionTime(CurrentRace.GetRaceStatRoundTime());
+            comp.GiveSectionSpeed(CurrentRace.GetRaceSectionSpeed());
+            comp.GiveTimesBroken(CurrentRace.GetwingsLostCounter());
         }
     }
 

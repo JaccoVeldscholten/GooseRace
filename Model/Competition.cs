@@ -9,7 +9,7 @@ namespace Model {
         public RaceStats<Points> RaceStatPoints;
         public RaceStats<SectionRoundtime> RaceRoundTime;
         public RaceStats<SectionSpeed> RaceSectionSpeed;
-        public RaceStats<BrokenCounter> brokeCounter;
+        public RaceStats<LostWings> brokeCounter;
         private int maxPoints = 10;
 
         public Competition() {                                          // make new competition
@@ -46,7 +46,7 @@ namespace Model {
             RaceSectionSpeed = SS;
         }
 
-        public void GiveTimesBroken(RaceStats<BrokenCounter> BC) {
+        public void GiveTimesBroken(RaceStats<LostWings> BC) {
             brokeCounter = BC;
         }
     }
