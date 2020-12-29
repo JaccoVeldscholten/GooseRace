@@ -52,7 +52,7 @@ namespace Controller {
             sectionSpeed = new RaceStats<SectionSpeed>();
             wingsLostCounter = new RaceStats<LostWings>();
             Laps = new Dictionary<IParticipant, int>();
-            timer = new Timer(300);
+            timer = new Timer(200);
             timer.Elapsed += OnTimedEvent;
             SetStartPos();
             RandomizeEquipment();
@@ -184,7 +184,7 @@ namespace Controller {
             foreach (IParticipant goose in Gooses) {
                 if (!goose.Equipment.IsBroken) {
                     // Wings not broken
-                    if (_random.Next(0, 21) == 10) {         // Change of 5% to get busted
+                    if (_random.Next(0, 50) == 10) {         // Change of 5% to get busted
                         goose.Equipment.IsBroken = true;
                         LostWings bc = new LostWings() { name = goose.Name, TimesWingLost = 1};   // Save to generic
                         wingsLostCounter.addRaceStatToList(bc);
