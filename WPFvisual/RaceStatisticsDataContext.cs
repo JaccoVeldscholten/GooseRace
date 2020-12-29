@@ -15,8 +15,8 @@ namespace GooseGUI
       
         public event PropertyChangedEventHandler PropertyChanged;
         public Race CurrentRace { get; set; }
-        private RaceStats<SectionRoundtime> sectionTimeStorage;
-        public List<SectionRoundtime> SectionTimes { get; set; }
+        private RaceStats<GooseSectionTimes> sectionTimeStorage;
+        public List<GooseSectionTimes> SectionTimes { get; set; }
 
         public List<IParticipant> Gooses { get; set; }
         public string BestSectionTime { get; set; }
@@ -26,7 +26,7 @@ namespace GooseGUI
         public List<IParticipant> WinnerStats;
 
         public RaceStatisticsDataContext() {
-            SectionTimes = new List<SectionRoundtime>();
+            SectionTimes = new List<GooseSectionTimes>();
         }
 
         public void OnNextRace(object sender, NextRaceEventArgs e) {

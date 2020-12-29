@@ -31,7 +31,7 @@ namespace Controller {
         public Dictionary<IParticipant, int> Laps;
 
         // Used stats
-        public RaceStats<SectionRoundtime> RaceStatRoundtime;
+        public RaceStats<GooseSectionTimes> RaceStatRoundtime;
         public RaceStats<SectionSpeed> sectionSpeed;
         public RaceStats<LostWings> wingsLostCounter;
 
@@ -48,7 +48,7 @@ namespace Controller {
             _random = new Random(DateTime.Now.Millisecond);
             Positions = new Dictionary<Section, SectionData>();
             WinnerList = new List<IParticipant>();
-            RaceStatRoundtime = new RaceStats<SectionRoundtime>();
+            RaceStatRoundtime = new RaceStats<GooseSectionTimes>();
             sectionSpeed = new RaceStats<SectionSpeed>();
             wingsLostCounter = new RaceStats<LostWings>();
             Laps = new Dictionary<IParticipant, int>();
@@ -129,7 +129,7 @@ namespace Controller {
             // Receiver for getting the Broken count for stats
             return wingsLostCounter;
         }
-        public RaceStats<SectionRoundtime> GetRaceStatRoundTime() {
+        public RaceStats<GooseSectionTimes> GetRaceStatRoundTime() {
             // Receiver for getting the Round Times for stats
             return RaceStatRoundtime;
         }
@@ -309,10 +309,10 @@ namespace Controller {
                 }
 
                 // ================== DATA ==================
-                RaceStatRoundtime.addRaceStatToList(new SectionRoundtime() {
+                RaceStatRoundtime.addRaceStatToList(new GooseSectionTimes() {
                     name = currentSectionData.Right.Name,
-                    time = elapsedDateTime - currentSectionData.TimeRight,
-                    section = currentSection
+                    Time = elapsedDateTime - currentSectionData.TimeRight,
+                    Section = currentSection
                 }
                 );
                 sectionSpeed.addRaceStatToList(new SectionSpeed() {
@@ -340,10 +340,10 @@ namespace Controller {
                 }
 
                 // ================== DATA ==================
-                RaceStatRoundtime.addRaceStatToList(new SectionRoundtime() {                                // add racedata to list
+                RaceStatRoundtime.addRaceStatToList(new GooseSectionTimes() {                                // add racedata to list
                     name = currentSectionData.Left.Name,
-                    time = elapsedDateTime - currentSectionData.TimeLeft,
-                    section = currentSection
+                    Time = elapsedDateTime - currentSectionData.TimeLeft,
+                    Section = currentSection
                 }
                 );
                 sectionSpeed.addRaceStatToList(new SectionSpeed() {                                         // add racedata to list

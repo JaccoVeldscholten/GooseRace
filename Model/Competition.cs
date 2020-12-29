@@ -7,7 +7,7 @@ namespace Model {
         public List<IParticipant> Participants { get; set; }
         public Queue<Track> Tracks { get; set; }
         public RaceStats<GoosePoints> RaceStatPoints;
-        public RaceStats<SectionRoundtime> RaceRoundTime;
+        public RaceStats<GooseSectionTimes> RaceRoundTime;
         public RaceStats<SectionSpeed> RaceSectionSpeed;
         public RaceStats<LostWings> brokeCounter;
         private int maxPoints = 10;
@@ -16,7 +16,7 @@ namespace Model {
             Participants = new List<IParticipant>();
             Tracks = new Queue<Track>();
             RaceStatPoints = new RaceStats<GoosePoints>();
-            RaceRoundTime = new RaceStats<SectionRoundtime>();
+            RaceRoundTime = new RaceStats<GooseSectionTimes>();
         }
         public Track NextTrack() {                                      // get next track, dequeue current
             Track nextTrack;
@@ -38,7 +38,7 @@ namespace Model {
             }
         }
 
-        public void GiveSectionTime(RaceStats<SectionRoundtime> rrt) {
+        public void GiveSectionTime(RaceStats<GooseSectionTimes> rrt) {
             RaceRoundTime = rrt;
         }
 
