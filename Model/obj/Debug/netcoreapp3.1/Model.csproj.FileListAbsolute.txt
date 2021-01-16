@@ -34,3 +34,11 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.pdb
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.deps.json
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.dll
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\bin\Debug\netcoreapp3.1\Model.pdb
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfoInputs.cache
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.AssemblyInfo.cs
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.dll
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.pdb

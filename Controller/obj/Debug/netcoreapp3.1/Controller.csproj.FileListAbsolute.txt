@@ -46,3 +46,15 @@ C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcor
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.dll
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.pdb
 C:\Users\jacco\Documents\School Goose Race\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csproj.CopyComplete
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.deps.json
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.dll
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\bin\Debug\netcoreapp3.1\Controller.pdb
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.dll
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\bin\Debug\netcoreapp3.1\Model.pdb
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csprojAssemblyReference.cache
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.AssemblyInfoInputs.cache
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.AssemblyInfo.cs
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csproj.CoreCompileInputs.cache
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.csproj.CopyComplete
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.dll
+F:\Users\jacco\Documents\GitHub\GooseRace\Controller\obj\Debug\netcoreapp3.1\Controller.pdb
