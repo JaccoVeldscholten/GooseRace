@@ -30,8 +30,8 @@ namespace ControllerTest {
 
             _competition.Participants.Add(GooseTest);
             Object result = null;
-            foreach (Goose ast in _competition.Participants) {
-                result = ast.Name;
+            foreach (Goose goose in _competition.Participants) {
+                result = goose.Name;
             }
 
             Assert.AreEqual(GooseTest.Name, result);
@@ -53,8 +53,8 @@ namespace ControllerTest {
 
             _competition.Participants.Add(GooseTest);
             Object result = null;
-            foreach (Goose ast in _competition.Participants) {
-                result = ast.Points;
+            foreach (Goose goose in _competition.Participants) {
+                result = goose.Points;
             }
 
             Assert.AreEqual(GooseTest.Points, result);
@@ -76,8 +76,8 @@ namespace ControllerTest {
 
             _competition.Participants.Add(GooseTest);
             Object result = null;
-            foreach (Goose ast in _competition.Participants) {
-                result = ast.Equipment;
+            foreach (Goose goose in _competition.Participants) {
+                result = goose.Equipment;
             }
 
             Assert.AreEqual(GooseTest.Equipment, result);
@@ -99,8 +99,8 @@ namespace ControllerTest {
 
             _competition.Participants.Add(GooseTest);
             Object result = null;
-            foreach (Goose ast in _competition.Participants) {
-                result = ast.TeamColor;
+            foreach (Goose goose in _competition.Participants) {
+                result = goose.TeamColor;
             }
 
             Assert.AreEqual(GooseTest.TeamColor, result);

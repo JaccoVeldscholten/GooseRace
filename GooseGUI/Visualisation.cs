@@ -73,6 +73,7 @@ namespace GooseGUI {
         private static Race race;
         private const int SectionDimension = 256;
         private const int DriverDimension = 64;
+        private const string Message = "Teamcolor not found.";
 
         public static void Initialize(Race r) {
             race = r;
@@ -286,6 +287,7 @@ namespace GooseGUI {
         }
 
         private static (int x, int y) OffsetParticipants(Side side, Direction currentDirection) {
+            // Creating Offsets for the screen
             (int x, int y) returnOffset = (0, 0);
             if (side == Side.Left)                                  // left side
             {
@@ -335,7 +337,7 @@ namespace GooseGUI {
                     TeamColors.Yellow => Yellow_North,
                     TeamColors.Grey => Grey_North,
                     TeamColors.Blue => Blue_North,
-                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Teamcolor not found.")
+                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Eror color not in enum")
                 },
 
                 Direction.East => color switch
@@ -345,7 +347,7 @@ namespace GooseGUI {
                     TeamColors.Yellow => Yellow_East,
                     TeamColors.Grey => Grey_East,
                     TeamColors.Blue => Blue_East,
-                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Teamcolor not found.")
+                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, Message)
                 },
 
                 Direction.South => color switch
@@ -355,7 +357,7 @@ namespace GooseGUI {
                     TeamColors.Yellow => Yellow_South,
                     TeamColors.Grey => Grey_South,
                     TeamColors.Blue => Blue_South,
-                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Teamcolor not found.")
+                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Eror color not in enum")
                 },
 
                 Direction.West => color switch
@@ -365,9 +367,9 @@ namespace GooseGUI {
                     TeamColors.Yellow => Yellow_West,
                     TeamColors.Grey => Grey_West,
                     TeamColors.Blue => Blue_West,
-                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Teamcolor not found.")
+                    _ => throw new ArgumentOutOfRangeException(nameof(color), color, "Eror color not in enum")
                 },
-                _ => throw new ArgumentOutOfRangeException(nameof(d), d, "Teamcolor not found.")
+                _ => throw new ArgumentOutOfRangeException(nameof(d), d, "Eror color not in enum")
             };
         }
     }
