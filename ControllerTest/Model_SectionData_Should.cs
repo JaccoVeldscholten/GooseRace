@@ -1,10 +1,14 @@
-﻿using Model;
+﻿using Controller;
+using Model;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
 namespace ControllerTest {
 	class Model_SectionData_Should {
+
+		private Competition _competition;
+		public static Race CurrentRace { get; set; }
 
 		[SetUp]
 		public void Setup() {}
@@ -49,5 +53,9 @@ namespace ControllerTest {
 			sec.Right = TestGoose;
 			Assert.AreEqual(sec.Right, TestGoose);
 		}
+
+
+
+
 	}
 }

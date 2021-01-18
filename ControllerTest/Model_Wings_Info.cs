@@ -32,6 +32,7 @@ namespace ControllerTest {
 			wing.Quality = 10;
 			Assert.AreEqual(wing.Quality, 10);
 		}
+		[Test]
 		public void Check_Per_Wings() {
 			Wings wing = new Wings();
 			wing.Performance = 10;
