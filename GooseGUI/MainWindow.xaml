@@ -9,7 +9,7 @@
         Title="MainWindow" Height="1060" Width="1960"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <Model:DataContext/>
+        <Model:RaceData/>
     </Window.DataContext>
     <Grid Background="#446cce">
         <Image x:Name="RaceCanvas"/>

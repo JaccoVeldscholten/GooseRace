@@ -21,31 +21,28 @@ namespace ControllerTest {
         }
 
         [Test]
-        public void NextTrack_OneInQueue_ReturnTrack() {
-            SectionTypes[] testSections = {
-                SectionTypes.StartGrid,
-                SectionTypes.LeftCorner,
-            };
+        public void NextTrack_OneInQueue_RemoveTrackFromQueue() {
+            Competition testCompetitie = new Competition();
 
-            Track testTrack = new Track("TestTrack", testSections);
-            _competition.Tracks.Enqueue(testTrack);
-            Object result = _competition.NextTrack();
-            Assert.AreEqual(testTrack, result);
+            Track track = new Track("Test Track", new SectionTypes[] { SectionTypes.Straight });
+            testCompetitie.Tracks.Enqueue(track);
+
+            Track result;
+            _ = testCompetitie.NextTrack();
+            result = testCompetitie.NextTrack();
+            Assert.IsNull(result);
         }
 
         [Test]
-        public void NextTrack_OneInQueue_RemoveTrackFromQueue() {
-            SectionTypes[] testSections = {
-                SectionTypes.StartGrid,
-                SectionTypes.LeftCorner,
-            };
+        public void NextTrack_OneInQueue_ReturnTrack() {
+            Competition testCompetitie = new Competition();
 
-            Track testTrack = new Track("TestTrack", testSections);
-            _competition.Tracks.Enqueue(testTrack);
-            Object result = _competition.NextTrack();
-            result = _competition.NextTrack();
-            Assert.IsNull(result);
+            Track track = new Track("expiriment track", new SectionTypes[] { SectionTypes.Straight });
+            testCompetitie.Tracks.Enqueue(track);
+            Track result = testCompetitie.NextTrack();
+            Assert.AreEqual(track, result);
         }
+
 
         [Test]
         public void NextTrack_TwoInQueue_ReturnNextTrack() {
@@ -69,5 +66,6 @@ namespace ControllerTest {
             result = _competition.NextTrack();
             Assert.AreEqual(testTrackTwo, result);
         }
+
     }
 }

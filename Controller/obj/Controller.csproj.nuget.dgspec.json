@@ -13,6 +13,9 @@
         "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
         "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -71,6 +74,9 @@
         "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
         "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

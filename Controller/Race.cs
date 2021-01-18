@@ -17,7 +17,7 @@ namespace Controller {
         // Used Objects
         public Track Track { get; set; }
         public DateTime StartTime { get; set; }
-        private readonly Random _random;
+        private readonly Random random;
         private readonly Timer timer;
 
         // Used integers
@@ -45,7 +45,7 @@ namespace Controller {
         public Race(Track track, List<IParticipant> gooses) {                                     
             Track = track;
             Gooses = gooses;
-            _random = new Random(DateTime.Now.Millisecond);
+            random = new Random(DateTime.Now.Millisecond);
             Positions = new Dictionary<Section, SectionData>();
             WinnerList = new List<IParticipant>();
             RaceStatRoundtime = new RaceStats<GooseSectionTimes>();
@@ -160,8 +160,8 @@ namespace Controller {
         public void RandomizeEquipment() {    
             // Generating Random Equipment per goose
             foreach (Goose goose in Gooses) {
-                goose.Equipment.Quality = _random.Next(0, 11);      // Quality cant never a 0 so 5 is good
-                goose.Equipment.Performance = _random.Next(4, 11);  // Performance min 5. Otherwise its slow
+                goose.Equipment.Quality = random.Next(0, 11);      // Quality cant never a 0 so 5 is good
+                goose.Equipment.Performance = random.Next(4, 11);  // Performance min 5. Otherwise its slow
                 goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;  // Speed is based on the Performance & Quality
             }
         }
@@ -184,15 +184,15 @@ namespace Controller {
             foreach (IParticipant goose in Gooses) {
                 if (!goose.Equipment.IsBroken) {
                     // Wings not broken
-                    if (_random.Next(0, 50) == 10) {         // Change of 5% to get busted
+                    if (random.Next(0, 50) == 10) {         // Change of 5% to get busted
                         goose.Equipment.IsBroken = true;
-                        LostWings bc = new LostWings() { name = goose.Name, TimesWingLost = 1};   // Save to generic
-                        wingsLostCounter.addRaceStatToList(bc);
+                        LostWings lostWing = new LostWings() { name = goose.Name, TimesWingLost = 1};   // Save to generic
+                        wingsLostCounter.AddRaceStatToList(lostWing);
 
                     }
                 } else {
                     // Wing is broken
-                    if (_random.Next(0, 5) == 1) {              // Change of 25% to get fixed 
+                    if (random.Next(0, 5) == 1) {              // Change of 25% to get fixed 
                         goose.Equipment.Quality--;              // Lower the quality every time it brokes
                         goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;  // Decrease speed when wing failed
                         goose.Equipment.IsBroken = false;
@@ -297,38 +297,38 @@ namespace Controller {
             SectionData currentSectionData = GetSectionData(currentSection);
             SectionData nextSectionData = GetSectionData(nextSection);
 
+            // Check the side the goose is starting from
             if (start == Side.Right) {
                 if (end == Side.Right) {
                     nextSectionData.Right = currentSectionData.Right;
                     nextSectionData.TimeRight = elapsedDateTime;
                     nextSectionData.DistanceRight = currentSectionData.DistanceRight - 100;
-                } else if (end == Side.Left) {
+                } 
+                // Als het geen links is dan moet het rechts zijn
+                else if (end == Side.Left) {
                     nextSectionData.Left = currentSectionData.Right;
                     nextSectionData.TimeLeft = elapsedDateTime;
                     nextSectionData.DistanceLeft = currentSectionData.DistanceRight - 100;
                 }
 
-                // ================== DATA ==================
-                RaceStatRoundtime.addRaceStatToList(new GooseSectionTimes() {
+                RaceStatRoundtime.AddRaceStatToList(new GooseSectionTimes() {
                     name = currentSectionData.Right.Name,
                     Time = elapsedDateTime - currentSectionData.TimeRight,
                     Section = currentSection
                 }
                 );
-                sectionSpeed.addRaceStatToList(new SectionSpeed() {
+                sectionSpeed.AddRaceStatToList(new SectionSpeed() {
                     name = currentSectionData.Right.Name,
                     section = currentSection,
                     speed = currentSectionData.Right.Equipment.Speed
                 }
-                ); 
-                // ==========================================
+                );
 
-
-                // reset current section data
                 currentSectionData.Right = null;
                 currentSectionData.DistanceRight = 0;
 
-            } else if (start == Side.Left) {
+            } 
+            else if (start == Side.Left) {
                 if (end == Side.Right) {                                                                       // add racedata to list
                     nextSectionData.Right = currentSectionData.Left;
                     nextSectionData.TimeRight = elapsedDateTime;
@@ -339,23 +339,19 @@ namespace Controller {
                     nextSectionData.DistanceLeft = currentSectionData.DistanceLeft - 100;
                 }
 
-                // ================== DATA ==================
-                RaceStatRoundtime.addRaceStatToList(new GooseSectionTimes() {                                // add racedata to list
+                RaceStatRoundtime.AddRaceStatToList(new GooseSectionTimes() {                                // add racedata to list
                     name = currentSectionData.Left.Name,
                     Time = elapsedDateTime - currentSectionData.TimeLeft,
                     Section = currentSection
                 }
                 );
-                sectionSpeed.addRaceStatToList(new SectionSpeed() {                                         // add racedata to list
+                sectionSpeed.AddRaceStatToList(new SectionSpeed() {                                         // add racedata to list
                     name = currentSectionData.Left.Name,
                     section = currentSection,
                     speed = currentSectionData.Left.Equipment.Speed
                 }
                 );
-                // ==========================================
 
-
-                // reset current section data
                 currentSectionData.Left = null;
                 currentSectionData.DistanceLeft = 0;
             }

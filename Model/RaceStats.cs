@@ -6,11 +6,11 @@ namespace Model {
     public class RaceStats<T> where T : class, IGenericScope {              // generic class for other data classes
         private List<T> _list = new List<T>();
         
-        public void addRaceStatToList(T stat) {
+        public void AddRaceStatToList(T stat) {
             stat.Add(_list);
         }
 
-        public List<T> getRaceStatList() {
+        public List<T> GetRaceStatList() {
             return _list;
         }
 

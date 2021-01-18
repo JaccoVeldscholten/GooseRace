@@ -38,12 +38,12 @@ namespace GooseGUI
 
         public void OnGoosesChanged(object sender, GoosesChangedEventArgs e) {
             // On every Change the data of the Goose will be fetched and updated
-            SectionTimes = sectionTimeStorage.getRaceStatList();
+            SectionTimes = sectionTimeStorage.GetRaceStatList();
             Gooses = CurrentRace.Gooses;
 
             lapsGooses = CurrentRace.Laps;                                  // Receiveing all laps 
-            brokenCounter = CurrentRace.wingsLostCounter.getRaceStatList();    // Receiving Stats broken
-            sectionSpeed = CurrentRace.sectionSpeed.getRaceStatList();      // Receiving section speeds
+            brokenCounter = CurrentRace.wingsLostCounter.GetRaceStatList();    // Receiving Stats broken
+            sectionSpeed = CurrentRace.sectionSpeed.GetRaceStatList();      // Receiving section speeds
 
             WinnerStats = CurrentRace.WinnerList;               // Winners
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    public class DataContext : INotifyPropertyChanged
+    public class RaceData : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

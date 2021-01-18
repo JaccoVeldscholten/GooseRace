@@ -51,7 +51,7 @@ namespace GooseGUI {
             
             this.Dispatcher.Invoke(() =>
             {
-                e.Race.GoosesChanged += ((DataContext)this.DataContext).OnGoosesChanged;        
+                e.Race.GoosesChanged += ((RaceData)this.DataContext).OnGoosesChanged;        
             });
             
         }

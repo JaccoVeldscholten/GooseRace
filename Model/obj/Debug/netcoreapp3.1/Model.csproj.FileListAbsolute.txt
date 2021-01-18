@@ -42,3 +42,4 @@ F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.As
 F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csproj.CoreCompileInputs.cache
 F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.dll
 F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.pdb
+F:\Users\jacco\Documents\GitHub\GooseRace\Model\obj\Debug\netcoreapp3.1\Model.csprojAssemblyReference.cache
