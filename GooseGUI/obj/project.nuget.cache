@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "kmcuwNxgN5E7XAY2KlUe3UTEKObPnw8YgZrO7FSFdU54J+f/dqKSszJ9BQbjg06cTwX8rCA6QDr4dQY14Klscw==",
+  "dgSpecHash": "o7QW5P1f3S7K+lH84jIr6qH06pskWK+mP90FkEIhhlZzfQ6YVgJRbmdmx/n5fA1QDRcSoP5UWJjoIbC4AgxpIw==",
   "success": true,
-  "projectFilePath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\GooseGUI\\GooseGUI.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\GooseGUI\\GooseGUI.csproj",
   "expectedPackageFiles": [
-    "F:\\Users\\jacco\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "F:\\Users\\jacco\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "F:\\Users\\jacco\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

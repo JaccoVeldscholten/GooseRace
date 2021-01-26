@@ -8,23 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "F:\\Users\\jacco\\.nuget\\packages\\": {},
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
-      "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
-      "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

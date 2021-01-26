@@ -57,7 +57,7 @@ namespace ControllerTest {
 			Track track = new Track("TestTrackOne", testSec);
 
 			// add to list
-			list.AddRaceStatToList(new SectionSpeed() { name = GoosePiet.Name });
+			list.AddRaceStatToList(new SectionSpeed() { Name = GoosePiet.Name });
 
 			object result = list.GetHighest();  // Check who lost most wings
 			Assert.AreEqual(GoosePiet.Name, result);
@@ -93,15 +93,15 @@ namespace ControllerTest {
 			IParticipant GoosePiet = new Goose("TestGoose", 0, new Wings() { Quality = 10, IsBroken = false, Performance = 100, Speed = 100 }, TeamColors.Blue);
 
 			// add to list
-			list.AddRaceStatToList(new SectionSpeed() { name = GoosePiet.Name });
+			list.AddRaceStatToList(new SectionSpeed() { Name = GoosePiet.Name });
 
 			Assert.AreNotEqual(list, list.GetRaceStatList());
 		}
 		[Test]
 		public void Check_Race_StatSpeed() {
 			SectionSpeed sec = new SectionSpeed();
-			sec.speed = 10;
-			Assert.AreEqual(sec.speed, 10);
+			sec.Speed = 10;
+			Assert.AreEqual(sec.Speed, 10);
 		}
 	}
 }

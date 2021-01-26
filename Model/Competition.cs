@@ -31,7 +31,7 @@ namespace Model {
         public void GivePoints(List<IParticipant> order) {              // give participating participants points, given through the order
             int mP = maxPoints;
             for (int i = 0; i < order.Count; i++) {
-                RaceStatPoints.AddRaceStatToList(new GoosePoints() { name = order[i].Name, Points = mP });
+                RaceStatPoints.AddRaceStatToList(new GoosePoints() { Name = order[i].Name, Points = mP });
                 if (mP > 2) {
                     mP -= 2;
                 }

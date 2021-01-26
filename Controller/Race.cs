@@ -186,7 +186,7 @@ namespace Controller {
                     // Wings not broken
                     if (random.Next(0, 50) == 10) {         // Change of 5% to get busted
                         goose.Equipment.IsBroken = true;
-                        LostWings lostWing = new LostWings() { name = goose.Name, TimesWingLost = 1};   // Save to generic
+                        LostWings lostWing = new LostWings() { Name = goose.Name, TimesWingLost = 1};   // Save to generic
                         wingsLostCounter.AddRaceStatToList(lostWing);
 
                     }
@@ -312,15 +312,15 @@ namespace Controller {
                 }
 
                 RaceStatRoundtime.AddRaceStatToList(new GooseSectionTimes() {
-                    name = currentSectionData.Right.Name,
+                    Name = currentSectionData.Right.Name,
                     Time = elapsedDateTime - currentSectionData.TimeRight,
                     Section = currentSection
                 }
                 );
                 sectionSpeed.AddRaceStatToList(new SectionSpeed() {
-                    name = currentSectionData.Right.Name,
-                    section = currentSection,
-                    speed = currentSectionData.Right.Equipment.Speed
+                    Name = currentSectionData.Right.Name,
+                    Section = currentSection,
+                    Speed = currentSectionData.Right.Equipment.Speed
                 }
                 );
 
@@ -340,15 +340,15 @@ namespace Controller {
                 }
 
                 RaceStatRoundtime.AddRaceStatToList(new GooseSectionTimes() {                                // add racedata to list
-                    name = currentSectionData.Left.Name,
+                    Name = currentSectionData.Left.Name,
                     Time = elapsedDateTime - currentSectionData.TimeLeft,
                     Section = currentSection
                 }
                 );
                 sectionSpeed.AddRaceStatToList(new SectionSpeed() {                                         // add racedata to list
-                    name = currentSectionData.Left.Name,
-                    section = currentSection,
-                    speed = currentSectionData.Left.Equipment.Speed
+                    Name = currentSectionData.Left.Name,
+                    Section = currentSection,
+                    Speed = currentSectionData.Left.Equipment.Speed
                 }
                 );
 

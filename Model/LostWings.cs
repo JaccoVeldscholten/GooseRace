@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Model {
     public class LostWings : IGenericScope {
-        public string name { get; set; }
+        public string Name { get; set; }
         public int TimesWingLost { get; set; }
 
         void IGenericScope.Add<T>(List<T> list) {                  
             foreach (var goose in list) {
                 var goosbroken = goose as LostWings;
-                if (goose.name == name) {
+                if (goose.Name == Name) {
                     goosbroken.TimesWingLost++;
                     return;
                 }
@@ -29,7 +29,7 @@ namespace Model {
                     LostMostWings = currentPart;
                 }
             }
-            return LostMostWings.name;
+            return LostMostWings.Name;
         }
     }
 }

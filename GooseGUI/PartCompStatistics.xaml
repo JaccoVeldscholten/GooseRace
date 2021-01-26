@@ -19,8 +19,8 @@
             </ListView.DataContext>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding timesBroken}" Header="Wings lost"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding TimesWingLost}" Header="Wings lost"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -30,9 +30,9 @@
             </ListView.DataContext>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding speed}" Header="Speed"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding section.SectionType}" Header="Section"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Speed}" Header="Speed"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Section.SectionType}" Header="Section"/>
                 </GridView>
             </ListView.View>
         </ListView>

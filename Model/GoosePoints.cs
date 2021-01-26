@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Model {
     public class GoosePoints : IGenericScope {
-        public string name { get; set; }
+        public string Name { get; set; }
         public int Points { get; set; }
 
         void IGenericScope.Add<T>(List<T> list) {  
             // Add points to the goose
             foreach (var goose in list) {
                 var goosePoints = goose as GoosePoints;
-                if (goose.name == name) {
+                if (goose.Name == Name) {
                     goosePoints.Points += Points;
                     return;
                 }
@@ -31,7 +31,7 @@ namespace Model {
                     goosePointsObj = goosePoints;
                 }
             }
-            return goosePointsObj.name;
+            return goosePointsObj.Name;
         }
     }
 }

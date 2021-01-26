@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Model {
     public class SectionSpeed : IGenericScope {
-        public string name { get; set; }
-        public int speed { get; set; }
-        public Section section { get; set; }
+        public string Name { get; set; }
+        public int Speed { get; set; }
+        public Section Section { get; set; }
 
         void IGenericScope.Add<T>(List<T> list) {                           // adding new section speed to list
             foreach (var part in list) {
                 var currentPart = part as SectionSpeed;
-                if (currentPart.name == name && currentPart.section == section) {
-                    currentPart.speed = speed;
+                if (currentPart.Name == Name && currentPart.Section == Section) {
+                    currentPart.Speed = Speed;
                     return;
                 }
             }
@@ -20,17 +20,17 @@ namespace Model {
         }
 
         public string GetBest<T>(List<T> list) where T : class, IGenericScope {             // get best participant with highest speed
-            int highSpeed = this.speed;
+            _ = this.Speed;
             SectionSpeed partSectionSpeed = this;
 
             foreach (var part in list) {
                 var currentPart = part as SectionSpeed;
-                if (currentPart.speed > speed) {
-                    speed = currentPart.speed;
+                if (currentPart.Speed > Speed) {
+                    Speed = currentPart.Speed;
                     partSectionSpeed = currentPart;
                 }
             }
-            return partSectionSpeed.name;
+            return partSectionSpeed.Name;
         }
     }
 }

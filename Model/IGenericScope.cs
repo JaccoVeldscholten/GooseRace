@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model {
     public interface IGenericScope {
-        public string name { get; set; }
+        public string Name { get; set; }
         public void Add<T>(List<T> list) where T : class, IGenericScope;
         public string GetBest<T>(List<T> list) where T : class, IGenericScope;
     }

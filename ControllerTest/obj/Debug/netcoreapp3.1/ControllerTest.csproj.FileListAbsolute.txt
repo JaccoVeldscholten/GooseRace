@@ -198,3 +198,9 @@ F:\Users\jacco\Documents\GitHub\GooseRace\ControllerTest\bin\Debug\netcoreapp3.1
 F:\Users\jacco\Documents\GitHub\GooseRace\ControllerTest\bin\Debug\netcoreapp3.1\Model.pdb
 F:\Users\jacco\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.csproj.CopyComplete
 F:\Users\jacco\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.genruntimeconfig.cache
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.dll
+C:\Users\Admin\Documents\GitHub\GooseRace\ControllerTest\obj\Debug\netcoreapp3.1\ControllerTest.pdb

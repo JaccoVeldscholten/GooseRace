@@ -5,7 +5,7 @@ using System.Text;
 namespace Model {
     public class GooseSectionTimes : IGenericScope {
         // This class handles the Goose his Section times
-        public string name { get; set; }
+        public string Name { get; set; }
         public TimeSpan Time { get; set; }
         public Section Section { get; set; }
 
@@ -13,7 +13,7 @@ namespace Model {
             // Add section times to goose
             foreach (var goose in list) {
                 var gooseSections = goose as GooseSectionTimes;
-                if (gooseSections.name == name && gooseSections.Section == Section) {
+                if (gooseSections.Name == Name && gooseSections.Section == Section) {
                     gooseSections.Time = Time;
                     return;
                 }
@@ -33,7 +33,7 @@ namespace Model {
                     fastestGoose = currentTime;
                 }
             }
-            return fastestGoose.name;
+            return fastestGoose.Name;
         }
         
     }

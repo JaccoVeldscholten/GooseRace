@@ -123,18 +123,7 @@ namespace Controller {
             SectionTypes[] townTrackSections = {
                 SectionTypes.StartGrid,
                 SectionTypes.StartGrid,
-                SectionTypes.StartGrid,
                 SectionTypes.Finish,
-                SectionTypes.LeftCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.Straight,
-                SectionTypes.RightCorner,
-                SectionTypes.Straight,
                 SectionTypes.Straight,
                 SectionTypes.LeftCorner,
                 SectionTypes.Straight,
@@ -142,19 +131,28 @@ namespace Controller {
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
-                SectionTypes.LeftCorner,
                 SectionTypes.Straight,
                 SectionTypes.RightCorner,
                 SectionTypes.Straight,
+                SectionTypes.Straight,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.RightCorner,
+                SectionTypes.LeftCorner,
+                SectionTypes.Straight,
+                SectionTypes.RightCorner,
                 SectionTypes.RightCorner
             };
 
             Track honkTrack = new Track("Honk Track", honkTrackSections);           // Most simple track      
             Track gardenTrack = new Track("Garden Track", gardenTrackSections);
             Track townTrack = new Track("Town Track", townTrackSections);
-
-            comp.Tracks.Enqueue(honkTrack);
+           
             comp.Tracks.Enqueue(gardenTrack);
+            comp.Tracks.Enqueue(honkTrack);
             comp.Tracks.Enqueue(townTrack);
         }   
 

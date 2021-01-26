@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj": {}
+    "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj": {}
   },
   "projects": {
-    "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj",
         "projectName": "ControllerTest",
-        "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj",
-        "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\ControllerTest\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\ControllerTest\\ControllerTest.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\ControllerTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,8 +31,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
-                "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj"
+              "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj"
               }
             }
           }
@@ -79,20 +79,20 @@
         }
       }
     },
-    "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
         "projectName": "Controller",
-        "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
-        "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Controller\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\Controller.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Controller\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -106,8 +106,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
-                "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj"
+              "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
+                "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj"
               }
             }
           }
@@ -140,20 +140,20 @@
         }
       }
     },
-    "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
-        "packagesPath": "F:\\Users\\jacco\\.nuget\\packages\\",
-        "outputPath": "F:\\Users\\jacco\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\Model.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GooseRace\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "F:\\Users\\jacco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
