@@ -65,12 +65,24 @@ namespace Controller {
                 TeamColors.Green            // color
             );
 
+            IParticipant GooseArjan = new Goose(
+                "Arjan",                    // name
+                0,                          // points
+                new Wings()
+                {   // equipment
+                    Quality = 10,
+                    IsBroken = false,
+                    Performance = 100,
+                    Speed = 0
+                },
+                TeamColors.Yellow            // color
+            );
+
             // Add those gooses to the race
             Comp.Participants.Add(GoosePiet);
             Comp.Participants.Add(GooseBob);     
             Comp.Participants.Add(GooseSjaak);
             Comp.Participants.Add(GooseMarietje);
-
         }
 
         public static void AddTrack() {

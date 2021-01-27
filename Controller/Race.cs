@@ -97,18 +97,20 @@ namespace Controller {
             return Laps[goose] >= maxLaps;
         }
 
-        public void UpdateLap(IParticipant goose) => Laps[goose]++;
+        public void UpdateLap(IParticipant goose, DateTime elapsedDateTime) {    // participant amount of laps +1 
+            Laps[goose]++;
+        }
 
         private void UpdateLapOfParticipant(Section section, SectionData sectionData, Side side, DateTime elapsedDateTime) {        // update laptime of participant
             if (side == Side.Right) {
-                UpdateLap(sectionData.Right);
+                UpdateLap(sectionData.Right, elapsedDateTime);
                 if (ParticipantIsFinished(sectionData.Right)) {
                     WinnerList.Add(sectionData.Right);
                     sectionData.Right = null;
                     removedGooses++;
                 }
             } else if (side == Side.Left) {
-                UpdateLap(sectionData.Left);
+                UpdateLap(sectionData.Left, elapsedDateTime);
                 if (ParticipantIsFinished(sectionData.Left)) {
                     WinnerList.Add(sectionData.Left);
                     sectionData.Left = null;
@@ -164,7 +166,7 @@ namespace Controller {
         public void RandomizeEquipment() {    
             // Generating Random Equipment per goose
             foreach (Goose goose in Gooses) {
-                goose.Equipment.Quality = random.Next(0, 11);      // Quality cant never a 0 so 5 is good
+                goose.Equipment.Quality = random.Next(4, 11);      // Quality cant never a 0 so 5 is good
                 goose.Equipment.Performance = random.Next(4, 11);  // Performance min 5. Otherwise its slow
                 goose.Equipment.Speed = goose.Equipment.Performance * goose.Equipment.Quality;  // Speed is based on the Performance & Quality
             }
