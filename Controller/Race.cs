@@ -97,20 +97,18 @@ namespace Controller {
             return Laps[goose] >= maxLaps;
         }
 
-        public void UpdateLap(IParticipant goose, DateTime elapsedDateTime) {    // participant amount of laps +1 
-            Laps[goose]++;
-        }
+        public void UpdateLap(IParticipant goose) => Laps[goose]++;
 
         private void UpdateLapOfParticipant(Section section, SectionData sectionData, Side side, DateTime elapsedDateTime) {        // update laptime of participant
             if (side == Side.Right) {
-                UpdateLap(sectionData.Right, elapsedDateTime);
+                UpdateLap(sectionData.Right);
                 if (ParticipantIsFinished(sectionData.Right)) {
                     WinnerList.Add(sectionData.Right);
                     sectionData.Right = null;
                     removedGooses++;
                 }
             } else if (side == Side.Left) {
-                UpdateLap(sectionData.Left, elapsedDateTime);
+                UpdateLap(sectionData.Left);
                 if (ParticipantIsFinished(sectionData.Left)) {
                     WinnerList.Add(sectionData.Left);
                     sectionData.Left = null;

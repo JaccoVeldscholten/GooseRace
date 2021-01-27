@@ -66,7 +66,7 @@ namespace GooseGUI {
 
             // Window With Goose Stats
             GooseStats.participant.Items.Refresh();
-            GooseStats.brokenCounter.Items.Refresh();
+            GooseStats.participant.Items.Refresh();
         }
 
         protected virtual void OnGoosesChanged(object source, GoosesChangedEventArgs e) {       
@@ -102,7 +102,7 @@ namespace GooseGUI {
 
         private void MenuItem_OpenPartAndCompStatistics_Click(object sender, RoutedEventArgs e) {     
             // Open competion screen and receive the information to display
-            GooseStats.brokenCounter.ItemsSource = RaceStats.brokenCounter;
+            GooseStats.participant.ItemsSource = RaceStats.brokenCounter;
             GooseStats.participant.ItemsSource = RaceStats.Gooses;
             GooseStats.Show();
         }
