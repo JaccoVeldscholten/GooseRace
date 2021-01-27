@@ -22,7 +22,7 @@ namespace GooseGUI {
 
     public partial class MainWindow : Window {
 
-        private CurrentRaceStatistics CurRaceStats;
+        private CurrentRaceStatistics RaceStatistics;
         private PartCompStatistics GooseStats;
         private RaceStatisticsDataContext RaceStats;
 
@@ -34,7 +34,7 @@ namespace GooseGUI {
 
             RaceStats = new RaceStatisticsDataContext();
             GooseStats = new PartCompStatistics();
-            CurRaceStats = new CurrentRaceStatistics();
+            RaceStatistics = new CurrentRaceStatistics();
 
             Data.NextRaceEvent += RaceStats.OnNextRace;
 
@@ -59,10 +59,10 @@ namespace GooseGUI {
         {
             //Debug.Print($"{DateTime.Now} : Stats update");
             // Refresh
-            CurRaceStats.sectionTimeData.Items.Refresh();
-            CurRaceStats.lapsPerParticipant.Items.Refresh();
-            CurRaceStats.sectionSpeed.Items.Refresh();
-            CurRaceStats.partPoints.Items.Refresh();
+            RaceStatistics.sectionTimeData.Items.Refresh();
+            RaceStatistics.lapsPerParticipant.Items.Refresh();
+            RaceStatistics.sectionSpeed.Items.Refresh();
+            RaceStatistics.partPoints.Items.Refresh();
 
             // Window With Goose Stats
             GooseStats.participant.Items.Refresh();
@@ -109,11 +109,11 @@ namespace GooseGUI {
 
         private void MenuItem_CurrentRaceStatistics_Click(object sender, RoutedEventArgs e) {         
             // Open stats screen and receive the infromation display
-            CurRaceStats.sectionTimeData.ItemsSource = RaceStats.SectionTimes;
-            CurRaceStats.lapsPerParticipant.ItemsSource = RaceStats.lapsGooses;
-            CurRaceStats.sectionSpeed.ItemsSource = RaceStats.sectionSpeed;
-            CurRaceStats.partPoints.ItemsSource = RaceStats.WinnerStats;
-            CurRaceStats.Show();
+            RaceStatistics.sectionTimeData.ItemsSource = RaceStats.SectionTimes;
+            RaceStatistics.lapsPerParticipant.ItemsSource = RaceStats.lapsGooses;
+            RaceStatistics.sectionSpeed.ItemsSource = RaceStats.sectionSpeed;
+            RaceStatistics.partPoints.ItemsSource = RaceStats.WinnerStats;
+            RaceStatistics.Show();
         }
     }
 }
