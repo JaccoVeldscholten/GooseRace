@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,12 +49,24 @@ namespace GooseGUI {
 
             e.Race.GoosesChanged += OnGoosesChanged;
             e.Race.RaceIsFinished += OnRaceIsFinished;
-            
             this.Dispatcher.Invoke(() =>
             {
                 e.Race.GoosesChanged += ((RaceData)this.DataContext).OnGoosesChanged;        
             });
-            
+        }
+
+        public void UpdateStats()
+        {
+            //Debug.Print($"{DateTime.Now} : Stats update");
+            // Refresh
+            CurRaceStats.sectionTimeData.Items.Refresh();
+            CurRaceStats.lapsPerParticipant.Items.Refresh();
+            CurRaceStats.sectionSpeed.Items.Refresh();
+            CurRaceStats.partPoints.Items.Refresh();
+
+            // Window With Goose Stats
+            GooseStats.participant.Items.Refresh();
+            GooseStats.brokenCounter.Items.Refresh();
         }
 
         protected virtual void OnGoosesChanged(object source, GoosesChangedEventArgs e) {       
@@ -63,23 +76,23 @@ namespace GooseGUI {
                 new Action(() => {
                     this.RaceCanvas.Source = null;
                     this.RaceCanvas.Source = Visualisation.DrawTrack(e.Track);
+                    UpdateStats();  // Every step we take... Every move we make... Lets update.
                 }));
-            this.Dispatcher.Invoke(() =>                    
-            // Refresh the data for stats
-            {
-                CurRaceStats.participant.Items.Refresh();
-                CurRaceStats.sectionTimeData.Items.Refresh();
-                CurRaceStats.lapsPerParticipant.Items.Refresh();
 
-                GooseStats.brokenCounter.Items.Refresh();
-                GooseStats.sectionSpeed.Items.Refresh();
-                GooseStats.partPoints.Items.Refresh();
-            });
         }
 
-        public static void OnRaceIsFinished(object soure, EventArgs e) {        
+        public static void OnRaceIsFinished(object soure, EventArgs e) {
             // Call Next Race when is Finsihed
+            Debug.Print($"{Data.Comp.Tracks.Count()} : Stats update");
+
+            if(Data.Comp.Tracks.Count() == 0)
+            {
+                Data.CurrentRace.StopTimer();
+                MessageBox.Show("Race afgelopen!");
+
+            }
             Data.NextRace();
+
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e) {    
@@ -89,19 +102,17 @@ namespace GooseGUI {
 
         private void MenuItem_OpenPartAndCompStatistics_Click(object sender, RoutedEventArgs e) {     
             // Open competion screen and receive the information to display
-            GooseStats.sectionSpeed.ItemsSource = RaceStats.sectionSpeed;
             GooseStats.brokenCounter.ItemsSource = RaceStats.brokenCounter;
-            GooseStats.partPoints.ItemsSource = RaceStats.WinnerStats;
-
+            GooseStats.participant.ItemsSource = RaceStats.Gooses;
             GooseStats.Show();
         }
 
         private void MenuItem_CurrentRaceStatistics_Click(object sender, RoutedEventArgs e) {         
             // Open stats screen and receive the infromation display
             CurRaceStats.sectionTimeData.ItemsSource = RaceStats.SectionTimes;
-            CurRaceStats.participant.ItemsSource = RaceStats.Gooses;
             CurRaceStats.lapsPerParticipant.ItemsSource = RaceStats.lapsGooses;
-
+            CurRaceStats.sectionSpeed.ItemsSource = RaceStats.sectionSpeed;
+            CurRaceStats.partPoints.ItemsSource = RaceStats.WinnerStats;
             CurRaceStats.Show();
         }
     }

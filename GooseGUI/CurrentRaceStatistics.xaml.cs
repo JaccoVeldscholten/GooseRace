@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 namespace GooseGUI
 {
     /// <summary>
-    /// Interaction logic for CurrentRaceStatistics.xaml
+    /// Interaction logic for OpenRaceStats.xaml
     /// </summary>
     public partial class CurrentRaceStatistics : Window
     {

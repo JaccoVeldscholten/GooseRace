@@ -32,7 +32,7 @@ namespace ControllerTest {
 				},
 				TeamColors.Blue             // color
 			);
-			LostWings lostWing = new LostWings() { name = TestGoose.Name, TimesWingLost = 1 };   // Save to generic
+			LostWings lostWing = new LostWings() { Name = TestGoose.Name, TimesWingLost = 1 };   // Save to generic
 			wingsLostCounter.AddRaceStatToList(lostWing);
 
 			Assert.IsNotNull(wingsLostCounter);

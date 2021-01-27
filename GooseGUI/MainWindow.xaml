@@ -16,9 +16,9 @@
         <DockPanel LastChildFill="False" VerticalAlignment="Top">
             <Menu DockPanel.Dock="Top" Height="20">
                 <MenuItem Header="Menu">
-                    <MenuItem Header="current race statistics" Click="MenuItem_CurrentRaceStatistics_Click"/>
-                    <MenuItem Header="part and comp statistics" Click="MenuItem_OpenPartAndCompStatistics_Click"/>
-                    <MenuItem Header="close app" Click="MenuItem_Exit_Click"/>
+                    <MenuItem Header="Race Statistics" Click="MenuItem_CurrentRaceStatistics_Click"/>
+                    <MenuItem Header="Goose tatistics" Click="MenuItem_OpenPartAndCompStatistics_Click"/>
+                    <MenuItem Header="Close Race" Click="MenuItem_Exit_Click"/>
                 </MenuItem>
             </Menu>
         </DockPanel>

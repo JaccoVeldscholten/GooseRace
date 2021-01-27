@@ -6,46 +6,41 @@
         xmlns:local="clr-namespace:GooseGUI"
         xmlns:Model="clr-namespace:Model;assembly=Model" x:Class="GooseGUI.PartCompStatistics"
         mc:Ignorable="d"
-        Title="PartCompStatistics" Height="450" Width="1046">
+        Title="Goose Statistics" Height="464" Width="886">
 
-    <Grid>
+    <Grid Margin="0,0,810,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="506*"/>
             <ColumnDefinition Width="17*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="brokenCounter" Margin="57,48,685,27">
+        <ListView x:Name="brokenCounter" Margin="27,48,-148,27" Grid.ColumnSpan="2">
             <ListView.DataContext>
                 <local:RaceStatisticsDataContext/>
             </ListView.DataContext>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding TimesWingLost}" Header="Wings lost"/>
+                    <GridViewColumn Width="70" DisplayMemberBinding="{Binding TimesWingLost}" Header="Wings lost"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="sectionSpeed" Margin="343,48,257,27">
+        <ListView x:Name="participant" Margin="177,48,-783,27" ItemsSource="{Binding Participants}" Grid.Column="1">
             <ListView.DataContext>
                 <local:RaceStatisticsDataContext/>
             </ListView.DataContext>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Speed}" Header="Speed"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Section.SectionType}" Header="Section"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding TeamColor}" Header="TeamColor"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Speed}" Header="Speed"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Quality}" Header="Quality"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Performance}" Header="Performance"/>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.IsBroken}" Header="IsBroken"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="partPoints" Margin="770,48,0,27">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Content="Winner" HorizontalAlignment="Left" Margin="770,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="Goose Stats" HorizontalAlignment="Left" Margin="343,17,0,0" VerticalAlignment="Top"/>
-        <Label Content="Goose Wing lost" HorizontalAlignment="Left" Margin="57,12,0,0" VerticalAlignment="Top"/>
+        <Label Content="Amount of wing Lost" Margin="29,10,-111,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Current Goose Statistics" Margin="177,10,-333,0" VerticalAlignment="Top" Grid.Column="1"/>
 
     </Grid>
 </Window>

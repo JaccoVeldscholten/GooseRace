@@ -23,7 +23,7 @@ namespace ControllerTest {
 			Track track = new Track("TestTrackOne", testSec);
 
 			// add to list
-			list.AddRaceStatToList(new GoosePoints() { name = GoosePiet.Name, Points = 10 });
+			list.AddRaceStatToList(new GoosePoints() { Name = GoosePiet.Name, Points = 10 });
 
 			object result = list.GetHighest(); // Check who lost most points
 			Assert.AreEqual(GoosePiet.Name, result);
@@ -40,7 +40,7 @@ namespace ControllerTest {
 			Track track = new Track("TestTrackOne", testSec);
 
 			// add to list
-			list.AddRaceStatToList(new LostWings() { name = GoosePiet.Name});
+			list.AddRaceStatToList(new LostWings() { Name = GoosePiet.Name});
 
 			object result = list.GetHighest();	// Check who lost most wings
 			Assert.AreEqual(GoosePiet.Name, result);
@@ -74,7 +74,7 @@ namespace ControllerTest {
 			Track track = new Track("TestTrackOne", testSec);
 
 			// add to list
-			list.AddRaceStatToList(new GooseSectionTimes() { name = GoosePiet.Name });
+			list.AddRaceStatToList(new GooseSectionTimes() { Name = GoosePiet.Name });
 
 			object result = list.GetHighest();  // Check who lost most wings
 			Assert.AreEqual(GoosePiet.Name, result);

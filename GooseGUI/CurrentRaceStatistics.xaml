@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GooseGUI"
         xmlns:Model="clr-namespace:Model;assembly=Model" x:Class="GooseGUI.CurrentRaceStatistics"
         mc:Ignorable="d"
-        Title="Race Statistics" Height="450" Width="1077">
+        Title="Race Statistics" Height="468" Width="1002">
 
     <Grid Margin="0,0,166,0">
         <Grid.ColumnDefinitions>
@@ -14,7 +14,7 @@
             <ColumnDefinition Width="785*"/>
             <ColumnDefinition Width="33*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="sectionTimeData" Margin="26,48,0,186" ItemsSource="{Binding SectionTimes}" HorizontalAlignment="Left" Width="407" Grid.ColumnSpan="2">
+        <ListView x:Name="sectionTimeData" Margin="37,35,330,226" ItemsSource="{Binding SectionTimes}" Grid.ColumnSpan="2">
             <ListView.DataContext>
                 <local:RaceStatisticsDataContext/>
             </ListView.DataContext>
@@ -22,26 +22,11 @@
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
                     <GridViewColumn Width="160" DisplayMemberBinding="{Binding Time}" Header="Time"/>
-                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding section.SectionType}" Header="SectionType"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Section.SectionType}" Header="SectionType"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="participant" Margin="363,48,-147,27" Grid.ColumnSpan="2" ItemsSource="{Binding Participants}" Grid.Column="1">
-            <ListView.DataContext>
-                <local:RaceStatisticsDataContext/>
-            </ListView.DataContext>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding TeamColor}" Header="TeamColor"/>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Speed}" Header="Speed"/>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Quality}" Header="Quality"/>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.Performance}" Header="Performance"/>
-                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Equipment.IsBroken}" Header="IsBroken"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView x:Name="lapsPerParticipant" Margin="26,253,445,27" Grid.ColumnSpan="2">
+        <ListView x:Name="lapsPerParticipant" Margin="203,259,330,0" Grid.Column="1" RenderTransformOrigin="1.588,0.229" Height="183" VerticalAlignment="Top">
             <ListView.DataContext>
                 <local:RaceStatisticsDataContext/>
             </ListView.DataContext>
@@ -49,6 +34,29 @@
                 <GridView>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Path=Key.Name}" Header="Name"/>
                     <GridViewColumn Width="100" DisplayMemberBinding="{Binding Path=Value}" Header="Laps"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView x:Name="partPoints" Margin="37,259,549,10" RenderTransformOrigin="-4.294,0.746" Grid.ColumnSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Section Times&#xD;&#xA;" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Section Times&#xA;" HorizontalAlignment="Left" Margin="29,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Finishing Order&#xA;" HorizontalAlignment="Left" Margin="37,231,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label Content="Lapped Times&#xA;" HorizontalAlignment="Left" Margin="214,226,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ListView x:Name="sectionSpeed" Margin="413,35,-122,10" Grid.Column="1" Grid.ColumnSpan="2">
+            <ListView.DataContext>
+                <local:RaceStatisticsDataContext/>
+            </ListView.DataContext>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Speed}" Header="Speed"/>
+                    <GridViewColumn Width="160" DisplayMemberBinding="{Binding Section.SectionType}" Header="Section"/>
                 </GridView>
             </ListView.View>
         </ListView>

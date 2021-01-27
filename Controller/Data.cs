@@ -5,14 +5,14 @@ using Model;
 
 namespace Controller {
     public static class Data {
-        public static Competition comp { get; set; }
+        public static Competition Comp { get; set; }
         public static Race CurrentRace { get; set; }
 
         public delegate void NextRaceEventHandler(object source, NextRaceEventArgs args);
         static public event NextRaceEventHandler NextRaceEvent;
 
         public static void Init() {           // init Data
-            comp = new Competition();
+            Comp = new Competition();
             AddTrack();
             AddParticipant();
         }
@@ -66,10 +66,10 @@ namespace Controller {
             );
 
             // Add those gooses to the race
-            comp.Participants.Add(GoosePiet);
-            comp.Participants.Add(GooseBob);     
-            comp.Participants.Add(GooseSjaak);
-            comp.Participants.Add(GooseMarietje);
+            Comp.Participants.Add(GoosePiet);
+            Comp.Participants.Add(GooseBob);     
+            Comp.Participants.Add(GooseSjaak);
+            Comp.Participants.Add(GooseMarietje);
 
         }
 
@@ -151,9 +151,9 @@ namespace Controller {
             Track gardenTrack = new Track("Garden Track", gardenTrackSections);
             Track townTrack = new Track("Town Track", townTrackSections);
            
-            comp.Tracks.Enqueue(gardenTrack);
-            comp.Tracks.Enqueue(honkTrack);
-            comp.Tracks.Enqueue(townTrack);
+            Comp.Tracks.Enqueue(gardenTrack);
+            Comp.Tracks.Enqueue(honkTrack);
+            Comp.Tracks.Enqueue(townTrack);
         }   
 
         public static void NextRace() {            
@@ -161,9 +161,9 @@ namespace Controller {
                 CurrentRace.CleanUp();
             }
 
-            Track nextTrack = comp.NextTrack();
+            Track nextTrack = Comp.NextTrack();
             if (nextTrack != null) {
-                CurrentRace = new Race(nextTrack, comp.Participants);
+                CurrentRace = new Race(nextTrack, Comp.Participants);
                 CurrentRace.RaceIsFinished += OnRaceIsFinished;
                 NextRaceEvent?.Invoke(null, new NextRaceEventArgs() { Race = CurrentRace });
                 CurrentRace.StartRace();
@@ -173,11 +173,12 @@ namespace Controller {
             }
         }
 
-        public static void OnRaceIsFinished(object sender, EventArgs e) {       // fill competition information
-            comp.GivePoints(CurrentRace.GetEndResult());
-            comp.GiveSectionTime(CurrentRace.GetRaceStatRoundTime());
-            comp.GiveSectionSpeed(CurrentRace.GetRaceSectionSpeed());
-            comp.GiveTimesBroken(CurrentRace.GetwingsLostCounter());
+        public static void OnRaceIsFinished(object sender, EventArgs e) {       
+            // Give points & stats to gooses
+            Comp.GivePoints(CurrentRace.GetEndResult());
+            Comp.GiveSectionTime(CurrentRace.GetRaceStatRoundTime());
+            Comp.GiveSectionSpeed(CurrentRace.GetRaceSectionSpeed());
+            Comp.GiveTimesBroken(CurrentRace.GetwingsLostCounter());
         }
     }
 

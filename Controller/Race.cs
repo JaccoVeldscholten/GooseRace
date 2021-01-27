@@ -17,11 +17,11 @@ namespace Controller {
         // Used Objects
         public Track Track { get; set; }
         public DateTime StartTime { get; set; }
-        private readonly Random random;
-        private readonly Timer timer;
+        private  Random random;
+        private  Timer timer;
 
         // Used integers
-        private readonly int maxLaps = 2;
+        private  int maxLaps = 2;
         private int removedGooses = 0;
 
         // Lists
@@ -59,6 +59,11 @@ namespace Controller {
             SetParticipantLaps();
         }
 
+        public void StopTimer()
+        {
+            timer.Stop();
+        }
+
         public SectionData GetSectionData(Section section) {                // get section data, if it doesnt exist: create new
             if (!Positions.TryGetValue(section, out SectionData returnSectionData)) {
                 SectionData newSectionData = new SectionData();
@@ -67,6 +72,7 @@ namespace Controller {
             }
             return returnSectionData;
         }
+
 
         public void SetStartPos() {                                   // give each competing participant a start position at random
             int tempArray = 0;
@@ -198,9 +204,11 @@ namespace Controller {
                         goose.Equipment.IsBroken = false;
                         if (goose.Equipment.Quality < 10) {
                             goose.Equipment.Quality = 10;       // Fix so the goose will not stop
+                                                                // There is no Safety Goose Around here
                         }
                         if (goose.Equipment.Speed < 10) {
                             goose.Equipment.Speed = 10;         // Fix so the goose will not stop
+                                                                // There is no Safety Goose Around here
                         }
                     }
 
@@ -239,7 +247,7 @@ namespace Controller {
 
             // both participants of a grid want to move
             if (currentSectionData.DistanceLeft >= 100 && currentSectionData.DistanceRight >= 100) {
-                int freePlaces = AnyPlacesLeftOnSection(nextSectionData);
+                int freePlaces = PlaceLeft(nextSectionData);
                 if (freePlaces == 0) {      // let participants wait with moving
                     currentSectionData.DistanceRight = 90;
                     currentSectionData.DistanceLeft = 90;
@@ -267,7 +275,7 @@ namespace Controller {
                 // participant left wants to move
             } else if (currentSectionData.DistanceLeft >= 100) {
                 // for freesections, prefer same spot, otherwise take other
-                int freePlaces = AnyPlacesLeftOnSection(nextSectionData);
+                int freePlaces = PlaceLeft(nextSectionData);
                 if (freePlaces == 0) {
                     currentSectionData.DistanceLeft = 90;
                 } else if (freePlaces == 3 || freePlaces == 1) {
@@ -281,7 +289,7 @@ namespace Controller {
 
                                                                                                                         // participant right wants to move
             } else if (currentSectionData.DistanceRight >= 100) {
-                int freePlaces = AnyPlacesLeftOnSection(nextSectionData);
+                int freePlaces = PlaceLeft(nextSectionData);
                 if (freePlaces == 0) {
                     currentSectionData.DistanceRight = 90;
                 } else if (freePlaces == 3 || freePlaces == 2) {
@@ -378,11 +386,7 @@ namespace Controller {
             return speed;
         }
 
-        public int AnyPlacesLeftOnSection(SectionData sectionData) {    // check if there are places left on the section
-            /*      0 - nothing free
-                    1 - left free
-                    2 - right free
-                    3 - left and right free  */
+        public int PlaceLeft(SectionData sectionData) {    // check if there are places left on the section
             int returnValue = 0;
             if (sectionData.Left == null) {
                 returnValue += 1;
